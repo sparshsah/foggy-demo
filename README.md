@@ -1,2 +1,2 @@
-# foggy-demo
+# foggyDEMO
 Misc math/programming demos
