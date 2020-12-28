@@ -1,3 +1,5 @@
+# for Python projects
+
 .PHONY: diff commit clean
 
 diff:
@@ -12,8 +14,6 @@ commit:
 
 clean:
 	# delete compiled bytecode
-	find . -name "*.pyc" -exec rm {} +
-	find . -name "*.pyo" -exec rm {} +
-	find . -name "*.pyd" -exec rm {} +
+	find . -name "*.py[cod]" -exec rm {} +
 	find . -name "__pycache__" -exec rm -r {} +
 	find . -name ".ipynb_checkpoints" -exec rm -r {} +
