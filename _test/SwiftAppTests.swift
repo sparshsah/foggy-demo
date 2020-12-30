@@ -1,7 +1,8 @@
 import XCTest
+// @testable "temporarily" exposes internal attributes as public, for testing purposes
 @testable import MyApp
 
-// Pretend this code defining `MyError` and `myFuncThatThrows` actually lives in `MyApp`.
+// pretend this code defining `MyError` and `myFuncThatThrows` actually lives in `MyApp`
 enum MyError: Error {
     case myExpectedError
     case myUnexpectedError
