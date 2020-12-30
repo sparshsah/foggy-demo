@@ -51,6 +51,53 @@ class SkeletonTests: XCTestCase {
 
 }
 
+// demonstrate that each test func is run from a brand-new, isolated XCTestCase instance
+class SetUpTests: XCTestCase {
+
+    var t = 0
+
+    override func setUpWithError() throws {
+        t += 1  // equivalent to `self.t += 1`
+    }
+
+    override func tearDownWithError() throws {
+        t += 1
+    }
+
+    func test0() throws {
+        // before this, `setUpWithError()` was run, so this will pass
+        XCTAssertEqual(t, 1)
+        // after this, `tearDownWithError()` will be run
+    }
+
+    func test1() throws {
+        /*
+         Now comes the trick: Even though right before this line,
+         `setUpWithError()` was run "again", `self.t` will still be `1`!
+
+         Naive programmers like me might expect the following:
+         >>> SetUpTests()  // t == 0
+         >>> setUpWithError()  // t == 1
+         >>> test0()  // t == 1
+         >>> tearDownWithError()  // t == 2
+         >>> setUpWithError()  // t == 3
+         >>> test1()  // t == 3
+         >>> tearDownWithError()  // t == 4
+
+         But in reality, it's:
+         >>> SetUpTests()  // t == 0
+         >>> setUpWithError()  // t == 1
+         >>> test0()  // t == 1
+         >>> tearDownWithError()  // t == 2
+         >>> SetUpTests()  // t == 0, again!!!
+         >>> setUpWithError()  // t == 1
+         >>> test1()  // t == 1
+         >>> tearDownWithError()  // t == 3
+         */
+        XCTAssertEqual(t, 1)
+    }
+}
+
 class FloatEqualityTests: XCTestCase {
 
     let x: Float = 1.0
@@ -99,52 +146,5 @@ class ThrowingTests: XCTestCase {
         XCTAssertThrowsError(try myFuncThatThrows(myErrToThrow: 1)) { error in
             XCTAssertNotEqual(error as! MyError, MyError.myExpectedError)
         }
-    }
-}
-
-// demonstrate that each test func is run from a brand-new, isolated XCTestCase instance
-class SetUpTests: XCTestCase {
-
-    var t = 0
-
-    override func setUpWithError() throws {
-        t += 1  // equivalent to `self.t += 1`
-    }
-
-    override func tearDownWithError() throws {
-        t += 1
-    }
-
-    func test0() throws {
-        // before this, `setUpWithError()` was run, so this will pass
-        XCTAssertEqual(t, 1)
-        // after this, `tearDownWithError()` will be run
-    }
-
-    func test1() throws {
-        /*
-         Now comes the trick: Even though right before this line,
-         `setUpWithError()` was run "again", `self.t` will still be `1`!
-
-         Naive programmers like me might expect the following:
-         >>> SetUpTests()  // t == 0
-         >>> setUpWithError()  // t == 1
-         >>> test0()  // t == 1
-         >>> tearDownWithError()  // t == 2
-         >>> setUpWithError()  // t == 3
-         >>> test1()  // t == 3
-         >>> tearDownWithError()  // t == 4
-
-         But in reality, it's:
-         >>> SetUpTests()  // t == 0
-         >>> setUpWithError()  // t == 1
-         >>> test0()  // t == 1
-         >>> tearDownWithError()  // t == 2
-         >>> SetUpTests()  // t == 0, again!!!
-         >>> setUpWithError()  // t == 1
-         >>> test1()  // t == 1
-         >>> tearDownWithError()  // t == 3
-         */
-        XCTAssertEqual(t, 1)
     }
 }
