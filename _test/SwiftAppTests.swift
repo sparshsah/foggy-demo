@@ -19,7 +19,7 @@ func myFuncThatThrows(myErrToThrow: Int = -1) throws {
 
 /*
  An Xcode unit-test bundle (AKA target) can contain multiple
- unit-test modules like `SwiftAppTests.swift`, which can contain multiple
+ unit-test sourcefiles like `SwiftAppTests.swift`, which can contain multiple
  unit-test case classes like `SkeletonTests`, which can contain multiple
  unit-test funcs like `testSkeleton()`.
  */
