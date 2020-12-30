@@ -93,7 +93,7 @@ class SetUpTests: XCTestCase {
          >>> SetUpTests()  // t == 0, again!!!
          >>> setUpWithError()  // t == 1
          >>> test1()  // t == 1
-         >>> tearDownWithError()  // t == 3
+         >>> tearDownWithError()  // t == 2
          */
         XCTAssertEqual(t, 1)
     }
