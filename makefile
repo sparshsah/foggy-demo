@@ -1,5 +1,3 @@
-# for Python projects
-
 .PHONY: diff commit clean
 
 diff:
@@ -13,6 +11,7 @@ commit:
 	git add $f && git commit -m "$m" && git push && git status
 
 clean:
+	# for Python projects
 	# delete compiled bytecode
 	find . -name "*.py[cod]" -exec rm {} +
 	find . -name "__pycache__" -exec rm -r {} +
