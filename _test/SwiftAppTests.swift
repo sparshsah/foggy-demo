@@ -143,7 +143,7 @@ class ThrowingTests: XCTestCase {
         }
     }
 
-    func testThrowsSomethingOtherThanSpecific() throws {
+    func testThrowsSomethingExceptSpecific() throws {
         XCTAssertThrowsError(try myFuncThatThrows(myErrToThrow: 1)) { error in
             XCTAssertNotEqual(error as! MyError, MyError.myExpectedError)
         }
