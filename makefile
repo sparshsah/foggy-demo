@@ -14,5 +14,6 @@ clean:
 	# for Python projects
 	# delete compiled bytecode
 	find . -name "*.py[cod]" -exec rm {} +
+	# Python 3 uses separate directory for compiled bytecode
 	find . -name "__pycache__" -exec rm -r {} +
 	find . -name ".ipynb_checkpoints" -exec rm -r {} +
