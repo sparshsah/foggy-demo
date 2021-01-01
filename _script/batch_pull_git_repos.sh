@@ -4,7 +4,7 @@ LOCAL_REPO_PATH="/code/$(id -u -n)/"  # e.g. "/code/sparshsah/"
 REPO_NAMES=$(ls $LOCAL_REPO_PATH | grep /)
 
 prompt_until_yes() {
-  echo "$1, ok? ('y' to continue, 'Ctrl+C' to quit)"
+  echo "$1, ok? ('y' to continue/skip, 'Ctrl+C' to quit)"
   CONFIRM_INPUT="n"
   while [[ "$CONFIRM_INPUT" != "y" ]]; do
     read CONFIRM_INPUT
@@ -19,8 +19,8 @@ prompt_until_yes "pulling from remote(s) to $LOCAL_REPO_PATH"
 prompt_until_yes "pulling repos ${REPO_NAMES[*]}"
 
 for REPO_NAME in ${REPO_NAMES[@]}; do
-  # skip this repo, e.g. some legacy library
-  [[ $REPO_NAME == "ExcludedRepo/" ]] && continue
+  # skip this repo
+  [[ $REPO_NAME == "some-legacy-library/" ]] && continue
 
   echo "next repo: $REPO_NAME.."
   exec_except_prompt cd $LOCAL_REPO_PATH/$REPO_NAME
