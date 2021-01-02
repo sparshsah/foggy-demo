@@ -20,7 +20,7 @@ func myFuncThatThrows(myErrToThrow: Int = -1) throws {
 
 /*
  An Xcode unit-test bundle (AKA target) can contain multiple
- unit-test sourcefiles like `SwiftAppTests.swift`, which can contain multiple
+ unit-test sourcefiles like `MyAppTests.swift`, which can contain multiple
  unit-test case classes like `SkeletonTests`, which can contain multiple
  unit-test funcs like `testSkeleton()`.
  */
@@ -58,7 +58,7 @@ class SetUpTests: XCTestCase {
     var t = 0
 
     override func setUpWithError() throws {
-        t += 1  // equivalent to `self.t += 1`
+        t += 1  // implicitly `self.t += 1`
     }
 
     override func tearDownWithError() throws {
@@ -77,7 +77,7 @@ class SetUpTests: XCTestCase {
          `setUpWithError()` was run "again", `self.t` will still be `1`!
 
          Naive programmers like me might expect the following:
-         >>> SetUpTests()  // t == 0
+         >>> SetUpTests()  // instantiate XCTestCase, t == 0
          >>> setUpWithError()  // t == 1
          >>> test0()  // t == 1
          >>> tearDownWithError()  // t == 2
@@ -86,11 +86,11 @@ class SetUpTests: XCTestCase {
          >>> tearDownWithError()  // t == 4
 
          But in reality, it's:
-         >>> SetUpTests()  // t == 0
+         >>> SetUpTests()  // instantiate XCTestCase, t == 0
          >>> setUpWithError()  // t == 1
          >>> test0()  // t == 1
          >>> tearDownWithError()  // t == 2
-         >>> SetUpTests()  // t == 0, again!!!
+         >>> SetUpTests()  // instantiate XCTestCase, t == 0 again!!!
          >>> setUpWithError()  // t == 1
          >>> test1()  // t == 1
          >>> tearDownWithError()  // t == 2
