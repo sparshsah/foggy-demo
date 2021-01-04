@@ -9,7 +9,7 @@ import unittest
 
 class MyError(Exception):
     def __init__(self, message: str="MyError!", is_unexpected: bool=False):
-        self.message = message
+        super().__init__(message)
         self.is_unexpected = is_unexpected
 
 
