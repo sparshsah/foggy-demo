@@ -1,25 +1,28 @@
 # target source code
 # in practice, you'd uncomment the below (replacing `my_module` with your module name)
-# from my_module import MyError, my_func_that_throws
+# from my_module import MyError, my_func_that_raises
 # unit-testing suite
 import unittest
 
 
-# pretend this code defining `MyError` and `my_func_that_throws` actually lives in `my_module`
+# pretend this code defining `MyError` and `my_func_that_raises` actually lives in `my_module`
+
 class MyError(BaseException):
     def __init__(self, message: str="MyError!", is_unexpected: bool=False):
         self.message = message
         self.is_unexpected = is_unexpected
 
 
-def my_func_that_throws(my_err_to_throw: int=-1):
-    if my_err_to_throw < 0:
+def my_func_that_raises(my_err_to_raise: int=-1):
+    if my_err_to_raise < 0:
         return
-    elif my_err_to_throw == 0:
+    elif my_err_to_raise == 0:
         raise MyError()
     else:
         raise MyError(is_unexpected=True)
 
+
+# actual unit tests
 
 class TestSetUpClass(unittest.TestCase):
 
@@ -95,7 +98,7 @@ class TestSetUp(unittest.TestCase):
         self.assertEqual(self.t, 1)
 
 
-class TestFloatEquality(unittest.TestCase):
+class TestFloatEqual(unittest.TestCase):
 
     x: float = 1.0
     y: float = x
@@ -104,18 +107,51 @@ class TestFloatEquality(unittest.TestCase):
     def test_binary_repr_equal(self):
         self.assertEqual(self.__class__.x, self.__class__.y)
 
-    def test_numerical_equal_tight(self):
+    def test_tight_numerical_equal(self):
         self.assertAlmostEqual(self.__class__.x, self.__class__.y)
 
-    def test_numerical_equal_loose(self):
+    def test_loose_numerical_equal(self):
         self.assertAlmostEqual(self.__class__.x, self.__class__.z, delta=0.1)
 
-    def test_binary_repr_not_equal(self):
+    def test_not_binary_repr_equal(self):
         self.assertNotEqual(self.__class__.x, self.__class__.z)
 
-    def test_numerical_not_equal(self):
+    def test_not_numerical_equal(self):
         self.assertNotAlmostEqual(self.__class__.x, self.__class__.z)
 
 
+class TestRaise(unittest.TestCase):
+
+    def test_no_raise(self):
+        try:
+            my_func_that_raises()
+        except:
+            self.assertTrue(False, msg="Should not have raised!")
+
+    def test_raises(self):
+        with self.assertRaises(Exception):
+            my_func_that_raises(my_err_to_raise=0)
+
+    def test_raises_something_specific_unidiomatically(self):
+        with self.assertRaises(Exception) as cm:  # ContextManager
+            my_func_that_raises(my_err_to_raise=0)
+        self.assertIsInstance(cm.exception, MyError)
+
+    def test_raises_something_specific_idiomatically(self):
+        with self.assertRaises(MyError):
+            my_func_that_raises(my_err_to_raise=0)
+
+    def test_raises_something_expected(self):
+        with self.assertRaises(MyError) as cm:
+            my_func_that_raises(my_err_to_raise=0)
+        self.assertFalse(cm.exception.is_unexpected)
+
+    def test_raises_something_unexpected(self):
+        with self.assertRaises(MyError) as cm:
+            my_func_that_raises(my_err_to_raise=1)
+        self.assertTrue(cm.exception.is_unexpected)
+
+
 if __name__ == "__main__":
+    # run this file e.g. from the command line, and watch the magic!
     unittest.main()
