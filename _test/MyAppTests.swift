@@ -101,7 +101,7 @@ class SetUpTests: XCTestCase {
     }
 }
 
-class FloatEqualityTests: XCTestCase {
+class FloatEqualTests: XCTestCase {
 
     let x: Float = 1.0
     let y: Float = x
@@ -129,7 +129,7 @@ class FloatEqualityTests: XCTestCase {
 
 }
 
-class ThrowingTests: XCTestCase {
+class ThrowTests: XCTestCase {
 
     func testNoThrow() throws {
         XCTAssertNoThrow(try myFuncThatThrows())
