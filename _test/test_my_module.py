@@ -7,7 +7,7 @@ import unittest
 
 # pretend this code defining `MyError` and `my_func_that_raises` actually lives in `my_module`
 
-class MyError(BaseException):
+class MyError(Exception):
     def __init__(self, message: str="MyError!", is_unexpected: bool=False):
         self.message = message
         self.is_unexpected = is_unexpected
