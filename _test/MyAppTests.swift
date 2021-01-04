@@ -1,4 +1,5 @@
 import XCTest
+// target source code
 // @testable "temporarily" exposes internal attributes as public, for testing purposes
 // in practice, you'd uncomment the below (replacing `MyApp` with your app name)
 // @testable import MyApp
@@ -53,7 +54,7 @@ class SkeletonTests: XCTestCase {
 
 }
 
-// demonstrate that each test func is run from a brand-new, isolated XCTestCase instance
+// demonstrate that each unit-test func is run from a brand-new, isolated XCTestCase instance
 class SetUpTests: XCTestCase {
 
     var t = 0
