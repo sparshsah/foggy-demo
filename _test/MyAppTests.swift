@@ -139,13 +139,13 @@ class ThrowTests: XCTestCase {
         XCTAssertThrowsError(try myFuncThatThrows(myErrToThrow: 0))
     }
 
-    func testThrowsSomethingSpecific() throws {
+    func testThrowsSomethingExpected() throws {
         XCTAssertThrowsError(try myFuncThatThrows(myErrToThrow: 0)) { error in
             XCTAssertEqual(error as! MyError, MyError.myExpectedError)
         }
     }
 
-    func testThrowsSomethingExceptSpecific() throws {
+    func testThrowsSomethingUnexpected() throws {
         XCTAssertThrowsError(try myFuncThatThrows(myErrToThrow: 1)) { error in
             XCTAssertNotEqual(error as! MyError, MyError.myExpectedError)
         }
