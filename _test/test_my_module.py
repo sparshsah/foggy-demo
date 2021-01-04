@@ -3,6 +3,7 @@
 # from my_module import MyError, my_func_that_raises
 # unit-testing suite
 import unittest
+from unittest.mock import patch
 
 
 # pretend this code defining `MyError` and `my_func_that_raises` actually lives in `my_module`
@@ -150,6 +151,45 @@ class TestRaise(unittest.TestCase):
         with self.assertRaises(MyError) as cm:
             my_func_that_raises(my_err_to_raise=1)
         self.assertTrue(cm.exception.is_unexpected)
+
+
+class TestMock(unittest.TestCase):
+    """
+    Demonstrate the `unittest.mock` library.
+
+    Useful for unit-testing code that contains e.g. SQL queries or web requests,
+    since mocking `run_my_sql_query()` or `run_my_web_request()`
+    is more stable and faster than actually running the underlying queries/requests,
+    which depend on external resources. Testing that the queries/requests
+    themselves also behave as expected (e.g. actually return what your mock
+    object overrides them to return) is a separate self-contained task.
+
+    With that said, a word of caution: A friend of mine once gave me advice that
+    I now swear by, which is that having to mock queries/requests as part
+    of unit-testing your code is a good sign that you should refactor
+    your code to cleanly separate out data access from transformations.
+        For example, the following:
+    >>> def my_calc() -> bool:
+    >>>     return "x" in run_my_sql_query()
+    would be better as:
+    >>> def _my_calc(data: str) -> bool:
+    >>>     return "x" in data
+    >>> def my_calc() -> bool:
+    >>>     return _my_calc(data=run_my_sql_query())
+        In the first version, you'd need to mock `run_my_sql_query()` to
+    effectively unit-test `my_calc()`. But in the second version,
+    you can separately unit-test `run_my_sql_query()` and `_my_calc()`,
+    and then `my_calc()` becomes a trivial composition of the two.
+    """
+
+    def test_no_mock(self):
+        # `None` is falsey
+        self.assertFalse(my_func_that_raises())
+
+    # in practice, you'd mock something like `my_module.my_func_that_raises`
+    @patch("__main__.my_func_that_raises", return_value=True)
+    def test_mock(self, _):
+        self.assertTrue(my_func_that_raises())
 
 
 if __name__ == "__main__":
