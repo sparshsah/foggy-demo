@@ -95,5 +95,27 @@ class TestSetUp(unittest.TestCase):
         self.assertEqual(self.t, 1)
 
 
+class TestFloatEquality(unittest.TestCase):
+
+    x: float = 1.0
+    y: float = x
+    z: float = x + 0.01
+
+    def test_binary_repr_equal(self):
+        self.assertEqual(self.__class__.x, self.__class__.y)
+
+    def test_numerical_equal_tight(self):
+        self.assertAlmostEqual(self.__class__.x, self.__class__.y)
+
+    def test_numerical_equal_loose(self):
+        self.assertAlmostEqual(self.__class__.x, self.__class__.z, delta=0.1)
+
+    def test_binary_repr_not_equal(self):
+        self.assertNotEqual(self.__class__.x, self.__class__.z)
+
+    def test_numerical_not_equal(self):
+        self.assertNotAlmostEqual(self.__class__.x, self.__class__.z)
+
+
 if __name__ == "__main__":
     unittest.main()
