@@ -182,6 +182,9 @@ class TestMock(unittest.TestCase):
     and then `my_calc()` becomes a trivial composition of the two.
     """
 
+    def my_method(self):
+        return False
+
     def test_no_mock(self):
         # `None` is falsey
         self.assertFalse(my_func_that_raises())
@@ -190,6 +193,25 @@ class TestMock(unittest.TestCase):
     @patch("__main__.my_func_that_raises", return_value=True)
     def test_mock(self, _):
         self.assertTrue(my_func_that_raises())
+
+    @patch("__main__.my_func_that_raises", return_value=True)
+    def test_mock_called(self, mock_func):
+        self.assertFalse(mock_func.called)
+        self.assertTrue(my_func_that_raises())
+        self.assertTrue(mock_func.called)
+
+    @patch("__main__.my_func_that_raises", return_value=True)
+    def test_mock_called_with(self, mock_func):
+        """Demonstrate the flexibility (therefore also danger!) of mocked functions."""
+        # the actual `my_func_that_raises()` wouldn't accept this invalid kwarg!
+        self.assertTrue(my_func_that_raises(invalid_kwarg="foobar"))  # pylint: disable=unexpected-keyword-arg
+        self.assertTrue(mock_func.called_once_with(invalid_kwarg="foobar"))
+
+    def test_mock_cm(self):
+        # in practice, you'd mock something like `my_module`, not `self`
+        with patch.object(self, "my_method", return_value=True) as mock_method:  # context manager
+            self.assertTrue(self.my_method())
+        self.assertTrue(mock_method.called)
 
 
 if __name__ == "__main__":
