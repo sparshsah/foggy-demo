@@ -111,19 +111,19 @@ class FloatEqualTests: XCTestCase {
         XCTAssertEqual(x, y)
     }
 
-    func testNumericalEqualTight() throws {
+    func testTightNumericalEqual() throws {
         XCTAssertEqual(x, y, accuracy: 1e-4)
     }
 
-    func testNumericalEqualLoose() throws {
+    func testLooseNumericalEqual() throws {
         XCTAssertEqual(x, z, accuracy: 0.1)
     }
 
-    func testBinaryReprNotEqual() throws {
+    func testNotBinaryReprEqual() throws {
         XCTAssertNotEqual(x, z)
     }
 
-    func testNumericalNotEqual() throws {
+    func testNotNumericalEqual() throws {
         XCTAssertNotEqual(x, z, accuracy: 1e-4)
     }
 
