@@ -4,9 +4,9 @@ Documented minimal working examples of unit tests in different languages,
 trying to provide a "template" for universal core unit-test functionality
 while following each language's particular idioms/conventions.
 
-I like to put unit tests in a separate directory named `_test` that lives at
-the top level (next to the source directory) and mirrors the internal structure
-of the source directory.
+I like to put unit tests in a separate directory (usually named something like `_test`)
+that lives at the top level (next to the source directory) and mirrors the
+internal structure of the source directory.
 
 For example, if I have a repository `my-module` with
 source code in `my-module/my_module/my_submodule/my_submodule.py`, I'll put
