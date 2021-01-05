@@ -207,7 +207,7 @@ class TestMock(unittest.TestCase):
         self.assertTrue(my_func_that_raises(invalid_kwarg="foobar"))  # pylint: disable=unexpected-keyword-arg
         self.assertTrue(mock_func.called_once_with(invalid_kwarg="foobar"))
 
-    def test_mock_cm(self):
+    def test_cm_mock(self):
         # in practice, you'd mock something like `my_module`, not `self`
         with patch.object(self, "my_method", return_value=True) as mock_method:  # context manager
             self.assertTrue(self.my_method())
