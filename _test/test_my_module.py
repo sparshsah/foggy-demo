@@ -165,10 +165,10 @@ class TestMock(unittest.TestCase):
     object overrides them to return) is a separate self-contained task.
 
     With that said, a word of caution: A friend of mine once gave me advice that
-    I now swear by, which is that having to mock queries/requests as part
-    of unit-testing your code is a good sign that you should refactor
-    your code to cleanly separate out data access from transformations.
-        For example, the following:
+    I now swear by, which is that having to rely heavily on mocking as part
+    of unit-testing your code may be a sign that you can refactor
+    your code to more cleanly separate out transformations from pure data access.
+        As a simple and extreme example, the following:
     >>> def my_calc() -> bool:
     >>>     return "x" in run_my_sql_query()
     would be better as:
@@ -179,7 +179,9 @@ class TestMock(unittest.TestCase):
         In the first version, you'd need to mock `run_my_sql_query()` to
     effectively unit-test `my_calc()`. But in the second version,
     you can separately unit-test `run_my_sql_query()` and `_my_calc()`,
-    and then `my_calc()` becomes a trivial composition of the two.
+    and then `my_calc()` becomes a trivial composition of the two
+    (which you can either choose to not test at all---my preference---or simply to
+    test later as part of "integration testing").
     """
 
     def my_method(self):
