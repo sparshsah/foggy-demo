@@ -134,7 +134,7 @@ class TestRaise(unittest.TestCase):
             my_func_that_raises(my_err_to_raise=0)
 
     def test_raises_something_specific_unidiomatically(self):
-        with self.assertRaises(Exception) as cm:  # ContextManager
+        with self.assertRaises(Exception) as cm:  # context manager
             my_func_that_raises(my_err_to_raise=0)
         self.assertIsInstance(cm.exception, MyError)
 
