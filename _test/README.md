@@ -21,3 +21,13 @@ particular language, environment, and team. For example,
 Xcode "likes" a particular default workspace structure for iOS apps.
 And I'm not going to argue with Apple about how to work within
 their own ecosystem.
+
+And zero-th and foremost: Assertions! `assert` and related statements
+(for example Swift's `precondition`) are a convenient tool for
+enforcing preconditions, checking loop invariants, or even just
+unequivocally documenting your intentions. Plus, mainstream compilers offer an
+"optimized" mode that can strip out assertions for you, so you can rest
+assured you won't be forced to ship code that's bogged down
+with "too many" assertions. (Personal note: I don't think there's any
+such thing as "too many" assertions. But I can understand why a
+consumer-app developer might disagree.)
