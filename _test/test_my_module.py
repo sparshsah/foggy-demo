@@ -189,7 +189,7 @@ class TestMock(unittest.TestCase):
         # `None` is falsey
         self.assertFalse(my_func_that_raises())
 
-    # in practice, you'd mock something like `my_module.my_func_that_raises`
+    # in practice, you'd mock something like `my_module.my_func_that_raises`, not `__main__.my_func_that_raises`
     @patch("__main__.my_func_that_raises", return_value=True)
     def test_mock(self, _):
         self.assertTrue(my_func_that_raises())
@@ -203,7 +203,7 @@ class TestMock(unittest.TestCase):
     @patch("__main__.my_func_that_raises", return_value=True)
     def test_mock_called_with(self, mock_func):
         """Demonstrate the flexibility (therefore also danger!) of mocked functions."""
-        # the actual `my_func_that_raises()` wouldn't accept this invalid kwarg!
+        # notice: the actual `my_func_that_raises()` wouldn't accept this invalid kwarg!
         self.assertTrue(my_func_that_raises(invalid_kwarg="foobar"))  # pylint: disable=unexpected-keyword-arg
         self.assertTrue(mock_func.called_once_with(invalid_kwarg="foobar"))
 
