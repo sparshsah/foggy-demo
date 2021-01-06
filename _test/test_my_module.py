@@ -167,7 +167,7 @@ class TestMock(unittest.TestCase):
     With that said, a word of caution: A friend of mine once gave me advice that
     I now swear by, which is that having to rely heavily on mocking as part
     of unit-testing your code may be a sign that you can refactor
-    your code to more cleanly separate out transformations from pure data access.
+    to more cleanly separate out transformations from pure data access.
         As a simple and extreme example, the following:
     >>> def my_calc() -> bool:
     >>>     return "x" in run_my_sql_query()
@@ -180,7 +180,7 @@ class TestMock(unittest.TestCase):
     effectively unit-test `my_calc()`. But in the second version,
     you can separately unit-test `run_my_sql_query()` and `_my_calc()`,
     and then `my_calc()` becomes a trivial composition of the two
-    (which you can either choose to not test at all---my preference---or simply to
+    (which you can either choose not to test at all---my preference---or simply to
     test later as part of "integration testing").
     """
 
