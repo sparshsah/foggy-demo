@@ -1,4 +1,4 @@
-# Interactive Demos
+# interactive demos
 
 Note: For the sake of more conveniently viewing these demos,
 we preserve the output. However, in general,
