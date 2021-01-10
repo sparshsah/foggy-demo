@@ -6,6 +6,7 @@ it's best practice to clear cell output
 (particularly images) before checking into Git lest each "blob"
 binary large object, referring to the encoding of each image's
 pixels as a raw byte sequence) blow up the diffs.
+With output cleared, a notebook is just plaintext/JSON.
 (An image blob tends to be big to begin with,
 and even visually minor edits like changing the size/color of an image,
 or moving a couple elements around within it,
