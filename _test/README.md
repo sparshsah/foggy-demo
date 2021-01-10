@@ -12,15 +12,14 @@ For example, if I have a repository `my-module` with
 source code in `my-module/my_module/my_submodule/my_submodule.py`, I'll put
 unit tests in `my-module/_test/my_submodule/test_my_submodule.py`.
 
-Similarly if I have a repository `my-app` with source code in
-`my-app/MyApp/Model/BaseModel.swift`, I'll put unit tests in
-`my-app/MyAppTests/Model/BaseModelTests.swift`.
-
 Of course, first and foremost is to follow the conventions of your
-particular language, environment, and team. For example,
+particular language, environment, and team. For example, as far as I can tell,
 Xcode "likes" a particular default workspace structure for iOS apps.
 And I'm not going to argue with Apple about how to work within
-their own ecosystem.
+their own ecosystem. So for example,
+if I have a repository `my-app` with source code in
+`my-app/MyApp/Model/BaseModel.swift`, I'll put unit tests in
+`my-app/MyAppTests/Model/BaseModelTests.swift`.
 
 And zero-th and foremost: Assertions! `assert` and related statements
 (for example Swift's `precondition`) are a convenient tool for
