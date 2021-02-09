@@ -9,7 +9,7 @@ before checking into Git, lest each "blob"
 pixels as a raw byte sequence) blow up the diffs.
 (An image blob tends to be big to begin with,
 as illustrated by the fact that the three histograms in
-https://github.com/sparshsah/foggy-demo/blob/main/_demo/stats/expon-rv_univ-of-unif.ipynb
+https://github.com/sparshsah/foggy-demo/blob/main/demo/stats/univ-of-unif.ipynb
 singlehandedly cause GitHub to label this whole repo as 95% Jupyter code.
 Furthermore, even visually minor edits like changing the size/color of an image,
 or moving a couple elements around within it,
