@@ -47,7 +47,7 @@ if I have a repository `my-app` with source code in
 
 ## "fuzzing" instead of writing explicit unit tests
 
-more to come..
+TODO(sparshsah): more to come..
 
 ## obviating unit tests altogether
 
