@@ -45,6 +45,10 @@ if I have a repository `my-app` with source code in
 `my-app/MyApp/Model/BaseModel.swift`, I'll put unit tests in
 `my-app/MyAppTests/Model/BaseModelTests.swift`.
 
+## "fuzzing" instead of writing explicit unit tests
+
+more to come..
+
 ## obviating unit tests altogether
 
 And zero-th and foremost: Assertions! `assert` and related statements
