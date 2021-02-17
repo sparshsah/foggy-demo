@@ -4,6 +4,8 @@ Documented minimal working examples of unit tests in different languages,
 trying to provide a "template" for universal core unit-test functionality
 while following each language's particular idioms/conventions.
 
+## to colocate or not to colocate?
+
 I like to put unit tests in a separate directory (usually named something like `_test`)
 that lives at the top level (next to the source directory) and mirrors the
 internal structure of the source directory.
@@ -42,6 +44,8 @@ their own ecosystem. So for example,
 if I have a repository `my-app` with source code in
 `my-app/MyApp/Model/BaseModel.swift`, I'll put unit tests in
 `my-app/MyAppTests/Model/BaseModelTests.swift`.
+
+## obviating unit tests altogether
 
 And zero-th and foremost: Assertions! `assert` and related statements
 (for example Swift's `precondition`) are a convenient tool for
