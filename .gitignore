@@ -1,6 +1,7 @@
 # Directory configs
 .DS_Store
 desktop.ini
+.vscode
 
 # Prerequisites
 *.d
