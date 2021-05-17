@@ -170,17 +170,18 @@ class TestMock(unittest.TestCase):
     to more cleanly separate out transformations from pure data access.
         As a simple and extreme example, the following:
     >>> def my_calc() -> bool:
-    >>>     return "x" in run_my_sql_query()
+    ...     return "x" in run_my_sql_query()
     would be better as:
     >>> def _my_calc(data: str) -> bool:
-    >>>     return "x" in data
+    ...     return "x" in data
     >>> def my_calc() -> bool:
-    >>>     return _my_calc(data=run_my_sql_query())
+    ...     return _my_calc(data=run_my_sql_query())
         In the first version, you'd need to mock `run_my_sql_query()` to
     effectively unit-test `my_calc()`. But in the second version,
     you can separately unit-test `run_my_sql_query()` and `_my_calc()`,
     and then `my_calc()` becomes a trivial composition of the two
-    (which you can choose either to test later as part of "integration testing",
+    (which you can choose either to test later as part of
+    ["integration testing"](https://martinfowler.com/bliki/IntegrationTest.html)
     or---my preference---just to not test at all).
     """
 
