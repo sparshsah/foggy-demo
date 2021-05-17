@@ -180,8 +180,8 @@ class TestMock(unittest.TestCase):
     effectively unit-test `my_calc()`. But in the second version,
     you can separately unit-test `run_my_sql_query()` and `_my_calc()`,
     and then `my_calc()` becomes a trivial composition of the two
-    (which you can either choose not to test at all---my preference---or simply to
-    test later as part of "integration testing").
+    (which you can choose either to test later as part of "integration testing",
+    or---my preference---just to not test at all).
     """
 
     def my_method(self):
