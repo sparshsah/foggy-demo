@@ -3,7 +3,7 @@ misc math/programming demos and templates
 
 see also some [possibly-wrong math lessons](https://sparshsah.github.io/tablinum/lessons.html)
 
-## RANKED LEGENDS: Where accessible collides with mind-blowing
+## RANKED LEGENDS: Where accessible collides with mind-blowing (AKA what my demos dream of being when they grow up)
 
 Stein, Charles (1956): Inadmissibility of the Usual Estimator for the Mean of a Multivariate Normal Distribution. Published in the Proceedings of the Third Berkeley Symposium on Mathematical Statistics and Probability. [link](http://www.stat.yale.edu/~hz68/619/Stein-1956.pdf), [archive](https://web.archive.org/web/20210427023010/http://www.stat.yale.edu/~hz68/619/Stein-1956.pdf). Satirical abstract: Stein shows that "Michael has 4 apples, his train is 7 minutes early, calculate the mass of the sun" is actually a legitimate exam question.
 
