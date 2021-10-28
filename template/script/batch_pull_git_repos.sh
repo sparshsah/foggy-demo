@@ -30,8 +30,9 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
   # if current repo is in list of excluded repos, skip it
   SKIP=false
   for EXCL_REPO_NAME in ${EXCL_REPO_NAMES[@]}; do
-    # if current repo is an excluded repo, set the flag
-    [[ $REPO_NAME == $EXCL_REPO_NAME ]] && SKIP=true
+    # if current repo is an excluded repo, set the flag,
+    # then stop checking further exclusions (now we've ID'd it, no need to waste more time)
+    [[ $REPO_NAME == $EXCL_REPO_NAME ]] && SKIP=true && break
   done
   # if the flag was set, skip this repo
   $SKIP && continue
