@@ -2,7 +2,7 @@
 
 LOCAL_REPO_PATH="/code/$(id -u -n)/"  # e.g. "/code/sparshsah/"
 REPO_NAMES=$(ls $LOCAL_REPO_PATH | grep /)
-EXCL_REPO_NAMES=("some-legacy-lib/" "another-legacy-lib/" "data-dump-folder/")
+EXCL_REPO_NAMES=("data-dump-folder/" "some-legacy-lib/" "another-legacy-lib/")
 
 
 prompt_until_yes() {
