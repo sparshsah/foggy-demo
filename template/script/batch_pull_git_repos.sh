@@ -50,6 +50,7 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
 
   echo "..status:"
   GIT_STATUS=$(git status)
+  # d[elete] empty lines
   echo "$GIT_STATUS" | sed "/^$/d"
   # hacky.. git's "nothing to see here" status message is 4 lines long
   [[ $(echo "$GIT_STATUS" | wc -l) -ne 4 ]] && prompt_until_yes "..git status check failed"
