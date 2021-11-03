@@ -28,14 +28,14 @@ git_checkout_main() {
   git checkout "$MAIN" || git checkout main || git checkout master
 }
 
-git_checkout_main_and_pull {
+git_checkout_main_and_pull() {
   echo "..switching to main and pulling.."
   # TODO(sparshsah): why can't i just use `(checkout && pull)` or `{ checkout && pull; }`?
   exec_except_prompt git_checkout_main
   exec_except_prompt git pull
 }
 
-git_pull_rebase_origin_main {
+git_pull_rebase_origin_main() {
   echo "..pull-rebasing current local [feature] onto latest remote main.."
   BRANCH=$(git symbolic-ref --short HEAD)
   [[ "$BRANCH" != "$MAIN" ]] && prompt_until_yes "..HEAD \`$BRANCH\` is off main \`$MAIN\`"
