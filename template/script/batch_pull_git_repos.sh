@@ -1,13 +1,19 @@
 #!/bin/bash
 
+# system/user-specific global constants, set this block as appropriate
+ORIGIN="origin"
+# market leader GitHub has switched its default branch name, but not all devs have accepted
+MAIN="main"
 LOCAL_REPO_PATH="/code/$(id -u -n)/"  # e.g. "/code/sparshsah/"
-REPO_NAMES=$(ls $LOCAL_REPO_PATH | grep /)
 EXCL_REPO_NAMES=("data-dump-folder/" "some-legacy-lib/" "another-legacy-lib/")
-MAIN=main
+I_AM_LEET_HACKERMAN=false
+
+# directory names end in "/"
+REPO_NAMES=$(ls "$LOCAL_REPO_PATH" | grep "/")
 
 
 prompt_until_yes() {
-  echo "$1, ok? ('y' to continue/skip, 'Ctrl+C' to quit)"
+  echo "$1, ok? ('y' to proceed [if possible else skip], 'Ctrl+C' to quit)"
   CONFIRM_INPUT="n"
   while [[ "$CONFIRM_INPUT" != "y" ]]; do
     read CONFIRM_INPUT
@@ -19,8 +25,21 @@ exec_except_prompt() {
 }
 
 git_checkout_main() {
-  # market leader GitHub has switched its default branch name, but not all devs have accepted
-  git checkout $MAIN || git checkout master
+  git checkout "$MAIN" || git checkout main || git checkout master
+}
+
+git_checkout_main_and_pull {
+  echo "..switching to main and pulling.."
+  # TODO(sparshsah): why can't i just use `(checkout && pull)` or `{ checkout && pull; }`?
+  exec_except_prompt git_checkout_main
+  exec_except_prompt git pull
+}
+
+git_pull_rebase_origin_main {
+  echo "..pull-rebasing current local [feature] onto latest remote main.."
+  BRANCH=$(git symbolic-ref --short HEAD)
+  [[ "$BRANCH" != "$MAIN" ]] && prompt_until_yes "..HEAD \`$BRANCH\` is off main \`$MAIN\`"
+  exec_except_prompt git pull --rebase "$ORIGIN" "$MAIN"
 }
 
 
@@ -33,13 +52,13 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
   for EXCL_REPO_NAME in ${EXCL_REPO_NAMES[@]}; do
     # if current repo is an excluded repo, set the flag,
     # then stop checking further exclusions (now we've ID'd it, no need to waste more time)
-    [[ $REPO_NAME == $EXCL_REPO_NAME ]] && SKIP=true && break
+    [[ "$REPO_NAME" == "$EXCL_REPO_NAME" ]] && SKIP=true && break
   done
   # if the flag was set, skip this repo
   $SKIP && continue
 
   echo "next repo: $REPO_NAME.."
-  exec_except_prompt cd $LOCAL_REPO_PATH/$REPO_NAME
+  exec_except_prompt cd "$LOCAL_REPO_PATH/$REPO_NAME"
 
   echo "..local is at:"
   pwd
@@ -50,15 +69,14 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
 
   echo "..status:"
   GIT_STATUS=$(git status)
-  # d[elete] empty lines
+  # d[elete] blank lines
   echo "$GIT_STATUS" | sed "/^$/d"
   # hacky.. git's "nothing to see here" status message is 4 lines long
   [[ $(echo "$GIT_STATUS" | wc -l) -ne 4 ]] && prompt_until_yes "..git status check failed"
 
-  echo "..switching to main and pulling.."
-  # TODO(sparshsah): why can't i just use `(checkout && pull)` or `{ checkout && pull; }`?
-  exec_except_prompt git_checkout_main
-  exec_except_prompt git pull
+  echo "..updating.."
+  [[ I_AM_LEET_HACKERMAN ]] && git_pull_rebase_origin_main || git_checkout_main_and_pull
 
-  echo
+  echo "..done!"
+  echo  # blank line
 done
