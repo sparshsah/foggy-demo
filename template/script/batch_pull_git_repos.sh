@@ -48,7 +48,7 @@ confirm_setup() {
 }
 
 
-I_AM_LEET_HACKERMAN || confirm_setup
+$I_AM_LEET_HACKERMAN || confirm_setup
 
 for REPO_NAME in ${REPO_NAMES[@]}; do
   # if current repo is in list of excluded repos, skip it
