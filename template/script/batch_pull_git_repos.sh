@@ -42,9 +42,13 @@ git_pull_rebase_origin_main() {
   exec_except_prompt git pull --rebase "$ORIGIN" "$MAIN"
 }
 
+confirm_setup() {
+  prompt_until_yes "pulling from remote(s) to $LOCAL_REPO_PATH"
+  prompt_until_yes "pulling repos ${REPO_NAMES[*]}"
+}
 
-prompt_until_yes "pulling from remote(s) to $LOCAL_REPO_PATH"
-prompt_until_yes "pulling repos ${REPO_NAMES[*]}"
+
+I_AM_LEET_HACKERMAN || confirm_setup
 
 for REPO_NAME in ${REPO_NAMES[@]}; do
   # if current repo is in list of excluded repos, skip it
