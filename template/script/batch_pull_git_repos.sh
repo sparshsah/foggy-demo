@@ -3,6 +3,7 @@
 LOCAL_REPO_PATH="/code/$(id -u -n)/"  # e.g. "/code/sparshsah/"
 REPO_NAMES=$(ls $LOCAL_REPO_PATH | grep /)
 EXCL_REPO_NAMES=("data-dump-folder/" "some-legacy-lib/" "another-legacy-lib/")
+MAIN=main
 
 
 prompt_until_yes() {
@@ -19,7 +20,7 @@ exec_except_prompt() {
 
 git_checkout_main() {
   # market leader GitHub has switched its default branch name, but not all devs have accepted
-  git checkout main || git checkout master
+  git checkout $MAIN || git checkout master
 }
 
 
