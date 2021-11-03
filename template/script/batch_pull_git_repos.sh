@@ -2,6 +2,7 @@
 
 LOCAL_REPO_PATH="/code/$(id -u -n)/"  # e.g. "/code/sparshsah/"
 REPO_NAMES=$(ls $LOCAL_REPO_PATH | grep /)
+EXCL_REPO_NAMES=("data-dump-folder/" "some-legacy-lib/" "another-legacy-lib/")
 
 
 prompt_until_yes() {
@@ -26,8 +27,15 @@ prompt_until_yes "pulling from remote(s) to $LOCAL_REPO_PATH"
 prompt_until_yes "pulling repos ${REPO_NAMES[*]}"
 
 for REPO_NAME in ${REPO_NAMES[@]}; do
-  # skip this repo
-  [[ $REPO_NAME == "some-legacy-library/" ]] && continue
+  # if current repo is in list of excluded repos, skip it
+  SKIP=false
+  for EXCL_REPO_NAME in ${EXCL_REPO_NAMES[@]}; do
+    # if current repo is an excluded repo, set the flag,
+    # then stop checking further exclusions (now we've ID'd it, no need to waste more time)
+    [[ $REPO_NAME == $EXCL_REPO_NAME ]] && SKIP=true && break
+  done
+  # if the flag was set, skip this repo
+  $SKIP && continue
 
   echo "next repo: $REPO_NAME.."
   exec_except_prompt cd $LOCAL_REPO_PATH/$REPO_NAME
