@@ -60,10 +60,10 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
   echo "next repo: $REPO_NAME.."
   exec_except_prompt cd "$LOCAL_REPO_PATH/$REPO_NAME"
 
-  echo "..local is at:"
-  pwd
   echo "..remote is at:"
   exec_except_prompt git remote -v
+  echo "..local is at:"
+  pwd
   echo "..local branches:"
   exec_except_prompt git branch
 
