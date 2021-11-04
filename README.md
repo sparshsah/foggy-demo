@@ -7,7 +7,9 @@ see also some [possibly-wrong math lessons](https://sparshsah.github.io/tablinum
 
 ## 5 minutes of fame
 
-I am technically a GitHub contributor! All I did was fix a parenthesis on the website but... https://github.com/github/docs/pull/11652 merged into main :)
+Ya boi is technically a GitHub contributor!
+All I did was fix a parenthesis on the website but...
+https://github.com/github/docs/pull/11652 merged into main :)
 
 
 ## RANKED LEGENDS: Where accessible collides with mind-blowing (AKA what my demos dream of being when they grow up)
