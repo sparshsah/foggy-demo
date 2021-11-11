@@ -1,7 +1,9 @@
 import XCTest
-// target source code
-// @testable "temporarily" exposes internal attributes as public, for testing purposes
-// in practice, you'd uncomment the below (replacing `MyApp` with your app name)
+/*
+ In practice, you'd uncomment the below (replacing `MyApp` with your app name).
+ `@testable` "temporarily" exposes internal attributes as public for testing purposes,
+ while `MyApp` contains the target source code you want to test.
+ */
 // @testable import MyApp
 
 // pretend this code defining `MyError` and `myFuncThatThrows` actually lives in `MyApp`
