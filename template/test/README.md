@@ -24,7 +24,7 @@ One compelling argument for this is that at the end of the day,
 how you choose to organize your code into "modules" or "apps"
 or "repositories" is a bit arbitrary: For example, if your company's
 code is organized into multiple repositories, should you go to the logical
-extreme and create entire new repositories to store unit test code?
+extreme and create entire new repositories to store unit-test code?
 Proponents of this argument point out that colocating unit tests
 makes your organizational structure self-consistent at every level
 of the hierarchy. I actually find this argument pretty compelling,
