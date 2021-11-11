@@ -1,10 +1,9 @@
 import XCTest
 /*
  In practice, you'd uncomment the below (replacing `MyApp` with your app name).
- `@testable` "temporarily" exposes internal attributes as public for testing purposes,
- while `MyApp` contains the target source code you want to test.
+ `@testable` "temporarily" exposes internal attributes as public for testing purposes.
  */
-// @testable import MyApp
+// @testable import MyApp  // target source code
 
 // pretend this code defining `MyError` and `myFuncThatThrows` actually lives in `MyApp`
 enum MyError: Error {
