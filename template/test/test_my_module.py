@@ -1,7 +1,5 @@
-# target source code
-# in practice, you'd uncomment the below (replacing `my_module` with your module name)
-# from my_module import MyError, my_func_that_raises
-# unit-testing suite
+# In practice, you'd uncomment the below (replacing `my_module` with your module name).
+# from my_module import MyError, my_func_that_raises  # target source code
 import unittest
 from unittest.mock import patch
 
