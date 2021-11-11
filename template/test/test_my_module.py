@@ -1,7 +1,7 @@
-# In practice, you'd uncomment the below (replacing `my_module` with your module name).
-# from my_module import MyError, my_func_that_raises  # target source code
 import unittest
 from unittest.mock import patch
+# In practice, you'd uncomment the below (replacing `my_module` with your module name).
+# from my_module import MyError, my_func_that_raises  # target source code
 
 
 # pretend this code defining `MyError` and `my_func_that_raises` actually lives in `my_module`
