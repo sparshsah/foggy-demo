@@ -7,9 +7,12 @@ see also some [possibly-wrong math lessons](https://sparshsah.github.io/tablinum
 
 ## 5 minutes of fame
 
-Ya boi is technically a GitHub contributor!
-All I did was fix a parenthesis on the website but...
-https://github.com/github/docs/pull/11652 merged into main :)
+Ya boi is technically a GitHub dev!
+All I did was fix a parenthesis on their website but...
+https://github.com/github/docs/pull/11652
+merged into main and live in the last paragraph at
+https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase
+:)
 
 
 ## RANKED LEGENDS: Where accessible collides with mind-blowing (AKA what my demos dream of being when they grow up)
