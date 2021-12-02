@@ -79,7 +79,9 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
   [[ $(echo "$GIT_STATUS" | wc -l) -ne 4 ]] && prompt_until_yes "..git status check failed"
 
   echo "..updating.."
-  [[ I_AM_LEET_HACKERMAN ]] && git_pull_rebase_origin_main || git_checkout_main_and_pull
+  # haven't quite figured this out yet
+  # [[ I_AM_LEET_HACKERMAN ]] && git_pull_rebase_origin_main || git_checkout_main_and_pull
+  git_checkout_main_and_pull
 
   echo "..done!"
   echo  # blank line
