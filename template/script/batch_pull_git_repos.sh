@@ -35,17 +35,20 @@ git_checkout_main_and_pull() {
   exec_except_prompt git pull
 }
 
-git_pull_merge_origin_main() {
-  echo "..pull-merging latest remote main into current local [feature].."
+prompt_if_head_is_off_main() {
   BRANCH=$(git symbolic-ref --short HEAD)
   [[ "$BRANCH" != "$MAIN" ]] && prompt_until_yes "..HEAD \`$BRANCH\` is off main \`$MAIN\`"
+}
+
+git_pull_merge_origin_main() {
+  echo "..pull-merging latest remote main into current local [feature].."
+  prompt_if_head_is_off_main
   exec_except_prompt git pull "$ORIGIN" "$MAIN"
 }
 
 git_pull_rebase_origin_main() {
   echo "..pull-rebasing current local [feature] onto latest remote main.."
-  BRANCH=$(git symbolic-ref --short HEAD)
-  [[ "$BRANCH" != "$MAIN" ]] && prompt_until_yes "..HEAD \`$BRANCH\` is off main \`$MAIN\`"
+  prompt_if_head_is_off_main
   exec_except_prompt git pull --rebase "$ORIGIN" "$MAIN"
 }
 
