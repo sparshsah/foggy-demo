@@ -35,6 +35,13 @@ git_checkout_main_and_pull() {
   exec_except_prompt git pull
 }
 
+git_pull_merge_origin_main() {
+  echo "..pull-merging latest remote main into current local [feature].."
+  BRANCH=$(git symbolic-ref --short HEAD)
+  [[ "$BRANCH" != "$MAIN" ]] && prompt_until_yes "..HEAD \`$BRANCH\` is off main \`$MAIN\`"
+  exec_except_prompt git pull "$ORIGIN" "$MAIN"
+}
+
 git_pull_rebase_origin_main() {
   echo "..pull-rebasing current local [feature] onto latest remote main.."
   BRANCH=$(git symbolic-ref --short HEAD)
@@ -79,9 +86,8 @@ for REPO_NAME in ${REPO_NAMES[@]}; do
   [[ $(echo "$GIT_STATUS" | wc -l) -ne 4 ]] && prompt_until_yes "..git status check failed"
 
   echo "..updating.."
-  # haven't quite figured this out yet
   # [[ I_AM_LEET_HACKERMAN ]] && git_pull_rebase_origin_main || git_checkout_main_and_pull
-  git_checkout_main_and_pull
+  [[ I_AM_LEET_HACKERMAN ]] && git_pull_merge_origin_main || git_checkout_main_and_pull
 
   echo "..done!"
   echo  # blank line
