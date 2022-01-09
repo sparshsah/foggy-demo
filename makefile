@@ -17,3 +17,11 @@ clean:
 	# Python 3 uses separate directory for compiled bytecode
 	find . -name "__pycache__" -exec rm -r {} +
 	find . -name ".ipynb_checkpoints" -exec rm -r {} +
+
+nbconvert:
+	# convert a jupyter notebook to a PDF via LaTeX
+	# e.g. `make nbconvert f="path/to/nb"`,
+	#     but do NOT include the ".ipynb" extension!
+	jupyter nbconvert "$f.ipynb" --to="PDF"
+	# rename it the way i like
+	mv "$f.pdf" "$f.ipynb.pdf"
