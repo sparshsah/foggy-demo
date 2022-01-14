@@ -29,7 +29,7 @@ FONT_SCALE = 1.6
 LABEL_FONTSIZE = 12
 LABEL_ROTATION = 0
 LEGEND_LOC = (1.04, 0.08)  # x, y
-FIGSIZE = (16, 8)
+FIGSIZE = (16, 8)  # width (x), height (y)
 
 
 def maybe(v: Any=None, ow: Any=None) -> Any:
@@ -433,7 +433,7 @@ def plot(
         title: Optional[str]=None, titley: float=1.0,
         # SIDE EFFECTS
         ax: Optional[PlotAxes]=None,
-        figsize: Tuple[float, float]=FIGSIZE,
+        figsize: Tuple[float, float]=FIGSIZE,  # width (x), height (y)
         plt_show: Optional[bool]=None,
         savefig_fname: Optional[str]=None,
         plt_close: Optional[bool]=None,
