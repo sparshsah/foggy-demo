@@ -703,7 +703,7 @@ def plot_correl_heatmap(
         correl_matrix: pd.DataFrame,
         cmap: str="RdYlGn",
         title: Optional[str]=None,
-        figsize: Tuple[float, float]=(8, 8),
+        figsize: Tuple[float, float]=(8, 8),  # width (x), height (y)
         **kwargs
     ) -> None:
     plt.figure(figsize=figsize)
