@@ -1,6 +1,6 @@
 /*
 you can compile this (printing warnings) by e.g.
-$ clang++ {sourcefile_name}.cpp -Wall -o {outfile_name}.out
+$ clang++ {sourcefile_name}.cpp -std=c++2a -Wall -o {outfile_name}.out
 */
 
 #include <iostream>
