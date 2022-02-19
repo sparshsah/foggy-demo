@@ -1,6 +1,6 @@
 /*
 you can compile this (using beta C++20 standard support and printing all warnings) by e.g.
-$ clang++ {sourcefile_name}.cpp -std=c++2a -Wall -o {sourcefile_name}.exe
+$ clang++ -std=gnu++2a -Wall {sourcefile_name}.cpp -o {sourcefile_name}.exe
 */
 
 #include <vector>
