@@ -47,15 +47,13 @@
 
 .PHONY: nbconvert clean diff commit
 
-diff:
-	clear && git status && git diff
-
-commit:
-	# e.g. `make commit f="source.py" m="commit message"`
-	# TODO(sparshsah): why can't i just do `f=${f:="."}` or
-	#     `[[ -z "$f" ]] && f="."` for this line?
-	echo "files = $f" && echo "commit message = $m"
-	git add $f && git commit -m "$m" && git push && git status
+nbconvert:
+	# convert a jupyter notebook to a PDF via LaTeX
+	# e.g. `make nbconvert f="path/to/nb"`,
+	#     but do NOT include the ".ipynb" extension!
+	jupyter nbconvert "$f.ipynb" --to="PDF"
+	# rename it the way i like
+	mv "$f.pdf" "$f.ipynb.pdf"
 
 clean:
 	# for Python projects
@@ -65,10 +63,12 @@ clean:
 	find . -name "__pycache__" -exec rm -r {} +
 	find . -name ".ipynb_checkpoints" -exec rm -r {} +
 
-nbconvert:
-	# convert a jupyter notebook to a PDF via LaTeX
-	# e.g. `make nbconvert f="path/to/nb"`,
-	#     but do NOT include the ".ipynb" extension!
-	jupyter nbconvert "$f.ipynb" --to="PDF"
-	# rename it the way i like
-	mv "$f.pdf" "$f.ipynb.pdf"
+diff:
+	clear && git status && git diff
+
+commit:
+	# e.g. `make commit f="source.py" m="commit message"`
+	# TODO(sparshsah): why can't i just do `f=${f:="."}` or
+	#     `[[ -z "$f" ]] && f="."` for this line?
+	echo "files = $f" && echo "commit message = $m"
+	git add $f && git commit -m "$m" && git push && git status
