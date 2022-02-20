@@ -36,7 +36,7 @@ is that the array of characters ends with the character `0`,
 that is, that the string is null-terminated.
 */
 using cstring = char*;
-using intArray1 = int[1];
+using charArray1 = char[1];
 
 // accept any generic type
 template<typename T>
@@ -97,7 +97,7 @@ void greet(std::vector<std::string> greetees) {
 ********* VALUE, REFERENCE, AND POINTER ********************************************************************************
 ***********************************************************************************************************************/
 
-char* _showPassByValue(char argv[]) {
+char* _showPassByVal(char argv[]) {
     // clunky, and annoying
     // precondition: len(argv) > 0
     argv[0] = 'B';
@@ -111,7 +111,7 @@ char* _showPassByPtr(char* argv) {
     return argv;
 }
 
-intArray1& _showPassByRef1(intArray1& argv) {
+charArray1& _showPassByRef1(charArray1& argv) {
     // precondition: len(array pointed to by argv) = 1
     argv[0] = 'D';
     return argv;
@@ -129,22 +129,62 @@ char(&
     return argv;
 }
 
+/*
 template<size_t N>
 char _showPassByConstRef(
         const char(& argv )[N],  // non-mutation-allowing reference to (possibly-non-const) N-dimensional char array
         bool noisy = true
     ) {
     try {
+        // this is a compile-time error... CANNOT be deferred to runtime!
         argv[0] = 'F';
     } catch (...) {
         if (noisy) {
-            print();
+            print(">>> Failed to mutate array passed by reference!");
         }
+        return 'F';
     }
 }
+*/
 
 void showPassing() {
+    print(">>> No matter how you pass an array, it is mutable!");
+    const char a = 'A';
+    print("Original element: ");
+    print(a);
+    const size_t n = 1;
 
+    print(">>> Now, we'll show the element from the \"original\" and \"returned\" arrays, once the function has run");
+    //
+    char arrForVal[n] = {a};
+    char* arrFromVal = _showPassByVal(arrForVal);
+    print(">>> Passed by value:");
+    char eltForVal = arrForVal[0];
+    print(eltForVal);
+    char eltFromVal = arrFromVal[0];
+    print(eltFromVal);
+    //
+    char arrForPtr[n] = {a};
+    char* arrFromPtr = _showPassByPtr(arrForPtr);
+    print(">>> Passed by pointer:");
+    char eltForPtr = arrForPtr[0];
+    print(eltForPtr);
+    char eltFromPtr = arrFromPtr[0];
+    print(eltFromPtr);
+    //
+    char arrForRef1[n] = {a};
+    char* arrFromRef1 = _showPassByRef1(arrForRef1);
+    print(">>> Passed by reference:");
+    char eltForRef1 = arrForRef1[0];
+    print(eltForRef1);
+    char eltFromRef1 = arrFromRef1[0];
+    print(eltFromRef1);
+    //
+    // TODO(sparshsah): can't for the life of me figure out how to pass this guy
+    /*
+    char arrForRefNM[n] = {a};
+    char* arrFromRefNM = _showPassByRefNM(arrForRefNM);
+    */
 }
 
 
