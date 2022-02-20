@@ -1,6 +1,13 @@
 /*
-you can compile this (using beta C++20 standard support and printing all warnings) by e.g.
-$ clang++ -std=gnu++2a -Wall {sourcefile_name}.cpp -o {sourcefile_name}.exe
+MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE CHEATSHEET
+
+The goal here is NOT to be an idiomatic example of writing C++ code,
+but rather to be a quick-and-dirty self-contained field guide
+to help remind you how memory is laid out,
+what the lifetime of objects is, etc.
+
+You can compile this (using C++20 standard support and printing all warnings) by e.g.
+`clang++ -std=gnu++2a -Wall {sourcefile_name}.cpp -o {sourcefile_name}.exe`.
 */
 
 #include <vector>
