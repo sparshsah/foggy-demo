@@ -19,6 +19,7 @@ then run it with `./mosp.exe`.
 #include <string.h>
 #include <stdio.h>
 
+// in C++, you could use `template<typename T>` to represent a generic type
 typedef void T;
 typedef T* ptr_t;
 typedef char* char_ptr;
@@ -45,12 +46,17 @@ const char INIT_GLOBAL_CONST_CHAR = 'C';
 char INIT_GLOBAL_CHAR = 'D';
 static const char UNINIT_STATIC_GLOBAL_CONST_CHAR;
 static char UNINIT_STATIC_GLOBAL_CHAR;
-const char UNINIT_GLOBAL_CONST_CHAR ;
+// this is silly, since const's can be assigned a value only at initialization...
+const char UNINIT_GLOBAL_CONST_CHAR;
 char UNINIT_GLOBAL_CHAR;
 
-ptr_t getAddrOfParam(char c) {
+ptr_t getAddrOfParamVal(char c) {
     ptr_t addr = &c;
     return addr;
+}
+
+char getValOfParamVal(char c) {
+    return c;
 }
 
 ptr_t getAddrOfParamPtr(char_ptr c) {
@@ -58,7 +64,11 @@ ptr_t getAddrOfParamPtr(char_ptr c) {
     return addr;
 }
 
-char getValPointedToByParamPtr(char_ptr c) {
+char_ptr getValOfParamPtr(char_ptr c) {
+    return c;
+}
+
+char getTgtOfParamPtr(char_ptr c) {
     char v = *c;
     return v;
 }
