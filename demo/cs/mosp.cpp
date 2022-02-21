@@ -253,7 +253,20 @@ void showPassing() {
 */
 
 void showMemLayout() {
+    void* nullPtr = NULL;
+    print(">>> Address of `NULL`, the null pointer");
+    print(">>> ... Notice I said THE null pointer, meaning that EVERY null pointer IS exactly this:");
+    print(nullPtr);
+    //
     const int* ptr_staticGlobalConstInitInt = &staticGlobalConstInitInt;
+    print(">>> Address of static global constant initialized int:");
+    print(ptr_staticGlobalConstInitInt);
+    //
+    const int* ptr_staticGlobalInitInt = &staticGlobalInitInt;
+    const int* ptr_globalConstInitInt = &globalConstInitInt;
+    const int* ptr_globalInitInt = &globalInitInt;
+    const int* ptr_staticGlobalUninitInt = &staticGlobalUninitInt;
+    const int* ptr_globalUninitInt = &globalUninitInt;
 }
 
 
@@ -357,11 +370,11 @@ void showSzArr() {
     // notice: we can turn an int[] into an int* no problem... because,
     // and int[] "IS" just the pointer to its head element!
     int* arrAsPtr = arrAsArr;
-    print("Array as array, here: ");
+    print(">>> Array as array, here: ");
     print(arrAsArr);
-    print("Array as reference, here: ");
+    print(">>> Array as reference, here: ");
     print(arrAsRef);
-    print("Array as pointer, here: ");
+    print(">>> Array as pointer, here: ");
     print(arrAsPtr);
 
     size_t szArrAsArrHere = sizeof(arrAsArr);
@@ -417,7 +430,7 @@ void showSz() {
 ***********************************************************************************************************************/
 
 int main(int argc, mosp::cstring argv[]) {
-    mosp::print();
+    mosp::printDiv(2, '\n');
     mosp::printDiv();
     mosp::print(">>> Here we go!");
 
@@ -452,6 +465,9 @@ int main(int argc, mosp::cstring argv[]) {
     mosp::printDiv(2, '\n');
 
     mosp::showPassing();
+    mosp::printDiv(2, '\n');
+
+    mosp::showMemLayout();
     mosp::printDiv(2, '\n');
 
     mosp::showSz();
