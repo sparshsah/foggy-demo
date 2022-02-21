@@ -41,7 +41,7 @@ using charArray1 = char[1];
 
 // accept any generic type
 template<typename T>
-void print(const T& arg, bool cerr = false, bool endl = true) {
+void print(const T& arg, const bool cerr = false, const bool endl = true) {
     if (cerr) {
         if (endl) {
             // `endl` is better than "\n" because it flushes the stream
@@ -59,19 +59,30 @@ void print(const T& arg, bool cerr = false, bool endl = true) {
 }
 
 template<typename T>
-void maybe_print(const T& arg, bool cerr = false, bool endl = true, bool whether = true) {
+void maybe_print(const T& arg, const bool whether = true, const bool cerr = false, const bool endl = true) {
     if (whether) {
         print("arg", cerr, endl);
     }
 }
 
 // overload this
-void print(bool cerr = false) {
+void print(const bool cerr = false) {
     if (cerr) {
         std::cerr << std::endl;
     } else {
         std::cout << std::endl;
     }
+}
+
+std::string _getDiv(const size_t n = 120, const char d = '=') {
+    std::string div(n, d);
+    // C++ magic makes returning this stack object work...
+    return div;
+}
+
+void printDiv(const size_t n = 120, const char d = '=', const bool cerr = false, const bool endl = true) {
+    std::string div = _getDiv(n, d);
+    print(div, cerr, endl);
 }
 
 
@@ -394,7 +405,9 @@ void showSz() {
 ***********************************************************************************************************************/
 
 int main(int argc, mosp::cstring argv[]) {
-    mosp::print("\n>>> Here we go!");
+    mosp::print();
+    mosp::printDiv();
+    mosp::print(">>> Here we go!");
 
     // the {...} enforces variable scope
     {
@@ -433,5 +446,6 @@ int main(int argc, mosp::cstring argv[]) {
     mosp::print();
 
     mosp::print(">>> All done :) Good luck out there!");
+    mosp::printDiv();
     return 0;
 }
