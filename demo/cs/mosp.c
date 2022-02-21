@@ -4,7 +4,7 @@
 ************************************************************************************************************************
 ***********************************************************************************************************************/
 /*
-This is a quick-and-dirty self-contained field guide to help remind you
+A quick-and-dirty self-contained field guide to help remind you
 how memory is laid out, what the lifetime of objects is, etc.
 
 We use C simply as a convenient entry point into a x86_64 *NIX machine.
