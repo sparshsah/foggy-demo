@@ -28,9 +28,7 @@ typedef char_ptr char_arr;
 typedef char_arr cstring;
 
 const size_t MAX_LINE_LEN = 120;
-
-// 120 is the line-length limit, so it should be plenty enough for a string...
-// long enough to be ample, short enough to be efficient
+// if you're typing out a string over multiple lines, reconsider...
 const size_t _MAX_STR_LEN = MAX_LINE_LEN;
 const size_t MAX_STR_LEN = _MAX_STR_LEN + 1;
 
@@ -73,6 +71,7 @@ char getTgtOfParamPtr(char_ptr c) {
     return v;
 }
 
+
 void printDiv() {
     // in C++, thanks to default args, we could have parametrized `n` and `d`,
     // while still retaining the convenience of an arg-less call
@@ -82,6 +81,241 @@ void printDiv() {
     }
     div[sizeof(div) - 1] = '\0';  // null-terminate
     printf("%s\n", div);
+}
+
+
+/***********************************************************************************************************************
+********* VALUE, POINTER, AND REFERENCE ********************************************************************************
+***********************************************************************************************************************/
+
+char* _showPassByVal(char argv[]) {
+    // clunky, and annoying
+    // precondition: len(argv) > 0
+    argv[0] = 'B';
+    return argv;
+}
+
+char* _showPassByPtr(char* argv) {
+    // still clunky, and even more annoying
+    // precondition: len(array pointed to by argv) > 0
+    argv[0] = 'C';
+    return argv;
+}
+
+// in C++, we'd also have the option to pass by reference
+
+
+void showPassing() {
+    print(">>> No matter how you pass an array, it is mutable!");
+    const char a = 'A';
+    print("Original element: ");
+    print(a);
+    const size_t n = 1;
+
+    print(">>> Now, we'll show the element from the \"original\" and \"returned\" arrays, once the function has run");
+    //
+    char arrForVal[n] = {a};
+    char* arrFromVal = _showPassByVal(arrForVal);
+    print(">>> Passed by value:");
+    char eltForVal = arrForVal[0];
+    print(eltForVal);
+    char eltFromVal = arrFromVal[0];
+    print(eltFromVal);
+    //
+    char arrForPtr[n] = {a};
+    char* arrFromPtr = _showPassByPtr(arrForPtr);
+    print(">>> Passed by pointer:");
+    char eltForPtr = arrForPtr[0];
+    print(eltForPtr);
+    char eltFromPtr = arrFromPtr[0];
+    print(eltFromPtr);
+}
+
+
+/***********************************************************************************************************************
+********* (VIRTUAL) MEMORY LAYOUT AND OBJECT LIFETIME ******************************************************************
+***********************************************************************************************************************/
+
+/* For an x86_64 machine:
+
+[------------------------------------------------------------*
+0xFFFFFFFF: "High addresses"                                 |
+·                                                            |
+·                                                            |
+·                                                            |
+----------- KERNEL SPACE ------------------------------------↑
+----------- USER   SPACE ------------------------------------↓
+                               HEAP                          |
+                               ↓                             |
+                               ↓                             |
+                               ↓                             |
+                               -------------------------------
+                               ···                           |
+                               UNALLOCATED MEMORY            |
+                               ···                           |
+                               -------------------------------
+                               ↑                             |
+                               ↑                             |
+                               ↑                             |
+                               STACK                         |
+                               -------------------------------
+                               ···                           |
+                               UNINITIALIZED GLOBALS ("BSS") |
+                               -------------------------------
+                               ···                           |
+                               INITIALIZED GLOBALS ("DATA")  |
+                               -------------------------------
+                               ···                           |
+                               CODE ("TEXT")                 |
+                               -------------------------------
+0x00000000: "Low addresses" :  NULL                          |
+[------------------------------------------------------------*
+
+*/
+
+void showMemLayout() {
+    void* nullPtr = NULL;
+    print(">>> Address of `NULL`, the null pointer");
+    print(">>> ... Notice I said THE null pointer, meaning that EVERY null pointer IS exactly this:");
+    print(nullPtr);
+    //
+    const int* ptr_staticGlobalConstInitInt = &staticGlobalConstInitInt;
+    print(">>> Address of static global constant initialized int:");
+    print(ptr_staticGlobalConstInitInt);
+    //
+    const int* ptr_staticGlobalInitInt = &staticGlobalInitInt;
+    const int* ptr_globalConstInitInt = &globalConstInitInt;
+    const int* ptr_globalInitInt = &globalInitInt;
+    const int* ptr_staticGlobalUninitInt = &staticGlobalUninitInt;
+    const int* ptr_globalUninitInt = &globalUninitInt;
+}
+
+
+/***********************************************************************************************************************
+********* SMART POINTERS ***********************************************************************************************
+***********************************************************************************************************************/
+
+// TODO(sparshsah)
+
+
+/***********************************************************************************************************************
+********* POINTER ALIGNMENT AND STRUCT PADDING *************************************************************************
+***********************************************************************************************************************/
+
+// TODO(sparshsah)
+
+
+/***********************************************************************************************************************
+********* POINTER ARITHMETIC *******************************************************************************************
+***********************************************************************************************************************/
+
+// TODO(sparshsah
+
+
+/***********************************************************************************************************************
+********* SIZING *******************************************************************************************************
+***********************************************************************************************************************/
+
+
+/***********************************************************************************************************************
+********* CONCURRENCY, THREADS, AND SYNCHRONIZATION ********************************************************************
+***********************************************************************************************************************/
+
+// TODO(sparshsah)
+
+
+/***********************************************************************************************************************
+********* MAIN *********************************************************************************************************
+***********************************************************************************************************************/
+
+
+
+size_t _getSzElt(int elt) {
+    return sizeof(elt);
+}
+
+void showSzElt() {
+    print(">>> For a primitive type, sizeof is the same whether you're here or passed.");
+
+    int elt = 42;
+    print("Element: " + std::to_string(elt));
+
+    size_t szEltHere = sizeof(elt);
+    size_t szEltPassed = _getSzElt(elt);
+    print("Size of element, here: " + std::to_string(szEltHere));
+    print("Size of element, passed: " + std::to_string(szEltPassed));
+}
+
+
+size_t _getSzArrPassedAsPtr(int* arrPassedAsPtr, bool noisy = true) {
+    if (noisy) {
+        print(">>> I'm about to calculate the size of this array passed as a pointer: ");
+        print(arrPassedAsPtr);
+    }
+    return sizeof(arrPassedAsPtr);
+}
+
+size_t _getSzArrPassedAsArr(int arrPassedAsArr[], bool noisy = true) {
+    if (noisy) {
+        print(">>> I'm about to calculate the size of this array passed as an array: ");
+        print(arrPassedAsArr);
+    }
+    return sizeof(arrPassedAsArr);
+}
+
+void showSzArr() {
+    print(">>> For an array, sizeof needs to be handled very mindfully!");
+
+    int headElt = 314;
+    size_t szElt = sizeof(headElt);
+    print("Head element: " + std::to_string(headElt));
+    print("Size of each element: " + std::to_string(szElt));
+
+    // could also let compiler infer sizeof(arr) with `int arr[] = ...`
+    const size_t n = 3;
+    int arrAsArr[n] = {headElt, 272, 162};
+    // notice: we can turn an int[] into an int* no problem... because,
+    // and int[] "IS" just the pointer to its head element!
+    int* arrAsPtr = arrAsArr;
+    print(">>> Array as array, here: ");
+    print(arrAsArr);
+    print(">>> Array as reference, here: ");
+    print(arrAsRef);
+    print(">>> Array as pointer, here: ");
+    print(arrAsPtr);
+
+    size_t szArrAsArrHere = sizeof(arrAsArr);
+    float lenArr = szArrAsArrHere *1./ szElt;
+    print("Size of array as array, here: " + std::to_string(szArrAsArrHere));
+    print("Hence, length of array (as a float so you know we're not rounding): " + std::to_string(lenArr));
+    size_t szArrAsRefHere = sizeof(arrAsRef);
+    print("Size of array as reference, here... still works: " + std::to_string(szArrAsRefHere));
+
+    print(">>> BUT... this stops working as soon as you either");
+    print(">>> (a) Cast the array to what it truly is, i.e. a pointer to the head element;");
+    print(">>> or, equivalently,");
+    print(">>> (b) pass the array into a function.");
+    print(">>> To wit:");
+    //
+    size_t szArrAsPtrHere = sizeof(arrAsPtr);
+    print("Size of array as pointer, here: " + std::to_string(szArrAsPtrHere));
+    //
+    size_t szArrPassedAsArr = _getSzArrPassedAsArr(arrAsArr);
+    print("Size of array PASSED as array: " + std::to_string(szArrPassedAsArr));
+    //
+    size_t szArrPassedAsPtr = _getSzArrPassedAsPtr(arrAsPtr);
+    print("Size of array PASSED as pointer: " + std::to_string(szArrPassedAsPtr));
+    //
+    print(">>> We simply get the length of the pointer itself!");
+    print(">>> (On a 64bit machine: 64 bits / (8 bits per byte) = 8 bytes.)");
+    print(">>> Hence, functions that accept arrays usually also demand to know the LENGTH of the array.");
+}
+
+
+void showSz() {
+    showSzElt();
+    print();
+    showSzArr();
 }
 
 
