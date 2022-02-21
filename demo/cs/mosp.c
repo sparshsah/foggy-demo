@@ -8,7 +8,7 @@ A quick-and-dirty self-contained field guide to help remind you
 how memory is laid out, what the lifetime of objects is, etc.
 
 We use C simply as a convenient entry point into a x86_64 *NIX machine.
-The goal here is NOT to be an elegant, modular, idiomatic, efficient, or even correct example of C code.
+The goal here is NOT to be an interesting, elegant, modular, idiomatic, efficient, or even correct example of C code.
 If some of the syntax invokes undefined behavior, my apologies...
 but modern compilers are usually quite forgiving when it comes to undefined behavior,
 so the underlying idea should still be clear.
