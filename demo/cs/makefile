@@ -1,13 +1,18 @@
-.PHONY: cppc
+.PHONY: cc cppc
 
 # following the convention of `javac`, `swiftc`, etc
+cc:
+	# e.g. `make cc f=hello`... MUST explicitly include the `f=` and must NOT append `.c`!
+	clear  # make it easier to read warnings and errors
+	clang -Wall "$f.c" -o "$f.exe"
+
 cppc:
 	# e.g. `make cppc f=hello`... MUST explicitly include the `f=` and must NOT append `.cpp`!
 	clear  # make it easier to read warnings and errors
 	clang++ -std=c++20 -Wall "$f.cpp" -o "$f.exe"
 
-mosp.exe: mosp.cpp
-	make cppc f=mosp
+mosp.exe: mosp.c
+	make cc f=mosp
 
 mosp: mosp.exe
-	./mosp.exe you me all_of_the_people i_dont_know_why_i_cant_take_my_eyes_off_of_you
+	./mosp.exe
