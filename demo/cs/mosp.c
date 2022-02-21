@@ -1,11 +1,13 @@
 /***********************************************************************************************************************
+************************************************************************************************************************
 ********* MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE CHEATSHEET ********************************************
+************************************************************************************************************************
 ***********************************************************************************************************************/
 /*
 This is a quick-and-dirty self-contained field guide to help remind you
 how memory is laid out, what the lifetime of objects is, etc.
 
-We use C simply as a convenient entry point into x86_64 *NIX machines.
+We use C simply as a convenient entry point into a x86_64 *NIX machine.
 The goal here is NOT to be an elegant, modular, idiomatic, efficient, or even correct example of C code.
 If some of the syntax invokes undefined behavior, my apologies...
 but modern compilers are usually quite forgiving when it comes to undefined behavior,
@@ -14,6 +16,11 @@ so the underlying idea should still be clear.
 You can compile this e.g. (printing all warnings) with `clang -Wall mosp.c -o mosp.exe`,
 then run it with `./mosp.exe`.
 */
+
+
+/***********************************************************************************************************************
+********* ARCANE INCANTATIONS ******************************************************************************************
+***********************************************************************************************************************/
 
 #include <sys/types.h>
 #include <string.h>
@@ -136,7 +143,7 @@ void showPassing() {
 ********* (VIRTUAL) MEMORY LAYOUT AND OBJECT LIFETIME ******************************************************************
 ***********************************************************************************************************************/
 
-/* For an x86_64 machine:
+/* For an x86_64 *NIX machine:
 
 [------------------------------------------------------------*
 0xFFFFFFFF: "High addresses"                                 |
