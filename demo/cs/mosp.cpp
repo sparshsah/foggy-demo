@@ -2,13 +2,13 @@
 ********* MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE CHEATSHEET ********************************************
 ***********************************************************************************************************************/
 /*
-The goal here is NOT to be an idiomatic, efficient, or even correct example of C++ code,
+The goal here is NOT to be an elegant, modular, idiomatic, efficient, or even correct example of C++ code,
 but rather to be a quick-and-dirty self-contained field guide
 to help remind you how memory is laid out, what the lifetime of objects is, etc.
 We use C++ simply as a convenient entry point into *NIX machines.
 If some of the syntax invokes undefined behavior, my apologies...
 but modern compilers are usually quite forgiving when it comes to undefined behavior,
-and the underlying idea will still be clear.
+so the underlying idea should still be clear.
 
 You can compile this e.g. (using C++20 standard support and printing all warnings) by
 `clang++ -std=gnu++2a -Wall {sourcefile_name}.cpp -o {sourcefile_name}.exe`,
@@ -116,7 +116,7 @@ void greet(std::vector<std::string> greetees) {
 
 
 /***********************************************************************************************************************
-********* VALUE, REFERENCE, AND POINTER ********************************************************************************
+********* VALUE, POINTER, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
 char* _showPassByVal(char argv[]) {
@@ -252,7 +252,9 @@ void showPassing() {
 
 */
 
-// TODO(sparshsah)
+void showMemLayout() {
+    const int* ptr_staticGlobalConstInitInt = &staticGlobalConstInitInt;
+}
 
 
 /***********************************************************************************************************************
@@ -447,13 +449,13 @@ int main(int argc, mosp::cstring argv[]) {
         // it's safe to pass `greetees` because it wont be free'd until the `}` kills this scope
         mosp::greet(greetees);
     }
-    mosp::print();
+    mosp::printDiv(2, '\n');
 
     mosp::showPassing();
-    mosp::print();
+    mosp::printDiv(2, '\n');
 
     mosp::showSz();
-    mosp::print();
+    mosp::printDiv(2, '\n');
 
     mosp::print(">>> All done :) Good luck out there!");
     mosp::printDiv();
