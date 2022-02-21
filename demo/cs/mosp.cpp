@@ -4,23 +4,24 @@
 /*
 The goal here is NOT to be an idiomatic, efficient, or even correct example of C++ code,
 but rather to be a quick-and-dirty self-contained field guide
-to help remind you how memory is laid out,
-what the lifetime of objects is, etc.
+to help remind you how memory is laid out, what the lifetime of objects is, etc.
 We use C++ simply as a convenient entry point into *NIX machines.
 If some of the syntax invokes undefined behavior, my apologies...
 but modern compilers are usually quite forgiving when it comes to undefined behavior,
 and the underlying idea will still be clear.
 
-You can compile this (using C++20 standard support and printing all warnings) by e.g.
-`clang++ -std=gnu++2a -Wall {sourcefile_name}.cpp -o {sourcefile_name}.exe`.
+You can compile this e.g. (using C++20 standard support and printing all warnings) by
+`clang++ -std=gnu++2a -Wall {sourcefile_name}.cpp -o {sourcefile_name}.exe`,
+then run it by `./{sourcefile_name}.exe`.
 */
 
-#include <vector>
 // #include <format>  // this is gonna be so useful in C++20...
+#include <vector>
 #include <iostream>
 
 
-// Google's style guide insists that we wrap everything in a namespace
+// best practice to wrap everything in a namespace, AND
+// never use `using namespace {namespace}` (equivalent of Python's `from {module} import *`)
 namespace mosp {
 
 
@@ -129,6 +130,7 @@ char(&
     return argv;
 }
 
+// this declaration would induce a compile-time error!
 /*
 template<size_t N>
 char _showPassByConstRef(
@@ -189,8 +191,45 @@ void showPassing() {
 
 
 /***********************************************************************************************************************
-********* MEMORY LAYOUT AND OBJECT LIFETIME ****************************************************************************
+********* (VIRTUAL) MEMORY LAYOUT AND OBJECT LIFETIME ******************************************************************
 ***********************************************************************************************************************/
+
+/* For an x86_64 machine:
+
+[------------------------------------------------------------*
+0xFFFFFFFF: "High addresses"                                 |
+·                                                            |
+·                                                            |
+·                                                            |
+----------- KERNEL SPACE ------------------------------------↑
+----------- USER   SPACE ------------------------------------↓
+                               HEAP                          |
+                               ↓                             |
+                               ↓                             |
+                               ↓                             |
+                               -------------------------------
+                               ···                           |
+                               UNALLOCATED MEMORY            |
+                               ···                           |
+                               -------------------------------
+                               ↑                             |
+                               ↑                             |
+                               ↑                             |
+                               STACK                         |
+                               -------------------------------
+                               ···                           |
+                               UNINITIALIZED GLOBALS ("BSS") |
+                               -------------------------------
+                               ···                           |
+                               INITIALIZED GLOBALS ("DATA")  |
+                               -------------------------------
+                               ···                           |
+                               CODE ("TEXT")                 |
+                               -------------------------------
+0x00000000: "Low addresses" :  NULL                          |
+[------------------------------------------------------------*
+
+*/
 
 // TODO(sparshsah)
 
@@ -213,6 +252,7 @@ void showPassing() {
 ********* POINTER ARITHMETIC *******************************************************************************************
 ***********************************************************************************************************************/
 
+// TODO(sparshsah)
 void showPtrArith(int argc, cstring argv[]) {
     if (argc < 2) {
         print("Please pass at least 2 args!", true);
@@ -346,7 +386,7 @@ void showSz() {
 // TODO(sparshsah)
 
 
-}  // mosp namespace end
+}  // end namespace mosp
 
 
 /***********************************************************************************************************************
