@@ -29,10 +29,15 @@ then run it with `./mosp.exe`.
 // in C++, you could use `template<typename T>` to represent a generic type
 typedef void T;
 typedef T* ptr_t;
-typedef char* char_ptr;
-typedef char_ptr char_arr;
+// just to make it painfully explicit when a char* is actually pointing to a char ARRAY
+typedef char* char_arr;
 // CAUTION: if you want to use this "as" a C-style string, then you MUST null-terminate!
-typedef char_arr cstring;
+typedef char_arr _null_terminated_char_arr;
+typedef _null_terminated_char_arr cstring;
+
+typedef struct CharHolder {
+    const char c;
+} CharHolder;
 
 const size_t MAX_LINE_LEN = 120;
 // if you're typing out a string over multiple lines, reconsider...
@@ -64,16 +69,16 @@ char getValOfParamVal(char c) {
     return c;
 }
 
-ptr_t getAddrOfParamPtr(char_ptr c) {
+ptr_t getAddrOfParamPtr(char* c) {
     ptr_t addr = &c;
     return addr;
 }
 
-char_ptr getValOfParamPtr(char_ptr c) {
+char* getValOfParamPtr(char* c) {
     return c;
 }
 
-char getTgtOfParamPtr(char_ptr c) {
+char getTgtOfParamPtr(char* c) {
     char v = *c;
     return v;
 }
@@ -95,15 +100,13 @@ void printDiv() {
 ********* VALUE, POINTER, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
-char* _showPassByVal(char argv[]) {
-    // clunky, and annoying
+char_arr _showPassByVal(char argv[]) {
     // precondition: len(argv) > 0
     argv[0] = 'B';
     return argv;
 }
 
 char* _showPassByPtr(char* argv) {
-    // still clunky, and even more annoying
     // precondition: len(array pointed to by argv) > 0
     argv[0] = 'C';
     return argv;
