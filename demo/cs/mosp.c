@@ -23,6 +23,7 @@ then run it with `./mosp.exe`.
 ***********************************************************************************************************************/
 
 #include <sys/types.h>
+#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -31,12 +32,14 @@ typedef void T;
 typedef T* ptr_t;
 // just to make it painfully explicit when a char* is actually pointing to a char ARRAY
 typedef char* char_arr;
+typedef int* int_arr;
 // CAUTION: if you want to use this "as" a C-style string, then you MUST null-terminate!
 typedef char_arr _null_terminated_char_arr;
 typedef _null_terminated_char_arr cstring;
 
 typedef struct CharHolder {
-    const char c;
+    char c;
+    bool full;
 } CharHolder;
 
 const size_t MAX_LINE_LEN = 120;
@@ -47,6 +50,7 @@ const size_t MAX_STR_LEN = _MAX_STR_LEN + 1;
 const size_t _DIV_LEN = MAX_LINE_LEN;
 const size_t DIV_LEN = _DIV_LEN + 1;  // leave a byte of space to null-terminate
 const char DIV_C = '=';
+const char SUBDIV_C = '-';
 
 // unused non-static globals are fine, since they might be used outside this file...
 // but compiler will warn about unused static variables, since they are unusable outside this file!
@@ -85,60 +89,120 @@ char getTgtOfParamPtr(char* c) {
 
 
 void printDiv() {
-    // in C++, thanks to default args, we could have parametrized `n` and `d`,
+    // in C++, thanks to default args, we could have parametrized `len` and `c`,
     // while still retaining the convenience of an arg-less call
-    char div[DIV_LEN];
-    for (int i = 0; i < sizeof(div); i++) {
-        div[i] = DIV_C;
+    char _div[DIV_LEN];
+    for (int i = 0; i < sizeof(_div); i++) {
+        _div[i] = DIV_C;
     }
-    div[sizeof(div) - 1] = '\0';  // null-terminate
+    _div[sizeof(_div) - 1] = '\0';  // null-terminate
+    cstring div = _div;
+    printf("%s\n", div);
+}
+
+void printSubDiv() {
+    char _div[DIV_LEN];
+    for (int i = 0; i < sizeof(_div); i++) {
+        _div[i] = SUBDIV_C;
+    }
+    _div[0] = '\n';
+    _div[sizeof(_div) - 2] = '\n';
+    _div[sizeof(_div) - 1] = '\0';  // null-terminate
+    cstring div = _div;
     printf("%s\n", div);
 }
 
 
 /***********************************************************************************************************************
-********* VALUE, POINTER, AND REFERENCE ********************************************************************************
+********* POINTER, VALUE, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
-char_arr _showPassByVal(char argv[]) {
-    // precondition: len(argv) > 0
-    argv[0] = 'B';
-    return argv;
+CharHolder* _showPassByPtr(CharHolder* c) {
+    printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", c);
+    c->c = 'B';  // syntactic sugar for `(*c).c = 'C';`
+    printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", c);
+    return c;
 }
 
-char* _showPassByPtr(char* argv) {
-    // precondition: len(array pointed to by argv) > 0
-    argv[0] = 'C';
-    return argv;
+CharHolder _showPassByVal(CharHolder c) {
+    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", &c);
+    c.c = 'b';
+    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", &c);
+    return c;
 }
 
-// in C++, we'd also have the option to pass by reference
+// in C++, we'd additionally have the option to pass by reference, sorta the best of both worlds
 
 
 void showPassing() {
-    print(">>> No matter how you pass an array, it is mutable!");
-    const char a = 'A';
-    print("Original element: ");
-    print(a);
-    const size_t n = 1;
+    printf(">>> Let's play with passing by value vs pointer.\n");
+    printf("\n");
 
-    print(">>> Now, we'll show the element from the \"original\" and \"returned\" arrays, once the function has run");
-    //
-    char arrForVal[n] = {a};
-    char* arrFromVal = _showPassByVal(arrForVal);
-    print(">>> Passed by value:");
-    char eltForVal = arrForVal[0];
-    print(eltForVal);
-    char eltFromVal = arrFromVal[0];
-    print(eltFromVal);
-    //
-    char arrForPtr[n] = {a};
-    char* arrFromPtr = _showPassByPtr(arrForPtr);
-    print(">>> Passed by pointer:");
-    char eltForPtr = arrForPtr[0];
-    print(eltForPtr);
-    char eltFromPtr = arrFromPtr[0];
-    print(eltFromPtr);
+    const char _c = 'A';
+    printf("    Original element:\t\t\t\t\t\t\t'%c'\n", _c);
+
+    printf("\n");
+
+    printf(">>> When you pass an object by pointer, it can be mutated:\n");
+    CharHolder _cp = { .c = _c, .full = true };
+    CharHolder* cp = &_cp;
+    printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", cp);
+    printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cp->c);
+    CharHolder* cp_ = _showPassByPtr(cp);
+    printf("    Explicit address of \"input\" object, having been passed by pointer:\t`%p`\n", cp);
+    printf("    Element from \"input\" object, having been passed by pointer:\t\t'%c'\n", cp->c);
+    printf("    Explicit address of \"output\" object:\t\t\t\t`%p`\n", cp_);
+    printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", cp_->c);
+
+    printf("\n");
+
+    printf(">>> When you pass an object by value,\n");
+    printf(">>> at the space+time cost of pass-time copying,\n");
+    printf(">>> it can't be mutated:\n");
+    CharHolder cv = { .c = _c, .full = true };
+    printf("    Implicit address of input object, pre-passing:\t\t\t`%p`\n", &cv);
+    CharHolder cv_ = _showPassByVal(cv);
+    printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", &cv);
+    printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", cv.c);
+    printf("    Implicit address of \"output\" object:\t\t\t\t`%p`\n", &cv_);
+    printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", cv_.c);
+
+    printf("\n");
+
+    printf(">>> ASIDE: Here's a silly anecdote, that happens to\n");
+    printf(">>> illustrate a couple useful things about C's memory management.\n");
+    printf(">>> I had originally (naively) thought that,\n");
+    printf(">>> for the sake of illustration,\n");
+    printf(">>> I had been willing to invoke undefined behavior.\n");
+    printf(">>> A parameter stack variable created inside\n");
+    printf(">>> a called function has automatic lifetime, hence\n");
+    printf(">>> the memory allocated for it is free'd\n");
+    printf(">>> as soon as the function return's.\n");
+    printf(">>> Indeed, the called function's entire stackframe is \"gone\".\n");
+    printf(">>> However, I'm running a very linear single-thread process,\n");
+    printf(">>> so the chance that the memory has been overwritten is slim.\n");
+    printf(">>> The memory is not safe to access,\n");
+    printf(">>> but if I insist on accessing it,\n");
+    printf(">>> it will probably still contain what it used to contain\n");
+    printf(">>> just before the called function return'ed.\n");
+    printf(">>> Or so I thought... it turns out, returning a struct in C\n");
+    printf(">>> is actually no more dangerous than\n");
+    printf(">>> returning a primitive int!\n");
+    printf(">>> To wit, notice that the address of the output struct\n");
+    printf(">>> inside the called function (which was the same as the address\n");
+    printf(">>> of the parameter struct inside the called function,\n");
+    printf(">>> since the input struct passed by value had been\n");
+    printf(">>> copied into the highest address\n");
+    printf(">>> of the called function's stackframe)\n");
+    printf(">>> is different, in particular lower, than\n");
+    printf(">>> the address of the \"output\" struct once returned!\n");
+    printf(">>> When the called function return'ed,\n");
+    printf(">>> the struct it was return'ing was copied onto\n");
+    printf(">>> the calling function's stackframe\n");
+    printf(">>> (and indeed, as expected, copied into a lower address\n");
+    printf(">>> than the local stack variables created by\n");
+    printf(">>> the calling function before it called the called function.\n");
+    printf(">>> So: Very space+time expensive, but also very convenient!\n");
 }
 
 
@@ -184,20 +248,15 @@ void showPassing() {
 */
 
 void showMemLayout() {
-    void* nullPtr = NULL;
-    print(">>> Address of `NULL`, the null pointer");
-    print(">>> ... Notice I said THE null pointer, meaning that EVERY null pointer IS exactly this:");
-    print(nullPtr);
-    //
-    const int* ptr_staticGlobalConstInitInt = &staticGlobalConstInitInt;
-    print(">>> Address of static global constant initialized int:");
-    print(ptr_staticGlobalConstInitInt);
-    //
-    const int* ptr_staticGlobalInitInt = &staticGlobalInitInt;
-    const int* ptr_globalConstInitInt = &globalConstInitInt;
-    const int* ptr_globalInitInt = &globalInitInt;
-    const int* ptr_staticGlobalUninitInt = &staticGlobalUninitInt;
-    const int* ptr_globalUninitInt = &globalUninitInt;
+    printf(">>> Let's play with memory layout.\n");
+    printf("\n");
+
+    ptr_t nullPtr = NULL;
+    printf(">>> ... Notice I will say THE null pointer, meaning that ANY null pointer is located exactly there!\n");
+    printf("Address OF the null pointer, `NULL`: `%p`\n", &nullPtr);
+    printf("Address STORED IN the null pointer, i.e. located at the address just above: `%p`\n", nullPtr);
+    printf("Value POINTED TO BY the null pointer, i.e. located at the address just above:\n");
+    printf(">>> ... I didn't get you, did I? NEVER follow the null pointer!\n");
 }
 
 
@@ -225,21 +284,7 @@ void showMemLayout() {
 /***********************************************************************************************************************
 ********* SIZING *******************************************************************************************************
 ***********************************************************************************************************************/
-
-
-/***********************************************************************************************************************
-********* CONCURRENCY, THREADS, AND SYNCHRONIZATION ********************************************************************
-***********************************************************************************************************************/
-
-// TODO(sparshsah)
-
-
-/***********************************************************************************************************************
-********* MAIN *********************************************************************************************************
-***********************************************************************************************************************/
-
-
-
+/*
 size_t _getSzElt(int elt) {
     return sizeof(elt);
 }
@@ -327,15 +372,37 @@ void showSz() {
     print();
     showSzArr();
 }
+*/
 
+/***********************************************************************************************************************
+********* CONCURRENCY, THREADS, AND SYNCHRONIZATION ********************************************************************
+***********************************************************************************************************************/
+
+// TODO(sparshsah)
+
+
+/***********************************************************************************************************************
+********* MAIN *********************************************************************************************************
+***********************************************************************************************************************/
 
 int main() {
-    printf("\n");
+    printf("\n\n");
     printDiv();
-    printf("# Hello world!\n");
+    printf(">>> Hello world!\n");
 
-    printf("# Good luck out there!\n");
+    printSubDiv();
+
+    showPassing();
+
+    printSubDiv();
+
+    showMemLayout();
+
+    printSubDiv();
+
+    printf(">>> Good luck out there!\n");
     printDiv();
+    printf("\n\n");
 
     // silence unused-variable warnings
     (T) INIT_STATIC_GLOBAL_CONST_CHAR;
