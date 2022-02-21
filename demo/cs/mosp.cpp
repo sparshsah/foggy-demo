@@ -39,6 +39,16 @@ that is, that the string is null-terminated.
 using cstring = char*;
 using charArray1 = char[1];
 
+static const int staticGlobalConstInitInt = 42;
+static int staticGlobalInitInt = 42;
+const int globalConstInitInt = 42;
+int globalInitInt = 42;
+// not possible: naturally, const variables MUST be initialized
+// static const int staticGlobalConstUninitInt;
+static int staticGlobalUninitInt;
+int globalUninitInt;
+
+
 // accept any generic type
 template<typename T>
 void print(const T& arg, const bool cerr = false, const bool endl = true) {
@@ -292,7 +302,7 @@ size_t _getSzElt(int elt) {
 void showSzElt() {
     print(">>> For a primitive type, sizeof is the same whether you're here or passed.");
 
-    int elt = 314;
+    int elt = 42;
     print("Element: " + std::to_string(elt));
 
     size_t szEltHere = sizeof(elt);
