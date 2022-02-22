@@ -695,12 +695,15 @@ void showSz() {
 int main() {
     printDiv(true, false);
     printHeader("Hello world!");
+    //
     showPassing();
     showMemLayout();
     showPtrAlign();
     showPtrArith();
+    //
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
     printDiv(false, true);
+    //
     return 0;
 }
