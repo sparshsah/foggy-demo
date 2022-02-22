@@ -18,10 +18,10 @@ then run it with `./mosp.exe`.
 
 // feel free to ignore this setup code... the goal here isn't to learn C boilerplate
 
+#include <stdlib.h>
 #include <sys/types.h>
 #include <stdbool.h>
 #include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
 
 // in C++, you could use `template<typename T>` to represent a generic type
@@ -648,27 +648,20 @@ void showSzArr() {
     // could also let compiler infer sizeof(arr) with `int arr[] = ...`
     const size_t n = 3;
     int arrAsArr[n] = {headElt, 272, 162};
-    // notice: we can turn an int[] into an int* no problem... because,
-    // and int[] "IS" just the pointer to its head element!
-    int* arrAsPtr = arrAsArr;
     print(">>> Array as array, here: ");
     print(arrAsArr);
-    print(">>> Array as reference, here: ");
-    print(arrAsRef);
-    print(">>> Array as pointer, here: ");
-    print(arrAsPtr);
 
     size_t szArrAsArrHere = sizeof(arrAsArr);
     float lenArr = szArrAsArrHere *1./ szElt;
     print("Size of array as array, here: " + std::to_string(szArrAsArrHere));
     print("Hence, length of array (as a float so you know we're not rounding): " + std::to_string(lenArr));
-    size_t szArrAsRefHere = sizeof(arrAsRef);
-    print("Size of array as reference, here... still works: " + std::to_string(szArrAsRefHere));
 
     print(">>> BUT... this stops working as soon as you either");
     print(">>> (a) Cast the array to what it truly is, i.e. a pointer to the head element;");
     print(">>> or, equivalently,");
     print(">>> (b) pass the array into a function.");
+    print(">>> We simply get the length of the pointer itself!");
+    print(">>> (On a 64bit machine: 64 bits / (8 bits per byte) = 8 bytes.)");
     print(">>> To wit:");
     //
     size_t szArrAsPtrHere = sizeof(arrAsPtr);
@@ -680,8 +673,6 @@ void showSzArr() {
     size_t szArrPassedAsPtr = _getSzArrPassedAsPtr(arrAsPtr);
     print("Size of array PASSED as pointer: " + std::to_string(szArrPassedAsPtr));
     //
-    print(">>> We simply get the length of the pointer itself!");
-    print(">>> (On a 64bit machine: 64 bits / (8 bits per byte) = 8 bytes.)");
     print(">>> Hence, functions that accept arrays usually also demand to know the LENGTH of the array.");
 }
 */
