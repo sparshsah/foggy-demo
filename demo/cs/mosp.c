@@ -291,7 +291,7 @@ void showPassing() {
 
     printComment("BUT this breaks down for arrays passed by value... because remember,");
     printComment("the \"value\" of an array IS a pointer to its head element!");
-    char c[1] = { _c };
+    char c[1] = {_c};
     //
     printf("\
     Explicit address of input object, pre-passing:···················································`%p`\n",
@@ -577,24 +577,37 @@ void showPtrArith() {
     printf("\
     We have an array at address `p = %p`, which in decimal is····························`%lu`\n",
     arr, (unsigned long)arr);
-    printf("%i\n", arr[0]);
-    printf("%i\n", arr[1]);
+    printf("\
+    Accessed by index, the array is··································································`{%i, %i}`\n",
+    arr[0], arr[1]);
 
     printf("\n");
 
-    printf("%p\n", p0);
-    printf("%lu\n", (unsigned long)p0);
-    printf("%i\n", *p0);
+    printf("\
+    The ptr to the head elt is of course again `p0 = %p`, which in decimal is again······`%lu`\n",
+    p0, (unsigned long)p0);
+    printf("\
+    And following that pointer yields as expected····················································`%i`\n",
+    *p0);
 
     printf("\n");
 
-    printf("%p\n", p1);
-    printf("%lu\n", (unsigned long)p1);
-    printf("%i\n", *p1);
+    printf("\
+    The ptr to the succeeding elt can be got as `p0 +1`, which in decimal is·························`%lu`\n",
+    (unsigned long)p1);
+    printf("\
+    And following that pointer yields as expected····················································`%i`\n",
+    *p1);
 
     printf("\n");
 
-    printf("%lu\n", p0AsNumIncr);
+    printComment("How slick was that?");
+    printf("\
+    You might expect `p0 +1` to be equivalent to `(lu)p0 +1`, i.e.···································`%lu`\n",
+    p0AsNumIncr);
+    printComment("But the C compiler knows that if you're incrementing a T*,");
+    printComment("T* is probably a pointer to a T array, therefore it servicefully");
+    printComment("increments the numerical value of the pointer by `sizeof(T)`.");
 }
 
 
