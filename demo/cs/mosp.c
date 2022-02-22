@@ -191,7 +191,7 @@ void showPassing() {
 
     const char _c = 'A';
     printf("\
-    Original element:·················································································'%c'\n",
+    Original element:················································································'%c'\n",
     _c);
 
     printf("\n");
@@ -202,11 +202,11 @@ void showPassing() {
     printComment("Notice that all these addresses are the same!");
     //
     printf("\
-    Explicit address of input object, pre-passing:····················································`%p`\n",
+    Explicit address of input object, pre-passing:···················································`%p`\n",
     cp);
     //
     printf("\
-    Element from input object, pre-passing:···························································'%c'\n",
+    Element from input object, pre-passing:··························································'%c'\n",
     cp->c);
     //
     ptr_t paramAddrP = NULL;
@@ -214,27 +214,27 @@ void showPassing() {
     CharHolder* cp_ = _demoPassByPtr(cp, &paramAddrP, &returnAddrP);
     //
     printf("\
-    Explicit address of parameter object, INSIDE function:············································`%p`\n",
+    Explicit address of parameter object, INSIDE function:···········································`%p`\n",
     paramAddrP);
     //
     printf("\
-    Explicit address of output object, INSIDE function:···············································`%p`\n",
+    Explicit address of output object, INSIDE function:··············································`%p`\n",
     returnAddrP);
     //
     printf("\
-    Explicit address of \"input\" object, having been passed by pointer:································`%p`\n",
+    Explicit address of \"input\" object, having been passed by pointer:·······························`%p`\n",
     cp);
     //
     printf("\
-    Element from \"input\" object, having been passed by pointer:·······································'%c'\n",
+    Element from \"input\" object, having been passed by pointer:······································'%c'\n",
     cp->c);
     //
     printf("\
-    Explicit address of \"output\" object:······························································`%p`\n",
+    Explicit address of \"output\" object:·····························································`%p`\n",
     cp_);
     //
     printf("\
-    Element from \"output\" object:·····································································'%c'\n",
+    Element from \"output\" object:····································································'%c'\n",
     cp_->c);
 
     printf("\n");
@@ -244,11 +244,11 @@ void showPassing() {
     CharHolder cv = { .c = _c, .numTimesChanged = 1 };
     //
     printf("\
-    Implicit address of input object, pre-passing:····················································`%p`\n",
+    Implicit address of input object, pre-passing:···················································`%p`\n",
     &cv);
     //
     printf("\
-    Element from input object, pre-passing:···························································'%c'\n",
+    Element from input object, pre-passing:··························································'%c'\n",
     cv.c);
     //
     ptr_t paramAddrV = NULL;
@@ -259,19 +259,19 @@ void showPassing() {
     printComment("which is as expected lower than this function's stackframe:");
     //
     printf("\
-    Implicit address of parameter object, INSIDE function:············································`%p`\n",
+    Implicit address of parameter object, INSIDE function:···········································`%p`\n",
     paramAddrV);
     //
     printf("\
-    Implicit address of output object, INSIDE function:···············································`%p`\n",
+    Implicit address of output object, INSIDE function:··············································`%p`\n",
     returnAddrV);
     //
     printf("\
-    Implicit address of \"input\" object, having been passed by value:··································`%p`\n",
+    Implicit address of \"input\" object, having been passed by value:·································`%p`\n",
     &cv);
     //
     printf("\
-    Element from \"input\" object, having been passed by value:·········································'%c'\n",
+    Element from \"input\" object, having been passed by value:········································'%c'\n",
     cv.c);
     //
     printComment("Notice that the return value has been COPIED into a new local variable");
@@ -280,11 +280,11 @@ void showPassing() {
     printComment("but higher than the called function's stackframe:");
     //
     printf("\
-    Implicit address of \"output\" object:······························································`%p`\n",
+    Implicit address of \"output\" object:·····························································`%p`\n",
     &cv_);
     //
     printf("\
-    Element from \"output\" object:·····································································'%c'\n",
+    Element from \"output\" object:····································································'%c'\n",
     cv_.c);
 
     printf("\n");
@@ -294,11 +294,11 @@ void showPassing() {
     char c[1] = { _c };
     //
     printf("\
-    Explicit address of input object, pre-passing:····················································`%p`\n",
+    Explicit address of input object, pre-passing:···················································`%p`\n",
     c);
     //
     printf("\
-    Element from input object, pre-passing:···························································'%c'\n",
+    Element from input object, pre-passing:··························································'%c'\n",
     c[0]);
     //
     ptr_t paramAddr = NULL;
@@ -306,27 +306,27 @@ void showPassing() {
     char_arr c_ = _demoPassByValFail(c, &paramAddr, &returnAddr);
     //
     printf("\
-    Implicit address of parameter object, INSIDE function:············································`%p`\n",
+    Implicit address of parameter object, INSIDE function:···········································`%p`\n",
     paramAddr);
     //
     printf("\
-    Implicit address of output object, INSIDE function:···············································`%p`\n",
+    Implicit address of output object, INSIDE function:··············································`%p`\n",
     returnAddr);
     //
     printf("\
-    Implicit address of \"input\" object, having been passed by value:··································`%p`\n",
+    Implicit address of \"input\" object, having been passed by value:·································`%p`\n",
     c);
     //
     printf("\
-    Element from \"input\" object, having been passed by value:·········································'%c'\n",
+    Element from \"input\" object, having been passed by value:········································'%c'\n",
     c[0]);
     //
     printf("\
-    Implicit address of \"output\" object:······························································`%p`\n",
+    Implicit address of \"output\" object:·····························································`%p`\n",
     c_);
     //
     printf("\
-    Element from \"output\" object:·····································································'%c'\n",
+    Element from \"output\" object:····································································'%c'\n",
     c_[0]);
 }
 
@@ -381,15 +381,15 @@ void showMemLayout() {
     printComment("Notice I will say THE null pointer, meaning that ALL null pointers are identically equal!");
     //
     printf("\
-    Address OF the null pointer, `NULL`:······························································`%p`\n",
+    Address OF the null pointer, `NULL`:·····························································`%p`\n",
     &nullPtr);
     //
     printf("\
-    Address STORED IN the null pointer, i.e. value located at the address just above:·················`%p`\n",
+    Address STORED IN the null pointer, i.e. value located at the address just above:················`%p`\n",
     nullPtr);
     //
     printf("\
-    Value POINTED TO BY the null pointer, i.e. value located at the address just above:···············%s\n",
+    Value POINTED TO BY the null pointer, i.e. value located at the address just above:··············%s\n",
     "__NASALDEMONS!__"
     );
     //
@@ -400,41 +400,41 @@ void showMemLayout() {
     printComment("Lowest addresses: Initialized globals (\"Data\")\n");
 
     printf("\
-    Address OF an initialized static global constant char:············································`%p`\n",
+    Address OF an initialized static global constant char:···········································`%p`\n",
     &INIT_STATIC_GLOBAL_CONST_CHAR);
     //
     printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
     INIT_STATIC_GLOBAL_CONST_CHAR);
 
     printf("\n");
 
     printf("\
-    Address OF an initialized static global char:·····················································`%p`\n",
+    Address OF an initialized static global char:····················································`%p`\n",
     &INIT_STATIC_GLOBAL_CHAR);
     //
     printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
     INIT_STATIC_GLOBAL_CHAR);
 
     printf("\n");
 
     printf("\
-    Address OF an initialized global constant char:···················································`%p`\n",
+    Address OF an initialized global constant char:··················································`%p`\n",
     &INIT_GLOBAL_CONST_CHAR);
     //
     printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
     INIT_GLOBAL_CONST_CHAR);
 
     printf("\n");
 
     printf("\
-    Address OF an initialized global char:····························································`%p`\n",
+    Address OF an initialized global char:···························································`%p`\n",
     &INIT_GLOBAL_CHAR);
     //
     printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
     INIT_GLOBAL_CHAR);
 
     printf("\n");
@@ -443,25 +443,25 @@ void showMemLayout() {
     printComment("(Possibly slipping a bit into lowEST addresses based on modifiers)\n");
 
     printf("\
-    Address OF an uninitialized static global constant char:··········································`%p`\n",
+    Address OF an uninitialized static global constant char:·········································`%p`\n",
     &UNINIT_STATIC_GLOBAL_CONST_CHAR);
 
     printf("\n");
 
     printf("\
-    Address OF an uninitialized static global char:···················································`%p`\n",
+    Address OF an uninitialized static global char:··················································`%p`\n",
     &UNINIT_STATIC_GLOBAL_CHAR);
 
     printf("\n");
 
     printf("\
-    Address OF an uninitialized global constant char:·················································`%p`\n",
+    Address OF an uninitialized global constant char:················································`%p`\n",
     &UNINIT_GLOBAL_CONST_CHAR);
 
     printf("\n");
 
     printf("\
-    Address OF an uninitialized global char:··························································`%p`\n",
+    Address OF an uninitialized global char:·························································`%p`\n",
     &UNINIT_GLOBAL_CHAR);
 
     printf("\n");
@@ -472,10 +472,10 @@ void showMemLayout() {
     char* c0 = (char*)calloc(1, sizeof(char));
     char* c1 = (char*)calloc(1, sizeof(char));
     printf("\
-    Address of my 1st calloc'ed char array:···························································`%p`\n",
+    Address of my 1st calloc'ed char array:··························································`%p`\n",
     c0);
     printf("\
-    Address of my 2nd calloc'ed char array:···························································`%p`\n",
+    Address of my 2nd calloc'ed char array:··························································`%p`\n",
     c1);
     // don't leak memory!
     free(c0);
@@ -489,10 +489,10 @@ void showMemLayout() {
     char d0[1];
     char d1[1];
     printf("\
-    Address of my 1st local char array:·······························································`%p`\n",
+    Address of my 1st local char array:······························································`%p`\n",
     d0);
      printf("\
-    Address of my 2nd local char array:·······························································`%p`\n",
+    Address of my 2nd local char array:······························································`%p`\n",
     d1);
 }
 
@@ -528,7 +528,7 @@ void _showStructPad() {
     printComment("requiring 4 bytes of padding in the middle and at the end,");
     printComment("ending up spanning 3 full words.");
     printf("\
-    To wit, its size:·················································································`%lu`\n",
+    To wit, its size:················································································`%lu`\n",
     sz);
 
     printf("\n");
@@ -540,7 +540,7 @@ void _showStructPad() {
     printComment("requiring no padding,");
     printComment("ending up spanning only 2 fully-used words.");
     printf("\
-    To wit, its size:·················································································`%lu`\n",
+    To wit, its size:················································································`%lu`\n",
     compactSz);
 
     printf("\n");
@@ -566,7 +566,36 @@ void showPtrAlign() {
 ********* POINTER ARITHMETIC *******************************************************************************************
 ***********************************************************************************************************************/
 
-// TODO(sparshsah
+void showPtrArith() {
+    printSubHeader("Let's examine pointer arithmetic");
+
+    int arr[2] = {42, 43};
+    int* p0 = arr;
+    int* p1 = p0 +1;
+    unsigned long p0AsNumIncr = (unsigned long)p0 +1;
+
+    printf("\
+    We have an array at address `p = %p`, which in decimal is····························`%lu`\n",
+    arr, (unsigned long)arr);
+    printf("%i\n", arr[0]);
+    printf("%i\n", arr[1]);
+
+    printf("\n");
+
+    printf("%p\n", p0);
+    printf("%lu\n", (unsigned long)p0);
+    printf("%i\n", *p0);
+
+    printf("\n");
+
+    printf("%p\n", p1);
+    printf("%lu\n", (unsigned long)p1);
+    printf("%i\n", *p1);
+
+    printf("\n");
+
+    printf("%lu\n", p0AsNumIncr);
+}
 
 
 /***********************************************************************************************************************
@@ -669,6 +698,7 @@ int main() {
     showPassing();
     showMemLayout();
     showPtrAlign();
+    showPtrArith();
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
     printDiv(false, true);
