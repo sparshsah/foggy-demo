@@ -35,15 +35,22 @@ typedef int* int_arr;
 typedef char_arr _null_terminated_char_arr;
 typedef _null_terminated_char_arr cstring;
 
+typedef struct S {
+    int i1;
+    size_t sz;
+    int i2;
+} S;
+typedef struct CompactS {
+    int i1;
+    int i2;
+    size_t sz;
+} CompactS;
+
 typedef struct CharHolder {
     char c;
-    uint numTimesChanged;
+    size_t numTimesChanged;
 } CharHolder;
 
-typedef struct CompactCharHolder {
-    uint numTimesChanged;
-    char c;
-} CompactCharHolder;
 
 const size_t MAX_LINE_LEN = 120;
 // if you're typing out a string over multiple lines, reconsider...
@@ -190,7 +197,7 @@ void showPassing() {
     printf("\n");
 
     printComment("When you pass an object by pointer, it can be mutated:");
-    CharHolder _cp = { .c = _c, .numTimesChanged = 0 };
+    CharHolder _cp = { .c = _c, .numTimesChanged = 1 };
     CharHolder* cp = &_cp;
     printComment("Notice that all these addresses are the same!");
     //
@@ -234,7 +241,7 @@ void showPassing() {
 
     printComment("When you pass an object by value, at the space+time cost of pass-time copying,");
     printComment("it can't be mutated:");
-    CharHolder cv = { .c = _c, .numTimesChanged = true };
+    CharHolder cv = { .c = _c, .numTimesChanged = 1 };
     //
     printf("\
     Implicit address of input object, pre-passing:····················································`%p`\n",
@@ -501,7 +508,58 @@ void showMemLayout() {
 ********* POINTER ALIGNMENT AND STRUCT PADDING *************************************************************************
 ***********************************************************************************************************************/
 
-// TODO(sparshsah)
+void _showPtrAlign() {
+    printComment("Because it's easier to load a single word at a time,");
+    printComment("the OS dislikes an object that spans multiple words.");
+    printComment("Therefore, in order to make reading/writing the value easier,");
+    printComment("the OS will allocate an address to it that is a neat multiple of its size.");
+    printComment("That way, it can minimize instance where it must load multiple words");
+    printComment("simply to read or write a single value");
+}
+
+void _showStructPad() {
+    size_t sz = sizeof(S);
+    size_t compactSz = sizeof(CompactS);
+
+    printComment("Here's an example of a wasteful struct `S`:");
+    printComment("{ int (4 bytes), size_t (8 bytes), int (4 bytes) },");
+    printComment("which will be laid out in memory as");
+    printComment("········ iiii____ uuuuuuuu iiii____ ········,");
+    printComment("requiring 4 bytes of padding in the middle and at the end,");
+    printComment("ending up spanning 3 full words.");
+    printf("\
+    To wit, its size:·················································································`%lu`\n",
+    sz);
+
+    printf("\n");
+
+    printComment("Here's an example of a more mindfule struct `CompactS`:");
+    printComment("{ int (4 bytes), int (4 bytes), size_t (8 bytes) },");
+    printComment("which will be laid out in memory as");
+    printComment("········ iiiiiiii uuuuuuuu ········,");
+    printComment("requiring no padding,");
+    printComment("ending up spanning only 2 fully-used words.");
+    printf("\
+    To wit, its size:·················································································`%lu`\n",
+    compactSz);
+
+    printf("\n");
+
+    // this is not the order the struct members were defined, but that's OK!
+    CompactS convenient = { .i1 = 42, .sz = 43, .i2 = 44 };
+    // silence unused variable warning
+    (T) convenient;
+    printComment("And don't worry, for convenience, you can initialize struct members in any order;");
+    printComment("So, it's still perfectly fine to initialize a `CompactS` as");
+    printComment("`{ .i1 = 42, .sz = 43, .i2 = 44 }` if that's a logical order for you.");
+}
+
+void showPtrAlign() {
+    printSubHeader("Let's examine pointer alignment");
+    _showPtrAlign();
+    printf("\n");
+    _showStructPad();
+}
 
 
 /***********************************************************************************************************************
@@ -610,6 +668,7 @@ int main() {
     printHeader("Hello world!");
     showPassing();
     showMemLayout();
+    showPtrAlign();
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
     printDiv(false, true);
