@@ -152,17 +152,17 @@ void printComment(const cstring comment) {
 ********* POINTER, VALUE, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
-CharHolder* _demoPassByPtr(CharHolder* c) {
-    printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", c);
+CharHolder* _demoPassByPtr(CharHolder* c, ptr_t* param_addr, ptr_t* return_addr) {
+    *param_addr = c;
     c->c = 'B';  // syntactic sugar for `(*c).c = 'C';`
-    printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", c);
+    *return_addr = c;
     return c;
 }
 
-CharHolder _demoPassByVal(CharHolder c) {
-    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", &c);
+CharHolder _demoPassByVal(CharHolder c, ptr_t* param_addr, ptr_t* return_addr) {
+    *param_addr = &c;
     c.c = 'b';
-    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", &c);
+    *return_addr = &c;
     return c;
 }
 
@@ -182,7 +182,11 @@ void showPassing() {
     CharHolder* cp = &_cp;
     printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", cp);
     printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cp->c);
-    CharHolder* cp_ = _demoPassByPtr(cp);
+    ptr_t param_addr_p = NULL;
+    ptr_t return_addr_p = NULL;
+    CharHolder* cp_ = _demoPassByPtr(cp, &param_addr_p, &return_addr_p);
+    printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", param_addr_p);
+    printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", return_addr_p);
     printf("    Explicit address of \"input\" object, having been passed by pointer:\t`%p`\n", cp);
     printf("    Element from \"input\" object, having been passed by pointer:\t\t'%c'\n", cp->c);
     printf("    Explicit address of \"output\" object:\t\t\t\t`%p`\n", cp_);
@@ -195,10 +199,14 @@ void showPassing() {
     printComment("it can't be mutated:");
     CharHolder cv = { .c = _c, .full = true };
     printf("    Implicit address of input object, pre-passing:\t\t\t`%p`\n", &cv);
+    ptr_t param_addr_v = NULL;
+    ptr_t return_addr_v = NULL;
+    CharHolder cv_ = _demoPassByVal(cv, &param_addr_v, &return_addr_v);
     printComment("Notice that the arg value has been COPIED into a new param");
     printComment("at the top of the called function's stackframe,");
     printComment("which is as expected lower than this function's stackframe:");
-    CharHolder cv_ = _demoPassByVal(cv);
+    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", param_addr_v);
+    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", return_addr_v);
     printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", &cv);
     printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", cv.c);
     printComment("Notice that the return value has been COPIED into a new");
