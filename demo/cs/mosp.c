@@ -461,6 +461,15 @@ void showMemLayout() {
     printComment("Mid addresses (growing upward): Heap");
     printComment("(\"Dynamically-allocated, dynamic-lifetime variables\")\n");
 
+    char* c0 = calloc(1, sizeof(char));
+    char* c1 = calloc(1, sizeof(char));
+    printf("\
+    Address of my 1st calloc'ed char array:···························································`%p`\n",
+    c0);
+    printf("\
+    Address of my 2nd calloc'ed char array:···························································`%p`\n",
+    c1);
+
     printf("\n");
 
     printComment("High addresses (growing downward): Stack");
