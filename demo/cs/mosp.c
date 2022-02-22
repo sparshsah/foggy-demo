@@ -593,7 +593,7 @@ void showPtrArith() {
     printf("\n");
 
     printf("\
-    The ptr to the succeeding elt can be got as `p0 +1`, which in decimal is·························`%lu`\n",
+    The ptr to the succeeding elt can be gotten as `p0 +1`, which in decimal is······················`%lu`\n",
     (unsigned long)p1);
     printf("\
     And following that pointer yields as expected····················································`%i`\n",
@@ -684,15 +684,11 @@ void showSzArr() {
     print(">>> (On a 64bit machine: 64 bits / (8 bits per byte) = 8 bytes.)");
     print(">>> Hence, functions that accept arrays usually also demand to know the LENGTH of the array.");
 }
-
+*/
 
 void showSz() {
     printSubHeader("Let's examine object sizing");
-    showSzElt();
-    print();
-    showSzArr();
 }
-*/
 
 /***********************************************************************************************************************
 ********* CONCURRENCY, THREADS, AND SYNCHRONIZATION ********************************************************************
