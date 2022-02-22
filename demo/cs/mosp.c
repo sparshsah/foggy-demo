@@ -21,6 +21,7 @@ then run it with `./mosp.exe`.
 #include <sys/types.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 // in C++, you could use `template<typename T>` to represent a generic type
@@ -461,19 +462,31 @@ void showMemLayout() {
     printComment("Mid addresses (growing upward): Heap");
     printComment("(\"Dynamically-allocated, dynamic-lifetime variables\")\n");
 
-    char* c0 = calloc(1, sizeof(char));
-    char* c1 = calloc(1, sizeof(char));
+    char* c0 = (char*)calloc(1, sizeof(char));
+    char* c1 = (char*)calloc(1, sizeof(char));
     printf("\
     Address of my 1st calloc'ed char array:···························································`%p`\n",
     c0);
     printf("\
     Address of my 2nd calloc'ed char array:···························································`%p`\n",
     c1);
+    // don't leak memory!
+    free(c0);
+    free(c1);
 
     printf("\n");
 
     printComment("High addresses (growing downward): Stack");
     printComment("(\"Automatically-allocated, automatic-lifetime local variables\")\n");
+
+    char d0[1];
+    char d1[1];
+    printf("\
+    Address of my 1st local char array:·······························································`%p`\n",
+    d0);
+     printf("\
+    Address of my 2nd local char array:·······························································`%p`\n",
+    d1);
 }
 
 
