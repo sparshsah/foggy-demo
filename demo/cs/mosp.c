@@ -397,7 +397,7 @@ void showMemLayout() {
 
     printf("\n");
 
-    printComment("Lowest addresses: Initialized globals (\"Data\")\n");
+    printComment("Lowest addresses: Static-lifetime, initialized globals (\"Data\")\n");
 
     printf("\
     Address OF an initialized static global constant char:···········································`%p`\n",
@@ -439,7 +439,7 @@ void showMemLayout() {
 
     printf("\n");
 
-    printComment("Low addresses: Uninitialized globals (\"BSS\")");
+    printComment("Low addresses: Static-lifetime, uninitialized globals (\"BSS\")");
     printComment("(Possibly slipping a bit into lowEST addresses based on modifiers)\n");
 
     printf("\
