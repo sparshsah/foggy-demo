@@ -484,7 +484,7 @@ void showMemLayout() {
     printf("\n");
 
     printComment("High addresses (growing downward): Stack");
-    printComment("(\"Automatically-allocated, automatic-lifetime local variables\")\n");
+    printComment("(\"Automatically-allocated, automatic-lifetime param and/or local variables\")\n");
 
     char d0[1];
     char d1[1];
