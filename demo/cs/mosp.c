@@ -154,7 +154,7 @@ void printComment(const cstring comment) {
 
 CharHolder* _demoPassByPtr(CharHolder* c, ptr_t* paramAddr, ptr_t* returnAddr) {
     *paramAddr = c;
-    c->c = 'B';  // syntactic sugar for `(*c).c = 'C';`
+    c->c = 'B';  // syntactic sugar for `(*c).c = 'B';`
     *returnAddr = c;
     return c;
 }
@@ -168,7 +168,7 @@ CharHolder _demoPassByVal(CharHolder c, ptr_t* paramAddr, ptr_t* returnAddr) {
 
 // in C++, we'd additionally have the option to pass by reference, sorta the best of both worlds
 
-// TODO(sparshsah): fail w/ arr
+
 char_arr _demoPassByValFail(char_arr arr, ptr_t* paramAddr, ptr_t* returnAddr) {
     // precondition: sz(arr) > 0
     *paramAddr = arr;
@@ -177,28 +177,57 @@ char_arr _demoPassByValFail(char_arr arr, ptr_t* paramAddr, ptr_t* returnAddr) {
     return arr;
 }
 
+
 void showPassing() {
     printSubHeader("Let's examine passing by value vs pointer");
 
     const char _c = 'A';
-    printf("    Original element:\t\t\t\t\t\t\t'%c'\n", _c);
+    printf("\
+    Original element:·················································································'%c'\n",
+    _c);
 
     printf("\n");
 
     printComment("When you pass an object by pointer, it can be mutated:");
     CharHolder _cp = { .c = _c, .full = true };
     CharHolder* cp = &_cp;
-    printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", cp);
-    printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cp->c);
+    printComment("Notice that all these addresses are the same!");
+    //
+    printf("\
+    Explicit address of input object, pre-passing:····················································`%p`\n",
+    cp);
+    //
+    printf("\
+    Element from input object, pre-passing:···························································'%c'\n",
+    cp->c);
+    //
     ptr_t paramAddrP = NULL;
     ptr_t returnAddrP = NULL;
     CharHolder* cp_ = _demoPassByPtr(cp, &paramAddrP, &returnAddrP);
-    printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", paramAddrP);
-    printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", returnAddrP);
-    printf("    Explicit address of \"input\" object, having been passed by pointer:\t`%p`\n", cp);
-    printf("    Element from \"input\" object, having been passed by pointer:\t\t'%c'\n", cp->c);
-    printf("    Explicit address of \"output\" object:\t\t\t\t`%p`\n", cp_);
-    printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", cp_->c);
+    //
+    printf("\
+    Explicit address of parameter object, INSIDE function:············································`%p`\n",
+    paramAddrP);
+    //
+    printf("\
+    Explicit address of output object, INSIDE function:···············································`%p`\n",
+    returnAddrP);
+    //
+    printf("\
+    Explicit address of \"input\" object, having been passed by pointer:································`%p`\n",
+    cp);
+    //
+    printf("\
+    Element from \"input\" object, having been passed by pointer:·······································'%c'\n",
+    cp->c);
+    //
+    printf("\
+    Explicit address of \"output\" object:······························································`%p`\n",
+    cp_);
+    //
+    printf("\
+    Element from \"output\" object:·····································································'%c'\n",
+    cp_->c);
 
     printf("\n");
 
@@ -206,25 +235,51 @@ void showPassing() {
     printComment("at the space+time cost of pass-time copying,");
     printComment("it can't be mutated:");
     CharHolder cv = { .c = _c, .full = true };
-    printf("    Implicit address of input object, pre-passing:\t\t\t`%p`\n", &cv);
-    printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cv.c);
+    //
+    printf("\
+    Implicit address of input object, pre-passing:····················································`%p`\n",
+    &cv);
+    //
+    printf("\
+    Element from input object, pre-passing:···························································'%c'\n",
+    cv.c);
+    //
     ptr_t paramAddrV = NULL;
     ptr_t returnAddrV = NULL;
     CharHolder cv_ = _demoPassByVal(cv, &paramAddrV, &returnAddrV);
-    printComment("Notice that the arg value has been COPIED into a new param");
+    printComment("Notice that the arg value has been COPIED into a new param variable");
     printComment("at the top of the called function's stackframe,");
     printComment("which is as expected lower than this function's stackframe:");
-    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", paramAddrV);
-    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", returnAddrV);
-    printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", &cv);
-    printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", cv.c);
+    //
+    printf("\
+    Implicit address of parameter object, INSIDE function:············································`%p`\n",
+    paramAddrV);
+    //
+    printf("\
+    Implicit address of output object, INSIDE function:···············································`%p`\n",
+    returnAddrV);
+    //
+    printf("\
+    Implicit address of \"input\" object, having been passed by value:··································`%p`\n",
+    &cv);
+    //
+    printf("\
+    Element from \"input\" object, having been passed by value:·········································'%c'\n",
+    cv.c);
+    //
     printComment("Notice that the return value has been COPIED into a new");
     printComment("local variable in the middle of this function's stackframe,");
     printComment("which is as expected lower than this function's");
     printComment("previously-allocated local variable,");
     printComment("but higher than the called function's stackframe:");
-    printf("    Implicit address of \"output\" object:\t\t\t\t`%p`\n", &cv_);
-    printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", cv_.c);
+    //
+    printf("\
+    Implicit address of \"output\" object:······························································`%p`\n",
+    &cv_);
+    //
+    printf("\
+    Element from \"output\" object:·····································································'%c'\n",
+    cv_.c);
 
     printf("\n");
 
@@ -232,17 +287,42 @@ void showPassing() {
     printComment("because remember, the \"value\" of an array");
     printComment("IS a pointer to its head element!");
     char c[1] = { _c };
-    printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", c);
-    printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", c[0]);
+    //
+    printf("\
+    Explicit address of input object, pre-passing:····················································`%p`\n",
+    c);
+    //
+    printf("\
+    Element from input object, pre-passing:···························································'%c'\n",
+    c[0]);
+    //
     ptr_t paramAddr = NULL;
     ptr_t returnAddr = NULL;
     char_arr c_ = _demoPassByValFail(c, &paramAddr, &returnAddr);
-    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", paramAddr);
-    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", returnAddr);
-    printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", c);
-    printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", c[0]);
-    printf("    Implicit address of \"output\" object:\t\t\t\t`%p`\n", c_);
-    printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", c_[0]);
+    //
+    printf("\
+    Implicit address of parameter object, INSIDE function:············································`%p`\n",
+    paramAddr);
+    //
+    printf("\
+    Implicit address of output object, INSIDE function:···············································`%p`\n",
+    returnAddr);
+    //
+    printf("\
+    Implicit address of \"input\" object, having been passed by value:··································`%p`\n",
+    c);
+    //
+    printf("\
+    Element from \"input\" object, having been passed by value:·········································'%c'\n",
+    c[0]);
+    //
+    printf("\
+    Implicit address of \"output\" object:······························································`%p`\n",
+    c_);
+    //
+    printf("\
+    Element from \"output\" object:·····································································'%c'\n",
+    c_[0]);
 }
 
 
@@ -252,7 +332,7 @@ void showPassing() {
 
 /* For an x86_64 *NIX machine:
 
-[------------------------------------------------------------*
+[------------------------------------------------------------\
 0xFFFFFFFF: "High addresses"                                 |
 ·                                                            |
 ·                                                            |
@@ -283,7 +363,7 @@ void showPassing() {
                                CODE ("TEXT")                 |
                                -------------------------------
 0x00000000: "Low addresses" :  NULL                          |
-[------------------------------------------------------------*
+[------------------------------------------------------------/
 
 */
 
@@ -291,13 +371,23 @@ void showMemLayout() {
     printSubHeader("Let's examine memory layout");
 
     ptr_t nullPtr = NULL;
-    printComment(" ... Notice I will say THE null pointer, meaning");
-    printComment(" that ALL null pointers are identically equal!");
-    printf("    Address OF the null pointer, `NULL`:\t\t\t\t\t\t`%p`\n", &nullPtr);
-    printf("    Address STORED IN the null pointer, i.e. value located at the address just above:\t`%p`\n", nullPtr);
-    printf("    Value POINTED TO BY the null pointer, i.e. value located at the address just above:\t...\n");
-    printComment(" ... Syke! Unless you're willing to risk nasal demons,");
-    printComment(" NEVER follow the null pointer!");
+    printComment("Notice I will say THE null pointer, meaning");
+    printComment("that ALL null pointers are identically equal!");
+    //
+    printf("\
+    Address OF the null pointer, `NULL`:······························································`%p`\n",
+    &nullPtr);
+    //
+    printf("\
+    Address STORED IN the null pointer, i.e. value located at the address just above:·················`%p`\n",
+    nullPtr);
+    //
+    printf("\
+    Value POINTED TO BY the null pointer, i.e. value located at the address just above:···············%s\n",
+    "__NASALDEMONS!__"
+    );
+    //
+    printComment("Syke! NEVER follow the null pointer!");
 }
 
 
