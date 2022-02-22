@@ -1,17 +1,11 @@
 /***********************************************************************************************************************
 ************************************************************************************************************************
-********* MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE CHEATSHEET ********************************************
+********* MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE FIELD GUIDE *******************************************
 ************************************************************************************************************************
 ***********************************************************************************************************************/
 /*
-A quick-and-dirty self-contained field guide to help remind you
+A quick-and-dirty self-contained cheatsheet to help remind you
 how memory is laid out, what the lifetime of objects is, etc.
-
-We use C simply as a convenient entry point into a x86_64 *NIX machine.
-The goal here is NOT to be an interesting, elegant, modular, idiomatic, efficient, or even correct example of C code.
-If some of the syntax invokes undefined behavior, my apologies...
-but modern compilers are usually quite forgiving when it comes to undefined behavior,
-so the underlying idea should still be clear.
 
 You can compile this e.g. (printing all warnings) with `clang -Wall mosp.c -o mosp.exe`,
 then run it with `./mosp.exe`.
@@ -22,6 +16,8 @@ then run it with `./mosp.exe`.
 ********* ARCANE INCANTATIONS ******************************************************************************************
 ***********************************************************************************************************************/
 
+// feel free to ignore this setup code... the goal here isn't to learn C boilerplate
+
 #include <sys/types.h>
 #include <stdbool.h>
 #include <string.h>
@@ -30,10 +26,11 @@ then run it with `./mosp.exe`.
 // in C++, you could use `template<typename T>` to represent a generic type
 typedef void T;
 typedef T* ptr_t;
-// just to make it painfully explicit when a char* is actually pointing to a char ARRAY
+// just to make it painfully explicit when a char* is actually pointing to the head element of a char ARRAY
 typedef char* char_arr;
 typedef int* int_arr;
 // CAUTION: if you want to use this "as" a C-style string, then you MUST null-terminate!
+// this named type is simply a reminder, and does NOT enforce that condition!
 typedef char_arr _null_terminated_char_arr;
 typedef _null_terminated_char_arr cstring;
 
@@ -42,15 +39,24 @@ typedef struct CharHolder {
     bool full;
 } CharHolder;
 
+typedef struct CompactCharHolder {
+    bool full;
+    char c;
+} CompactCharHolder;
+
 const size_t MAX_LINE_LEN = 120;
 // if you're typing out a string over multiple lines, reconsider...
 const size_t _MAX_STR_LEN = MAX_LINE_LEN;
-const size_t MAX_STR_LEN = _MAX_STR_LEN + 1;
+const size_t MAX_STR_SZ = _MAX_STR_LEN +1;  // add a byte of space to null-terminate
 
+const cstring HEADER_HEAD = "//#  ";
+const cstring SUBHEADER_HEAD = HEADER_HEAD;
+const char HEADLINE_C = '-';
 const size_t _DIV_LEN = MAX_LINE_LEN;
-const size_t DIV_LEN = _DIV_LEN + 1;  // leave a byte of space to null-terminate
+const size_t DIV_SZ = _DIV_LEN +1;
 const char DIV_C = '=';
-const char SUBDIV_C = '-';
+const char SUBDIV_C = '~';
+const cstring COMMENT_HEAD = "//* ";
 
 // unused non-static globals are fine, since they might be used outside this file...
 // but compiler will warn about unused static variables, since they are unusable outside this file!
@@ -58,9 +64,9 @@ static const char INIT_STATIC_GLOBAL_CONST_CHAR = 'A';
 static char INIT_STATIC_GLOBAL_CHAR = 'B';
 const char INIT_GLOBAL_CONST_CHAR = 'C';
 char INIT_GLOBAL_CHAR = 'D';
+// this is silly, since const's can be assigned a value only at initialization... but OK
 static const char UNINIT_STATIC_GLOBAL_CONST_CHAR;
 static char UNINIT_STATIC_GLOBAL_CHAR;
-// this is silly, since const's can be assigned a value only at initialization...
 const char UNINIT_GLOBAL_CONST_CHAR;
 char UNINIT_GLOBAL_CHAR;
 
@@ -88,28 +94,57 @@ char getTgtOfParamPtr(char* c) {
 }
 
 
-void printDiv() {
-    // in C++, thanks to default args, we could have parametrized `len` and `c`,
-    // while still retaining the convenience of an arg-less call
-    char _div[DIV_LEN];
+void _printDiv(size_t sz, const char c, bool skip_before, bool skip_after) {
+    char _div[sz];
     for (int i = 0; i < sizeof(_div); i++) {
-        _div[i] = DIV_C;
+        _div[i] = c;
     }
-    _div[sizeof(_div) - 1] = '\0';  // null-terminate
-    cstring div = _div;
+    if (skip_before) {
+        _div[0] = '\n';
+    }
+    if (skip_after) {
+        _div[sizeof(_div) -2] = '\n';
+    }
+    _div[sizeof(_div) -1] = '\0';  // null-terminate
+    cstring div = _div;  // not necessary, just to be explicit
     printf("%s\n", div);
 }
 
+void printDiv(bool skip_before, bool skip_after) {
+    _printDiv(DIV_SZ, DIV_C, skip_before, skip_after);
+}
+
 void printSubDiv() {
-    char _div[DIV_LEN];
-    for (int i = 0; i < sizeof(_div); i++) {
-        _div[i] = SUBDIV_C;
+    _printDiv(DIV_SZ, SUBDIV_C, true, true);
+}
+
+void _printHeader(const cstring header, const cstring head) {
+    const size_t sz = strlen(head) + strlen(header) +1;
+    char headline[sz];
+    for (int i = 0; i < sizeof(headline); i++) {
+        headline[i] = HEADLINE_C;
     }
-    _div[0] = '\n';
-    _div[sizeof(_div) - 2] = '\n';
-    _div[sizeof(_div) - 1] = '\0';  // null-terminate
-    cstring div = _div;
-    printf("%s\n", div);
+    headline[sizeof(headline) -1] = '\0';
+
+    printf("%s%s\n%s\n\n", head, header, headline);
+}
+
+void printHeader(const cstring header) {
+    _printHeader(header, HEADER_HEAD);
+}
+
+void printSubHeader(const cstring subheader) {
+    char subheader_[strlen(subheader) +1 +1];
+    strcpy(subheader_, subheader);
+    subheader_[sizeof(subheader_) -2] = ':';
+    subheader_[sizeof(subheader_) -1] = '\0';
+
+    printSubDiv();
+    _printHeader(subheader_, SUBHEADER_HEAD);
+}
+
+void printComment(const cstring comment) {
+    printf("%s%s\n", COMMENT_HEAD, comment);
 }
 
 
@@ -117,14 +152,14 @@ void printSubDiv() {
 ********* POINTER, VALUE, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
-CharHolder* _showPassByPtr(CharHolder* c) {
+CharHolder* _demoPassByPtr(CharHolder* c) {
     printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", c);
     c->c = 'B';  // syntactic sugar for `(*c).c = 'C';`
     printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", c);
     return c;
 }
 
-CharHolder _showPassByVal(CharHolder c) {
+CharHolder _demoPassByVal(CharHolder c) {
     printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", &c);
     c.c = 'b';
     printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", &c);
@@ -135,20 +170,19 @@ CharHolder _showPassByVal(CharHolder c) {
 
 
 void showPassing() {
-    printf(">>> Let's play with passing by value vs pointer.\n");
-    printf("\n");
+    printSubHeader("Let's examine passing by value vs pointer");
 
     const char _c = 'A';
     printf("    Original element:\t\t\t\t\t\t\t'%c'\n", _c);
 
     printf("\n");
 
-    printf(">>> When you pass an object by pointer, it can be mutated:\n");
+    printComment("When you pass an object by pointer, it can be mutated:");
     CharHolder _cp = { .c = _c, .full = true };
     CharHolder* cp = &_cp;
     printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", cp);
     printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cp->c);
-    CharHolder* cp_ = _showPassByPtr(cp);
+    CharHolder* cp_ = _demoPassByPtr(cp);
     printf("    Explicit address of \"input\" object, having been passed by pointer:\t`%p`\n", cp);
     printf("    Element from \"input\" object, having been passed by pointer:\t\t'%c'\n", cp->c);
     printf("    Explicit address of \"output\" object:\t\t\t\t`%p`\n", cp_);
@@ -156,53 +190,24 @@ void showPassing() {
 
     printf("\n");
 
-    printf(">>> When you pass an object by value,\n");
-    printf(">>> at the space+time cost of pass-time copying,\n");
-    printf(">>> it can't be mutated:\n");
+    printComment("When you pass an object by value,");
+    printComment("at the space+time cost of pass-time copying,");
+    printComment("it can't be mutated:");
     CharHolder cv = { .c = _c, .full = true };
     printf("    Implicit address of input object, pre-passing:\t\t\t`%p`\n", &cv);
-    CharHolder cv_ = _showPassByVal(cv);
+    printComment("Notice that the arg value has been COPIED into a new param");
+    printComment("at the top of the called function's stackframe,");
+    printComment("which is as expected lower than this function's stackframe:");
+    CharHolder cv_ = _demoPassByVal(cv);
     printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", &cv);
     printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", cv.c);
+    printComment("Notice that the return value has been COPIED into a new");
+    printComment("local variable in the middle of this function's stackframe,");
+    printComment("which is as expected lower than this function's");
+    printComment("previously-allocated local variable,");
+    printComment("but higher than the called function's stackframe:");
     printf("    Implicit address of \"output\" object:\t\t\t\t`%p`\n", &cv_);
     printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", cv_.c);
-
-    printf("\n");
-
-    printf(">>> ASIDE: Here's a silly anecdote, that happens to\n");
-    printf(">>> illustrate a couple useful things about C's memory management.\n");
-    printf(">>> I had originally (naively) thought that,\n");
-    printf(">>> for the sake of illustration,\n");
-    printf(">>> I had been willing to invoke undefined behavior.\n");
-    printf(">>> A parameter stack variable created inside\n");
-    printf(">>> a called function has automatic lifetime, hence\n");
-    printf(">>> the memory allocated for it is free'd\n");
-    printf(">>> as soon as the function return's.\n");
-    printf(">>> Indeed, the called function's entire stackframe is \"gone\".\n");
-    printf(">>> However, I'm running a very linear single-thread process,\n");
-    printf(">>> so the chance that the memory has been overwritten is slim.\n");
-    printf(">>> The memory is not safe to access,\n");
-    printf(">>> but if I insist on accessing it,\n");
-    printf(">>> it will probably still contain what it used to contain\n");
-    printf(">>> just before the called function return'ed.\n");
-    printf(">>> Or so I thought... it turns out, returning a struct in C\n");
-    printf(">>> is actually no more dangerous than\n");
-    printf(">>> returning a primitive int!\n");
-    printf(">>> To wit, notice that the address of the output struct\n");
-    printf(">>> inside the called function (which was the same as the address\n");
-    printf(">>> of the parameter struct inside the called function,\n");
-    printf(">>> since the input struct passed by value had been\n");
-    printf(">>> copied into the highest address\n");
-    printf(">>> of the called function's stackframe)\n");
-    printf(">>> is different, in particular lower, than\n");
-    printf(">>> the address of the \"output\" struct once returned!\n");
-    printf(">>> When the called function return'ed,\n");
-    printf(">>> the struct it was return'ing was copied onto\n");
-    printf(">>> the calling function's stackframe\n");
-    printf(">>> (and indeed, as expected, copied into a lower address\n");
-    printf(">>> than the local stack variables created by\n");
-    printf(">>> the calling function before it called the called function.\n");
-    printf(">>> So: Very space+time expensive, but also very convenient!\n");
 }
 
 
@@ -248,15 +253,16 @@ void showPassing() {
 */
 
 void showMemLayout() {
-    printf(">>> Let's play with memory layout.\n");
-    printf("\n");
+    printSubHeader("Let's examine memory layout");
 
     ptr_t nullPtr = NULL;
-    printf(">>> ... Notice I will say THE null pointer, meaning that ANY null pointer is located exactly there!\n");
-    printf("Address OF the null pointer, `NULL`: `%p`\n", &nullPtr);
-    printf("Address STORED IN the null pointer, i.e. located at the address just above: `%p`\n", nullPtr);
-    printf("Value POINTED TO BY the null pointer, i.e. located at the address just above:\n");
-    printf(">>> ... I didn't get you, did I? NEVER follow the null pointer!\n");
+    printComment(" ... Notice I will say THE null pointer, meaning");
+    printComment(" that ALL null pointers are identically equal!");
+    printf("    Address OF the null pointer, `NULL`:\t\t\t\t\t\t`%p`\n", &nullPtr);
+    printf("    Address STORED IN the null pointer, i.e. value located at the address just above:\t`%p`\n", nullPtr);
+    printf("    Value POINTED TO BY the null pointer, i.e. value located at the address just above:\t...\n");
+    printComment(" ... Syke! Unless you're willing to risk nasal demons,");
+    printComment(" NEVER follow the null pointer!");
 }
 
 
@@ -386,23 +392,13 @@ void showSz() {
 ***********************************************************************************************************************/
 
 int main() {
-    printf("\n\n");
-    printDiv();
-    printf(">>> Hello world!\n");
-
-    printSubDiv();
-
+    printDiv(true, false);
+    printHeader("Hello world!");
     showPassing();
-
-    printSubDiv();
-
     showMemLayout();
-
     printSubDiv();
-
-    printf(">>> Good luck out there!\n");
-    printDiv();
-    printf("\n\n");
+    printf("\n----------------------------\n//# Good luck out there now!\n");
+    printDiv(false, true);
 
     // silence unused-variable warnings
     (T) INIT_STATIC_GLOBAL_CONST_CHAR;
