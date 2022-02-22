@@ -1,4 +1,4 @@
-.PHONY: cc cppc
+.PHONY: cc cppc mosp
 
 # following the convention of `javac`, `swiftc`, etc
 cc:
