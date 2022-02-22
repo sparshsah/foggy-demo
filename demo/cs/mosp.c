@@ -37,11 +37,11 @@ typedef _null_terminated_char_arr cstring;
 
 typedef struct CharHolder {
     char c;
-    bool full;
+    uint numTimesChanged;
 } CharHolder;
 
 typedef struct CompactCharHolder {
-    bool full;
+    uint numTimesChanged;
     char c;
 } CompactCharHolder;
 
@@ -190,7 +190,7 @@ void showPassing() {
     printf("\n");
 
     printComment("When you pass an object by pointer, it can be mutated:");
-    CharHolder _cp = { .c = _c, .full = true };
+    CharHolder _cp = { .c = _c, .numTimesChanged = 0 };
     CharHolder* cp = &_cp;
     printComment("Notice that all these addresses are the same!");
     //
@@ -234,7 +234,7 @@ void showPassing() {
 
     printComment("When you pass an object by value, at the space+time cost of pass-time copying,");
     printComment("it can't be mutated:");
-    CharHolder cv = { .c = _c, .full = true };
+    CharHolder cv = { .c = _c, .numTimesChanged = true };
     //
     printf("\
     Implicit address of input object, pre-passing:····················································`%p`\n",
