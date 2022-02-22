@@ -548,7 +548,7 @@ void _showStructPad() {
     // this is not the order the struct members were defined, but that's OK!
     CompactS convenient = { .i1 = 42, .sz = 43, .i2 = 44 };
     // silence unused variable warning
-    (T) convenient;
+    (void) convenient;
     printComment("And don't worry, for convenience, you can initialize struct members in any order;");
     printComment("So, it's still perfectly fine to initialize a `CompactS` as");
     printComment("`{ .i1 = 42, .sz = 43, .i2 = 44 }` if that's a logical order for you.");
