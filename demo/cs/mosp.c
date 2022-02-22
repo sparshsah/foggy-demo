@@ -152,22 +152,30 @@ void printComment(const cstring comment) {
 ********* POINTER, VALUE, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
-CharHolder* _demoPassByPtr(CharHolder* c, ptr_t* param_addr, ptr_t* return_addr) {
-    *param_addr = c;
+CharHolder* _demoPassByPtr(CharHolder* c, ptr_t* paramAddr, ptr_t* returnAddr) {
+    *paramAddr = c;
     c->c = 'B';  // syntactic sugar for `(*c).c = 'C';`
-    *return_addr = c;
+    *returnAddr = c;
     return c;
 }
 
-CharHolder _demoPassByVal(CharHolder c, ptr_t* param_addr, ptr_t* return_addr) {
-    *param_addr = &c;
+CharHolder _demoPassByVal(CharHolder c, ptr_t* paramAddr, ptr_t* returnAddr) {
+    *paramAddr = &c;
     c.c = 'b';
-    *return_addr = &c;
+    *returnAddr = &c;
     return c;
 }
 
 // in C++, we'd additionally have the option to pass by reference, sorta the best of both worlds
 
+// TODO(sparshsah): fail w/ arr
+char_arr _demoPassByValFail(char_arr arr, ptr_t* paramAddr, ptr_t* returnAddr) {
+    // precondition: sz(arr) > 0
+    *paramAddr = arr;
+    arr[0] = 'C';
+    *returnAddr = arr;
+    return arr;
+}
 
 void showPassing() {
     printSubHeader("Let's examine passing by value vs pointer");
@@ -182,11 +190,11 @@ void showPassing() {
     CharHolder* cp = &_cp;
     printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", cp);
     printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cp->c);
-    ptr_t param_addr_p = NULL;
-    ptr_t return_addr_p = NULL;
-    CharHolder* cp_ = _demoPassByPtr(cp, &param_addr_p, &return_addr_p);
-    printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", param_addr_p);
-    printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", return_addr_p);
+    ptr_t paramAddrP = NULL;
+    ptr_t returnAddrP = NULL;
+    CharHolder* cp_ = _demoPassByPtr(cp, &paramAddrP, &returnAddrP);
+    printf("    Explicit address of parameter object, INSIDE function:\t\t`%p`\n", paramAddrP);
+    printf("    Explicit address of output object, INSIDE function:\t\t\t`%p`\n", returnAddrP);
     printf("    Explicit address of \"input\" object, having been passed by pointer:\t`%p`\n", cp);
     printf("    Element from \"input\" object, having been passed by pointer:\t\t'%c'\n", cp->c);
     printf("    Explicit address of \"output\" object:\t\t\t\t`%p`\n", cp_);
@@ -199,14 +207,15 @@ void showPassing() {
     printComment("it can't be mutated:");
     CharHolder cv = { .c = _c, .full = true };
     printf("    Implicit address of input object, pre-passing:\t\t\t`%p`\n", &cv);
-    ptr_t param_addr_v = NULL;
-    ptr_t return_addr_v = NULL;
-    CharHolder cv_ = _demoPassByVal(cv, &param_addr_v, &return_addr_v);
+    printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", cv.c);
+    ptr_t paramAddrV = NULL;
+    ptr_t returnAddrV = NULL;
+    CharHolder cv_ = _demoPassByVal(cv, &paramAddrV, &returnAddrV);
     printComment("Notice that the arg value has been COPIED into a new param");
     printComment("at the top of the called function's stackframe,");
     printComment("which is as expected lower than this function's stackframe:");
-    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", param_addr_v);
-    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", return_addr_v);
+    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", paramAddrV);
+    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", returnAddrV);
     printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", &cv);
     printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", cv.c);
     printComment("Notice that the return value has been COPIED into a new");
@@ -216,6 +225,24 @@ void showPassing() {
     printComment("but higher than the called function's stackframe:");
     printf("    Implicit address of \"output\" object:\t\t\t\t`%p`\n", &cv_);
     printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", cv_.c);
+
+    printf("\n");
+
+    printComment("BUT this breaks down for arrays passed by value...");
+    printComment("because remember, the \"value\" of an array");
+    printComment("IS a pointer to its head element!");
+    char c[1] = { _c };
+    printf("    Explicit address of input object, pre-passing:\t\t\t`%p`\n", c);
+    printf("    Element from input object, pre-passing:\t\t\t\t'%c'\n", c[0]);
+    ptr_t paramAddr = NULL;
+    ptr_t returnAddr = NULL;
+    char_arr c_ = _demoPassByValFail(c, &paramAddr, &returnAddr);
+    printf("    Implicit address of parameter object, INSIDE function:\t\t`%p`\n", paramAddr);
+    printf("    Implicit address of output object, INSIDE function:\t\t\t`%p`\n", returnAddr);
+    printf("    Implicit address of \"input\" object, having been passed by value:\t`%p`\n", c);
+    printf("    Element from \"input\" object, having been passed by value:\t\t'%c'\n", c[0]);
+    printf("    Implicit address of \"output\" object:\t\t\t\t`%p`\n", c_);
+    printf("    Element from \"output\" object:\t\t\t\t\t'%c'\n", c_[0]);
 }
 
 
@@ -304,31 +331,20 @@ size_t _getSzElt(int elt) {
 }
 
 void showSzElt() {
-    print(">>> For a primitive type, sizeof is the same whether you're here or passed.");
+    printComment("For a primitive type, sizeof is the same whether you're here or passed:");
 
     int elt = 42;
-    print("Element: " + std::to_string(elt));
+    printf("Element: %i\n", elt);
 
     size_t szEltHere = sizeof(elt);
     size_t szEltPassed = _getSzElt(elt);
-    print("Size of element, here: " + std::to_string(szEltHere));
-    print("Size of element, passed: " + std::to_string(szEltPassed));
+    printf("Size of element, here: %u\n" + szEltHere);
+    printf("Size of element, passed: %u\n" + szEltPassed);
 }
 
 
-size_t _getSzArrPassedAsPtr(int* arrPassedAsPtr, bool noisy = true) {
-    if (noisy) {
-        print(">>> I'm about to calculate the size of this array passed as a pointer: ");
-        print(arrPassedAsPtr);
-    }
-    return sizeof(arrPassedAsPtr);
-}
-
-size_t _getSzArrPassedAsArr(int arrPassedAsArr[], bool noisy = true) {
-    if (noisy) {
-        print(">>> I'm about to calculate the size of this array passed as an array: ");
-        print(arrPassedAsArr);
-    }
+size_t _getSzArr(int arrPassedAsArr[], ptr_t* paramAddr) {
+    *paramAddr = arrPassedAsArr;
     return sizeof(arrPassedAsArr);
 }
 
@@ -382,6 +398,7 @@ void showSzArr() {
 
 
 void showSz() {
+    printSubHeader("Let's examine object sizing");
     showSzElt();
     print();
     showSzArr();
