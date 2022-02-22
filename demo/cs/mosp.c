@@ -619,7 +619,7 @@ size_t _getSzElt(int elt) {
     return sizeof(elt);
 }
 
-void showSzElt() {
+void _showSzElt() {
     printComment("For a primitive type, sizeof is the same whether you're here or passed:");
 
     int elt = 42;
@@ -637,7 +637,7 @@ size_t _getSzArr(int arrPassedAsArr[], ptr_t* paramAddr) {
     return sizeof(arrPassedAsArr);
 }
 
-void showSzArr() {
+void _showSzArr() {
     print(">>> For an array, sizeof needs to be handled very mindfully!");
 
     int headElt = 314;
