@@ -231,8 +231,7 @@ void showPassing() {
 
     printf("\n");
 
-    printComment("When you pass an object by value,");
-    printComment("at the space+time cost of pass-time copying,");
+    printComment("When you pass an object by value, at the space+time cost of pass-time copying,");
     printComment("it can't be mutated:");
     CharHolder cv = { .c = _c, .full = true };
     //
@@ -267,10 +266,9 @@ void showPassing() {
     Element from \"input\" object, having been passed by value:·········································'%c'\n",
     cv.c);
     //
-    printComment("Notice that the return value has been COPIED into a new");
-    printComment("local variable in the middle of this function's stackframe,");
-    printComment("which is as expected lower than this function's");
-    printComment("previously-allocated local variable,");
+    printComment("Notice that the return value has been COPIED into a new local variable");
+    printComment("in the middle of this function's stackframe,");
+    printComment("which is as expected lower than this function's previously-allocated local variable,");
     printComment("but higher than the called function's stackframe:");
     //
     printf("\
@@ -283,9 +281,8 @@ void showPassing() {
 
     printf("\n");
 
-    printComment("BUT this breaks down for arrays passed by value...");
-    printComment("because remember, the \"value\" of an array");
-    printComment("IS a pointer to its head element!");
+    printComment("BUT this breaks down for arrays passed by value... because remember,");
+    printComment("the \"value\" of an array IS a pointer to its head element!");
     char c[1] = { _c };
     //
     printf("\
@@ -339,7 +336,7 @@ void showPassing() {
 ·                                                            |
 ----------- KERNEL SPACE ------------------------------------↑
 ----------- USER   SPACE ------------------------------------↓
-                               HEAP                          |
+                               STACK                         |
                                ↓                             |
                                ↓                             |
                                ↓                             |
@@ -351,7 +348,7 @@ void showPassing() {
                                ↑                             |
                                ↑                             |
                                ↑                             |
-                               STACK                         |
+                               HEAP                          |
                                -------------------------------
                                ···                           |
                                UNINITIALIZED GLOBALS ("BSS") |
@@ -370,9 +367,10 @@ void showPassing() {
 void showMemLayout() {
     printSubHeader("Let's examine memory layout");
 
+    printComment("Very lowest address: `NULL`\n");
+
     ptr_t nullPtr = NULL;
-    printComment("Notice I will say THE null pointer, meaning");
-    printComment("that ALL null pointers are identically equal!");
+    printComment("Notice I will say THE null pointer, meaning that ALL null pointers are identically equal!");
     //
     printf("\
     Address OF the null pointer, `NULL`:······························································`%p`\n",
@@ -388,6 +386,85 @@ void showMemLayout() {
     );
     //
     printComment("Syke! NEVER follow the null pointer!");
+
+    printf("\n");
+
+    printComment("Lowest addresses: Initialized globals (\"Data\")\n");
+
+    printf("\
+    Address OF an initialized static global constant char:············································`%p`\n",
+    &INIT_STATIC_GLOBAL_CONST_CHAR);
+    //
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    INIT_STATIC_GLOBAL_CONST_CHAR);
+
+    printf("\n");
+
+    printf("\
+    Address OF an initialized static global char:·····················································`%p`\n",
+    &INIT_STATIC_GLOBAL_CHAR);
+    //
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    INIT_STATIC_GLOBAL_CHAR);
+
+    printf("\n");
+
+    printf("\
+    Address OF an initialized global constant char:···················································`%p`\n",
+    &INIT_GLOBAL_CONST_CHAR);
+    //
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    INIT_GLOBAL_CONST_CHAR);
+
+    printf("\n");
+
+    printf("\
+    Address OF an initialized global char:····························································`%p`\n",
+    &INIT_GLOBAL_CHAR);
+    //
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:······················`%c`\n",
+    INIT_GLOBAL_CHAR);
+
+    printf("\n");
+
+    printComment("Low addresses: Uninitialized globals (\"BSS\")");
+    printComment("(Possibly slipping a bit into lowEST addresses based on modifiers)\n");
+
+    printf("\
+    Address OF an uninitialized static global constant char:··········································`%p`\n",
+    &UNINIT_STATIC_GLOBAL_CONST_CHAR);
+
+    printf("\n");
+
+    printf("\
+    Address OF an uninitialized static global char:···················································`%p`\n",
+    &UNINIT_STATIC_GLOBAL_CHAR);
+
+    printf("\n");
+
+    printf("\
+    Address OF an uninitialized global constant char:·················································`%p`\n",
+    &UNINIT_GLOBAL_CONST_CHAR);
+
+    printf("\n");
+
+    printf("\
+    Address OF an uninitialized global char:··························································`%p`\n",
+    &UNINIT_GLOBAL_CHAR);
+
+    printf("\n");
+
+    printComment("Mid addresses (growing upward): Heap");
+    printComment("(\"Dynamically-allocated, dynamic-lifetime variables\")\n");
+
+    printf("\n");
+
+    printComment("High addresses (growing downward): Stack");
+    printComment("(\"Automatically-allocated, automatic-lifetime local variables\")\n");
 }
 
 
@@ -514,11 +591,5 @@ int main() {
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
     printDiv(false, true);
-
-    // silence unused-variable warnings
-    (T) INIT_STATIC_GLOBAL_CONST_CHAR;
-    (T) INIT_STATIC_GLOBAL_CHAR;
-    (T) UNINIT_STATIC_GLOBAL_CONST_CHAR;
-    (T) UNINIT_STATIC_GLOBAL_CHAR;
     return 0;
 }
