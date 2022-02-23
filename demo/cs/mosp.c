@@ -375,47 +375,15 @@ void showPassing() {
 void showMemLayout() {
     printSubHeader("Let's examine memory layout");
 
-    printComment("`NULL`, the null pointer: Very lowest address\n");
-
-    ptr_t nullPtr = NULL;
-    printComment("We know an array variable `arr` is really just a pointer,");
-    printComment("let's say `0x7ff7bcb637c6`.");
-    printComment("`arr` is NOT the value stored AT the address `0x7ff7bcb637c6`,");
-    printComment("but rather the address itself.");
-    printComment("`arr` tells you, if you want to find your array,");
-    printComment("look in memory at the address `0x7ff7bcb637c6`.");
-    printComment("And the value stored at that address is your array's");
-    printComment("head element, maybe 'A' or `true` or `42`.");
-    printComment("Similarly, then, `NULL` is a pointer whose value is `0x0`.");
-    printComment("It's not the value stored AT that address; It's just the address itself.");
-    printComment("Now, the information that `arr is 0x7ff7bcb637c6`");
-    printComment("must also be stored somewhere: We need to dedicate some memory,");
-    printComment("call it `arr`, and store the value `0x7ff7bcb637c6` in it.");
-    printComment("Similarly, the information that `NULL is 0x0` has an address.");
-    //
+    printComment("\"Null\" is a name for the very lowest address: `0x0`,");
+    printComment("and `NULL` (the null pointer, AKA `(void*)0`), points there.");
+    printComment("A pointer that wants to be literally nothing must settle for being `NULL` (all 0's).");
+    printComment("Following the null pointer (dereferencing `NULL`) invokes undefined behavior.");
+    printComment("Null is like the black hole at the center of the Milky Way:");
+    printComment("You don't know what's in there, and it could be nasal demons.");
     printf("\
-    Fun fact: On your machine, during this run, here's the address of `NULL`:························`%p`\n",
-    &nullPtr);
-    //
-    printf("\
-    Of course, address STORED IN `NULL`, i.e. value located at the address just above:···············`%p`\n",
-    nullPtr);
-    //
-    printf("\
-    And value POINTED TO BY `NULL`, i.e. value located at the address just above:····················%s\n",
-    "__NASALDEMONS!__"
-    );
-    //
-    printComment("Syke! NEVER follow the null pointer!");
-    printComment("We've named the address `0x0` `NULL`, and it's safe to use its name.");
-    printComment("But the value stored AT the address `0x0` is dangerous garbage!");
-    printComment("Just like we've named the point `51.2763°N 30.2219°E` \"Chernobyl\".");
-    printComment("So if you were filling out your taxes and you forgot your address,");
-    printComment("you might write \"Chernobyl\", just as an obvious placeholder");
-    printComment("until you had a chance to fill it in.");
-    printComment("But the stuff stored IN the location `51.2763°N 30.2219°E` is dangerous garbage...");
-    printComment("Never go there!");
-    printComment("Disclaimer: This document is not to be interpreted as tax advice.");
+    Value of `NULL`:·················································································`%p`\n",
+    NULL);
 
     printf("\n");
 
