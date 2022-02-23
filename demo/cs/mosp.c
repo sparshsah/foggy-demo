@@ -375,7 +375,7 @@ void showPassing() {
 void showMemLayout() {
     printSubHeader("Let's examine memory layout");
 
-    printComment("Very lowest address: `NULL`\n");
+    printComment("`NULL`: Very lowest address\n");
 
     ptr_t nullPtr = NULL;
     printComment("Notice I will say THE null pointer, meaning that ALL null pointers are identically equal!");
@@ -397,7 +397,8 @@ void showMemLayout() {
 
     printf("\n");
 
-    printComment("Lowest addresses: Static-lifetime, initialized globals (\"Data\")\n");
+    printComment("Data: Static-lifetime, initialized globals");
+    printComment("Lowest addresses\n");
 
     printf("\
     Address OF an initialized static global constant char:···········································`%p`\n",
@@ -439,8 +440,8 @@ void showMemLayout() {
 
     printf("\n");
 
-    printComment("Low addresses: Static-lifetime, uninitialized globals (\"BSS\")");
-    printComment("(Possibly slipping a bit into lowEST addresses based on modifiers)\n");
+    printComment("BSS: Static-lifetime, uninitialized globals");
+    printComment("Low addresses, possibly slipping a bit into lowEST addresses based on modifiers\n");
 
     printf("\
     Address OF an uninitialized static global constant char:·········································`%p`\n",
@@ -466,8 +467,8 @@ void showMemLayout() {
 
     printf("\n");
 
-    printComment("Mid addresses (growing upward): Heap");
-    printComment("(\"Dynamically-allocated, dynamic-lifetime variables\")\n");
+    printComment("Heap: Dynamically-allocated, dynamic-lifetime variables");
+    printComment("Mid addresses, growing upward\n");
 
     char* c0 = (char*)calloc(1, sizeof(char));
     char* c1 = (char*)calloc(1, sizeof(char));
@@ -483,8 +484,8 @@ void showMemLayout() {
 
     printf("\n");
 
-    printComment("High addresses (growing downward): Stack");
-    printComment("(\"Automatically-allocated, automatic-lifetime param and/or local variables\")\n");
+    printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
+    printComment("High addresses, growing downward\n");
 
     char d0[1];
     char d1[1];
@@ -704,6 +705,5 @@ int main() {
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
     printDiv(false, true);
-    //
     return 0;
 }
