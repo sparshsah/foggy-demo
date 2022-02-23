@@ -359,13 +359,13 @@ void showPassing() {
                                HEAP                          |
                                -------------------------------
                                ···                           |
-                               UNINITIALIZED GLOBALS ("BSS") |
+                               "BSS" (UNINITIALIZED GLOBALS) |
                                -------------------------------
                                ···                           |
-                               INITIALIZED GLOBALS ("DATA")  |
+                               "DATA" (INITIALIZED GLOBALS)  |
                                -------------------------------
                                ···                           |
-                               CODE ("TEXT")                 |
+                               "TEXT" (CODE)                 |
                                -------------------------------
 0x00000000: "Low addresses" :  NULL                          |
 [------------------------------------------------------------/
