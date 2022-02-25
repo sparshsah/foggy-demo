@@ -489,12 +489,17 @@ void showMemLayout() {
 
     char d0[1];
     char d1[1];
+    char d2[1];
     printf("\
     Address of my 1st local char array:······························································`%p`\n",
     d0);
-     printf("\
+    printf("\
     Address of my 2nd local char array:······························································`%p`\n",
     d1);
+    printf("\
+    Address of my 3rd local char array:······························································`%p`\n",
+    d2);
+    // no need to free, they are automatic-lifetime!
 }
 
 
