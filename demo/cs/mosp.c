@@ -387,6 +387,7 @@ void showMemLayout() {
 
     printf("\n");
 
+
     printComment("Data: Static-lifetime, initialized globals");
     printComment("Lowest addresses\n");
 
@@ -430,6 +431,7 @@ void showMemLayout() {
 
     printf("\n");
 
+
     printComment("BSS: Static-lifetime, uninitialized globals");
     printComment("Low addresses, possibly slipping a bit into lowEST addresses based on modifiers\n");
 
@@ -460,6 +462,7 @@ void showMemLayout() {
     printComment("Heap: Dynamically-allocated, dynamic-lifetime variables");
     printComment("Mid addresses, growing upward\n");
 
+
     char* c0 = (char*)calloc(1, sizeof(char));
     char* c1 = (char*)calloc(1, sizeof(char));
     printf("\
@@ -473,6 +476,7 @@ void showMemLayout() {
     free(c1);
 
     printf("\n");
+
 
     printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
     printComment("High addresses, growing downward\n");
