@@ -422,19 +422,16 @@ void showMemLayout() {
     printf("\n");
     //
     printf("\
-    Address OF an uninitialized global char:·························································`%p`\n",
+    Address of an uninitialized global char:·························································`%p`\n",
     &UNINIT_GLOBAL_CHAR);
-    printf("\n");
     printf("\
-    Address OF an uninitialized static global char:··················································`%p`\n",
+    Address of an uninitialized static global char:··················································`%p`\n",
     &UNINIT_STATIC_GLOBAL_CHAR);
-    printf("\n");
     printf("\
-    Address OF an uninitialized global constant char:················································`%p`\n",
+    Address of an uninitialized global constant char:················································`%p`\n",
     &UNINIT_GLOBAL_CONST_CHAR);
-    printf("\n");
     printf("\
-    Address OF an uninitialized static global constant char:·········································`%p`\n",
+    Address of an uninitialized static global constant char:·········································`%p`\n",
     &UNINIT_STATIC_GLOBAL_CONST_CHAR);
     printf("\n");
 
@@ -442,7 +439,7 @@ void showMemLayout() {
     printf("\n");
     //
     printf("\
-    Address OF an initialized global char:···························································`%p`\n",
+    Address of an initialized global char:···························································`%p`\n",
     &INIT_GLOBAL_CHAR);
     printf("\
     Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
@@ -450,7 +447,7 @@ void showMemLayout() {
     printf("\n");
     //
     printf("\
-    Address OF an initialized global constant char:··················································`%p`\n",
+    Address of an initialized global constant char:··················································`%p`\n",
     &INIT_GLOBAL_CONST_CHAR);
     printf("\
     Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
@@ -458,7 +455,7 @@ void showMemLayout() {
     printf("\n");
     //
     printf("\
-    Address OF an initialized static global char:····················································`%p`\n",
+    Address of an initialized static global char:····················································`%p`\n",
     &INIT_STATIC_GLOBAL_CHAR);
     printf("\
     Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
@@ -466,7 +463,7 @@ void showMemLayout() {
     printf("\n");
     //
     printf("\
-    Address OF an initialized static global constant char:···········································`%p`\n",
+    Address of an initialized static global constant char:···········································`%p`\n",
     &INIT_STATIC_GLOBAL_CONST_CHAR);
     printf("\
     Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
