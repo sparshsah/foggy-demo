@@ -466,11 +466,11 @@ void showMemLayout() {
     char* c0 = (char*)calloc(1, sizeof(char));
     char* c1 = (char*)calloc(1, sizeof(char));
     printf("\
-    Address of my 1st calloc'ed char array:··························································`%p`\n",
-    c0);
-    printf("\
     Address of my 2nd calloc'ed char array:··························································`%p`\n",
     c1);
+    printf("\
+    Address of my 1st calloc'ed char array:··························································`%p`\n",
+    c0);
     // don't leak memory!
     free(c0);
     free(c1);
