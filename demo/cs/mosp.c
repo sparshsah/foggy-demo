@@ -375,6 +375,25 @@ void showPassing() {
 void showMemLayout() {
     printSubHeader("Let's examine memory layout");
 
+    printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
+    printComment("High addresses, growing downward\n");
+
+    char d0[1];
+    char d1[1];
+    char d2[1];
+    printf("\
+    Address of my 1st local char array:······························································`%p`\n",
+    d0);
+    printf("\
+    Address of my 2nd local char array:······························································`%p`\n",
+    d1);
+    printf("\
+    Address of my 3rd local char array:······························································`%p`\n",
+    d2);
+    // no need to free, they are automatic-lifetime!
+
+    printf("\n");
+
     printComment("\"Null\" is a name for the very lowest address: `0x0`,");
     printComment("and `NULL` (the null pointer, AKA `(void*)0`), points there.");
     printComment("A pointer that wants to be literally nothing must settle for being `NULL` (all 0's).");
@@ -481,25 +500,7 @@ void showMemLayout() {
     free(c1);
     free(c0);
 
-    printf("\n");
 
-
-    printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
-    printComment("High addresses, growing downward\n");
-
-    char d0[1];
-    char d1[1];
-    char d2[1];
-    printf("\
-    Address of my 1st local char array:······························································`%p`\n",
-    d0);
-    printf("\
-    Address of my 2nd local char array:······························································`%p`\n",
-    d1);
-    printf("\
-    Address of my 3rd local char array:······························································`%p`\n",
-    d2);
-    // no need to free, they are automatic-lifetime!
 }
 
 
