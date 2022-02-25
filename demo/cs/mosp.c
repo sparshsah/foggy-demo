@@ -591,7 +591,7 @@ void showPtrArith() {
     You might expect `p0 +1` to be equivalent to `(lu)p0 +1`, i.e.···································`%lu`\n",
     p0AsNumIncr);
     printComment("But the C compiler knows that if you're incrementing a T*,");
-    printComment("T* is probably a pointer to a T array, therefore it servicefully");
+    printComment("then the T* is probably a pointer to a T array, therefore it servicefully");
     printComment("increments the numerical value of the pointer by `sizeof(T)`.");
 }
 
