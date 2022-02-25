@@ -688,6 +688,7 @@ int main() {
     showMemLayout();
     showPtrAlign();
     showPtrArith();
+    showSz();
     //
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
