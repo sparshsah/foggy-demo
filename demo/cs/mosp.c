@@ -521,7 +521,7 @@ void _showStructPad() {
 
     printf("\n");
 
-    printComment("Here's an example of a more mindfule struct `CompactS`:");
+    printComment("Here's an example of a more mindful struct `CompactS`:");
     printComment("{ int (4 bytes), int (4 bytes), size_t (8 bytes) },");
     printComment("which will be laid out in memory as");
     printComment("········  |  (iiii)(iiii)  |  (uuuuuuuu)  |  ········,");
