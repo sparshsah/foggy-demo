@@ -434,8 +434,8 @@ void showMemLayout() {
     printComment("Low addresses, possibly slipping a bit into lowEST addresses based on modifiers\n");
 
     printf("\
-    Address OF an uninitialized static global constant char:·········································`%p`\n",
-    &UNINIT_STATIC_GLOBAL_CONST_CHAR);
+    Address OF an uninitialized global char:·························································`%p`\n",
+    &UNINIT_GLOBAL_CHAR);
 
     printf("\n");
 
@@ -452,8 +452,8 @@ void showMemLayout() {
     printf("\n");
 
     printf("\
-    Address OF an uninitialized global char:·························································`%p`\n",
-    &UNINIT_GLOBAL_CHAR);
+    Address OF an uninitialized static global constant char:·········································`%p`\n",
+    &UNINIT_STATIC_GLOBAL_CONST_CHAR);
 
     printf("\n");
 
