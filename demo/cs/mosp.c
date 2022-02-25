@@ -377,7 +377,7 @@ void showMemLayout() {
     printComment("Kernel space: Highest addresses (above user space)");
     printf("\n");
 
-    printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
+    printComment("Stack (Automatically-allocated, automatic-lifetime param and/or local variables):");
     printComment("High addresses, growing downward");
     printf("\n");
     //
@@ -396,8 +396,7 @@ void showMemLayout() {
     // no need to free, they are automatic-lifetime!
     printf("\n");
 
-    printComment("Heap: Dynamically-allocated, dynamic-lifetime variables");
-    printComment("Mid addresses, growing upward");
+    printComment("Heap (Dynamically-allocated, dynamic-lifetime variables): Mid addresses, growing upward");
     printf("\n");
     //
     char_arr c0 = (char*)calloc(1, sizeof(char));
@@ -419,8 +418,7 @@ void showMemLayout() {
     free(c0);
     printf("\n");
 
-    printComment("BSS: Static-lifetime, uninitialized globals");
-    printComment("Low addresses");
+    printComment("BSS (Static-lifetime, uninitialized globals): Low addresses");
     printf("\n");
     //
     printf("\
@@ -440,8 +438,7 @@ void showMemLayout() {
     &UNINIT_STATIC_GLOBAL_CONST_CHAR);
     printf("\n");
 
-    printComment("Data: Static-lifetime, initialized globals");
-    printComment("Very low addresses");
+    printComment("Data (Static-lifetime, initialized globals): Very low addresses");
     printf("\n");
     //
     printf("\
