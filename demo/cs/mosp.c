@@ -512,7 +512,7 @@ void _showStructPad() {
     printComment("Here's an example of a wasteful struct `S`:");
     printComment("{ int (4 bytes), size_t (8 bytes), int (4 bytes) },");
     printComment("which will be laid out in memory as");
-    printComment("········ iiii____ uuuuuuuu iiii____ ········,");
+    printComment("········  |  (iiii)____  |  (uuuuuuuu)  |  (iiii)____  |  ········,");
     printComment("requiring 4 bytes of padding in the middle and at the end,");
     printComment("ending up spanning 3 full words.");
     printf("\
@@ -524,7 +524,7 @@ void _showStructPad() {
     printComment("Here's an example of a more mindfule struct `CompactS`:");
     printComment("{ int (4 bytes), int (4 bytes), size_t (8 bytes) },");
     printComment("which will be laid out in memory as");
-    printComment("········ iiiiiiii uuuuuuuu ········,");
+    printComment("········  |  (iiii)(iiii)  |  (uuuuuuuu)  |  ········,");
     printComment("requiring no padding,");
     printComment("ending up spanning only 2 fully-used words.");
     printf("\
