@@ -239,8 +239,7 @@ void showPassing() {
 
     printf("\n");
 
-    printComment("When you pass an object by value, at the space+time cost of pass-time copying,");
-    printComment("it can't be mutated:");
+    printComment("When you pass an object by value, at space+time cost of copying, it can't be mutated:");
     CharHolder cv = { .c = _c, .numTimesChanged = 1 };
     //
     printf("\
