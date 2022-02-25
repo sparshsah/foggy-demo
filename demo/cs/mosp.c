@@ -374,8 +374,13 @@ void showPassing() {
 void showMemLayout() {
     printSubHeader("Let's examine memory layout");
 
+    printComment("Kernel space: Highest addresses (above user space)");
+    printf("\n");
+
     printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
-    printComment("High addresses, growing downward\n");
+    printComment("High addresses, growing downward");
+    printf("\n");
+    //
     char d0[1];
     char d1[1];
     char d2[1];
@@ -392,7 +397,9 @@ void showMemLayout() {
     printf("\n");
 
     printComment("Heap: Dynamically-allocated, dynamic-lifetime variables");
-    printComment("Mid addresses, growing upward\n");
+    printComment("Mid addresses, growing upward");
+    printf("\n");
+    //
     char_arr c0 = (char*)calloc(1, sizeof(char));
     char_arr c1 = (char*)calloc(1, sizeof(char));
     char_arr c2 = (char*)calloc(1, sizeof(char));
@@ -413,7 +420,9 @@ void showMemLayout() {
     printf("\n");
 
     printComment("BSS: Static-lifetime, uninitialized globals");
-    printComment("Low addresses\n");
+    printComment("Low addresses");
+    printf("\n");
+    //
     printf("\
     Address OF an uninitialized global char:·························································`%p`\n",
     &UNINIT_GLOBAL_CHAR);
@@ -432,7 +441,8 @@ void showMemLayout() {
     printf("\n");
 
     printComment("Data: Static-lifetime, initialized globals");
-    printComment("Very low addresses\n");
+    printComment("Very low addresses");
+    printf("\n");
     //
     printf("\
     Address OF an initialized global char:···························································`%p`\n",
