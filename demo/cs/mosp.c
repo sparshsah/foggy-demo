@@ -377,7 +377,6 @@ void showMemLayout() {
 
     printComment("Stack: Automatically-allocated, automatic-lifetime param and/or local variables");
     printComment("High addresses, growing downward\n");
-
     char d0[1];
     char d1[1];
     char d2[1];
@@ -391,97 +390,10 @@ void showMemLayout() {
     Address of my 3rd local char array:······························································`%p`\n",
     d2);
     // no need to free, they are automatic-lifetime!
-
     printf("\n");
-
-    printComment("\"Null\" is a name for the very lowest address: `0x0`,");
-    printComment("and `NULL` (the null pointer, AKA `(void*)0`), points there.");
-    printComment("A pointer that wants to be literally nothing must settle for being `NULL` (all 0's).");
-    printComment("Following the null pointer (dereferencing `NULL`) invokes undefined behavior.");
-    printComment("Null is like the black hole at the center of the Milky Way:");
-    printComment("You don't know what's in there, and it could be nasal demons.");
-    printf("\
-    Value of `NULL`:·················································································`%p`\n",
-    NULL);
-
-    printf("\n");
-
-
-    printComment("Data: Static-lifetime, initialized globals");
-    printComment("Lowest addresses\n");
-
-    printf("\
-    Address OF an initialized global char:···························································`%p`\n",
-    &INIT_GLOBAL_CHAR);
-    //
-    printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
-    INIT_GLOBAL_CHAR);
-
-    printf("\n");
-
-    printf("\
-    Address OF an initialized global constant char:··················································`%p`\n",
-    &INIT_GLOBAL_CONST_CHAR);
-    //
-    printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
-    INIT_GLOBAL_CONST_CHAR);
-
-    printf("\n");
-
-    printf("\
-    Address OF an initialized static global char:····················································`%p`\n",
-    &INIT_STATIC_GLOBAL_CHAR);
-    //
-    printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
-    INIT_STATIC_GLOBAL_CHAR);
-
-    printf("\n");
-
-    printf("\
-    Address OF an initialized static global constant char:···········································`%p`\n",
-    &INIT_STATIC_GLOBAL_CONST_CHAR);
-    //
-    printf("\
-    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
-    INIT_STATIC_GLOBAL_CONST_CHAR);
-
-    printf("\n");
-
-
-    printComment("BSS: Static-lifetime, uninitialized globals");
-    printComment("Low addresses, possibly slipping a bit into lowEST addresses based on modifiers\n");
-
-    printf("\
-    Address OF an uninitialized global char:·························································`%p`\n",
-    &UNINIT_GLOBAL_CHAR);
-
-    printf("\n");
-
-    printf("\
-    Address OF an uninitialized static global char:··················································`%p`\n",
-    &UNINIT_STATIC_GLOBAL_CHAR);
-
-    printf("\n");
-
-    printf("\
-    Address OF an uninitialized global constant char:················································`%p`\n",
-    &UNINIT_GLOBAL_CONST_CHAR);
-
-    printf("\n");
-
-    printf("\
-    Address OF an uninitialized static global constant char:·········································`%p`\n",
-    &UNINIT_STATIC_GLOBAL_CONST_CHAR);
-
-    printf("\n");
-
 
     printComment("Heap: Dynamically-allocated, dynamic-lifetime variables");
     printComment("Mid addresses, growing upward\n");
-
     char_arr c0 = (char*)calloc(1, sizeof(char));
     char_arr c1 = (char*)calloc(1, sizeof(char));
     char_arr c2 = (char*)calloc(1, sizeof(char));
@@ -499,8 +411,74 @@ void showMemLayout() {
     free(c2);
     free(c1);
     free(c0);
+    printf("\n");
 
+    printComment("BSS: Static-lifetime, uninitialized globals");
+    printComment("Low addresses\n");
+    printf("\
+    Address OF an uninitialized global char:·························································`%p`\n",
+    &UNINIT_GLOBAL_CHAR);
+    printf("\n");
+    printf("\
+    Address OF an uninitialized static global char:··················································`%p`\n",
+    &UNINIT_STATIC_GLOBAL_CHAR);
+    printf("\n");
+    printf("\
+    Address OF an uninitialized global constant char:················································`%p`\n",
+    &UNINIT_GLOBAL_CONST_CHAR);
+    printf("\n");
+    printf("\
+    Address OF an uninitialized static global constant char:·········································`%p`\n",
+    &UNINIT_STATIC_GLOBAL_CONST_CHAR);
+    printf("\n");
 
+    printComment("Data: Static-lifetime, initialized globals");
+    printComment("Very low addresses\n");
+    //
+    printf("\
+    Address OF an initialized global char:···························································`%p`\n",
+    &INIT_GLOBAL_CHAR);
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
+    INIT_GLOBAL_CHAR);
+    printf("\n");
+    //
+    printf("\
+    Address OF an initialized global constant char:··················································`%p`\n",
+    &INIT_GLOBAL_CONST_CHAR);
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
+    INIT_GLOBAL_CONST_CHAR);
+    printf("\n");
+    //
+    printf("\
+    Address OF an initialized static global char:····················································`%p`\n",
+    &INIT_STATIC_GLOBAL_CHAR);
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
+    INIT_STATIC_GLOBAL_CHAR);
+    printf("\n");
+    //
+    printf("\
+    Address OF an initialized static global constant char:···········································`%p`\n",
+    &INIT_STATIC_GLOBAL_CONST_CHAR);
+    printf("\
+    Value STORED IN that variable, i.e. value located at the address just above:·····················`%c`\n",
+    INIT_STATIC_GLOBAL_CONST_CHAR);
+    printf("\n");
+
+    printComment("Text (Code): Lowest addresses");
+    printf("\n");
+
+    printComment("\"Null\" is a name for the very lowest address: `0x0`,");
+    printComment("and `NULL` (the null pointer, AKA `(void*)0`), points there.");
+    printComment("A pointer that wants to be literally nothing must settle for being `NULL` (all 0's).");
+    printComment("Following the null pointer (dereferencing `NULL`) invokes undefined behavior.");
+    printComment("Null is like the black hole at the center of the Milky Way:");
+    printComment("You don't know what's in there, and it could be nasal demons.");
+    printf("\
+    Value of `NULL`:·················································································`%p`\n",
+    NULL);
 }
 
 
