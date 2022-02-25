@@ -682,7 +682,7 @@ void showSz() {
 
 int main() {
     printDiv(true, false);
-    printHeader("Hello world!");
+    printHeader("MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE FIELD GUIDE");
     //
     showPassing();
     showMemLayout();
