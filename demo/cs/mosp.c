@@ -459,12 +459,17 @@ void showMemLayout() {
 
     printf("\n");
 
+
     printComment("Heap: Dynamically-allocated, dynamic-lifetime variables");
     printComment("Mid addresses, growing upward\n");
 
-
-    char* c0 = (char*)calloc(1, sizeof(char));
-    char* c1 = (char*)calloc(1, sizeof(char));
+    char_arr c0 = (char*)calloc(1, sizeof(char));
+    char_arr c1 = (char*)calloc(1, sizeof(char));
+    char_arr c2 = (char*)calloc(1, sizeof(char));
+    // remember, the value of an array IS the pointer to its head element!
+    printf("\
+    Address of my 3rd calloc'ed char array:··························································`%p`\n",
+    c2);
     printf("\
     Address of my 2nd calloc'ed char array:··························································`%p`\n",
     c1);
@@ -472,8 +477,9 @@ void showMemLayout() {
     Address of my 1st calloc'ed char array:··························································`%p`\n",
     c0);
     // don't leak memory!
-    free(c0);
+    free(c2);
     free(c1);
+    free(c0);
 
     printf("\n");
 
