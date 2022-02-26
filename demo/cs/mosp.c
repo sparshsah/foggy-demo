@@ -80,6 +80,24 @@ static char UNINIT_STATIC_GLOBAL_CHAR;
 const char UNINIT_GLOBAL_CONST_CHAR;
 char UNINIT_GLOBAL_CHAR;
 
+int main();
+
+
+char fun(char c) {
+    printf("calleD: Hello :) The character I got was '%c'.\n", c);
+    char c_ = c+1;
+    printf("calleD: The character I'm handing back is '%c'.\n", c_);
+    return c_;
+}
+
+void runFuncThatTakesASingleCharAndReturnsASingleChar( char(*f)(char) ) {
+    char c = 'X';
+    printf("calleR: Hi! The character I'm handing you is '%c'.\n", c);
+    char c_ = (*f)(c);
+    printf("calleR: Roger. The character I got back was '%c'.\n", c_);
+}
+
+
 ptr_t getAddrOfParamVal(char c) {
     ptr_t addr = &c;
     return addr;
@@ -155,20 +173,6 @@ void printSubHeader(const cstring subheader) {
 
 void printComment(const cstring comment) {
     printf("%s%s\n", COMMENT_HEAD, comment);
-}
-
-char _anonDummy(char c) {
-    printf("calleD: Hello :) The character I got was '%c'.\n", c);
-    char c_ = c+1;
-    printf("calleD: The character I'm handing back is '%c'.\n", c_);
-    return c_;
-}
-
-void runFuncThatTakesASingleCharAndReturnsASingleChar( char(*f)(char) ) {
-    char c = 'X';
-    printf("calleR: Hi! The character I'm handing you is '%c'.\n", c);
-    char c_ = (*f)(c);
-    printf("calleR: Roger. The character I got back was '%c'.\n", c_);
 }
 
 
@@ -485,6 +489,14 @@ void showMemLayout() {
     printf("\n");
 
     printComment("Text (Code): Lowest addresses");
+
+    printf("\
+    Address of `main()` (!):·········································································`%p`\n",
+    &main);
+    printf("\
+    Address of first function defined in sourcefile:·················································`%p`\n",
+    &fun);
+
     printf("\n");
 
     printComment("\"Null\" is a name for the very lowest address: `0x0`,");
