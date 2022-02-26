@@ -608,25 +608,7 @@ void showPtrArith() {
 ********* SIZING *******************************************************************************************************
 ***********************************************************************************************************************/
 /*
-size_t _getSzElt(int elt) {
-    return sizeof(elt);
-}
-
-void _showSzElt() {
-    printComment("For a primitive type, sizeof is the same whether you're here or passed:");
-
-    int elt = 42;
-    printf("Element: %i\n", elt);
-
-    size_t szEltHere = sizeof(elt);
-    size_t szEltPassed = _getSzElt(elt);
-    printf("Size of element, here: %u\n" + szEltHere);
-    printf("Size of element, passed: %u\n" + szEltPassed);
-}
-
-
-size_t _getSzArr(int arrPassedAsArr[], ptr_t* paramAddr) {
-    *paramAddr = arrPassedAsArr;
+size_t _getSzArr(int arrPassedAsArr[]) {
     return sizeof(arrPassedAsArr);
 }
 
