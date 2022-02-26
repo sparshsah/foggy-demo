@@ -640,12 +640,12 @@ void _showSzArr() {
 
     // could also let compiler infer sizeof(arr) with `int arr[] = ...`
     const size_t n = 3;
-    int arrAsArr[n] = {headElt, 272, 162};
+    int_arr arrHeap = (int_arr)calloc(n, sizeof(int));
+    int arrStack[n] = {headElt, 272, 162};
     print(">>> Array as array, here: ");
     print(arrAsArr);
 
     size_t szArrAsArrHere = sizeof(arrAsArr);
-    // also do its as a TODO ptr on heap
     float lenArr = szArrAsArrHere *1./ szElt;
     print("Size of array as array, here: " + std::to_string(szArrAsArrHere));
     print("Hence, length of array (as a float so you know we're not rounding): " + std::to_string(lenArr));
