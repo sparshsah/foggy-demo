@@ -401,9 +401,9 @@ void showMemLayout() {
     printComment("Heap (Dynamically-allocated, dynamic-lifetime variables): Mid addresses, growing upward");
     printf("\n");
     //
-    char_arr c0 = (char*)calloc(1, sizeof(char));
-    char_arr c1 = (char*)calloc(1, sizeof(char));
-    char_arr c2 = (char*)calloc(1, sizeof(char));
+    char_arr c0 = (char_arr)calloc(1, sizeof(char));
+    char_arr c1 = (char_arr)calloc(1, sizeof(char));
+    char_arr c2 = (char_arr)calloc(1, sizeof(char));
     // remember, the value of an array IS the pointer to its head element!
     printf("\
     Address of my 3rd calloc'ed char array:··························································`%p`\n",
@@ -562,8 +562,10 @@ void showPtrAlign() {
 void showPtrArith() {
     printSubHeader("Let's examine pointer arithmetic");
 
+    // just to remind you that an `int[]` IS an `int_arr` IS an `int*`!
     int arr[2] = {42, 43};
-    int* p0 = arr;
+    int_arr arr_ = arr;
+    int* p0 = arr_;
     int* p1 = p0 +1;
     unsigned long p0AsNumIncr = (unsigned long)p0 +1;
 
