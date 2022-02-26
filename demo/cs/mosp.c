@@ -122,7 +122,7 @@ char getTgtOfParamPtr(char* c) {
 }
 
 
-void _printDiv(size_t sz, const char c, bool skip_before, bool skip_after) {
+void _printDiv(size_t sz, char c, bool skip_before, bool skip_after) {
     char _div[sz];
     for (int i = 0; i < sizeof(_div); i++) {
         _div[i] = c;
