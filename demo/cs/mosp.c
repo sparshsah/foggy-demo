@@ -607,11 +607,22 @@ void showPtrArith() {
 /***********************************************************************************************************************
 ********* SIZING *******************************************************************************************************
 ***********************************************************************************************************************/
-/*
-size_t _getSzArr(int arrPassedAsArr[]) {
-    return sizeof(arrPassedAsArr);
+
+size_t _getSzArrPassedAsPtr(int* arr) {
+    return sizeof(arr);
 }
 
+size_t _getSzArrPassedAsArr(int arr[]) {
+    /*
+    Declaring the param as type int[] makes it more obvious than above that the param is an int array.
+    But of course, it doesn't change the fact that what you pass is a pointer.
+    So, in this case the compiler will servicefully warn you that despite
+    declaring your intention to treat the inputted pointer as an array,
+    you will in fact be returning the size of it as a pointer (8 bytes on a 64 bit machine).
+    */
+    return sizeof(arr);
+}
+/*
 void _showSzArr() {
     print(">>> For an array, sizeof needs to be handled very mindfully!");
 
