@@ -496,6 +496,11 @@ void showMemLayout() {
     printf("\
     Address of first function defined in sourcefile:·················································`%p`\n",
     &fun);
+    /* TODO(sparshsah): why is this so high?
+    printf("\
+    Address of `printf()`:···········································································`%p`\n",
+    &printf);
+    */
 
     printf("\n");
 
@@ -704,9 +709,33 @@ void _showSzArr() {
     n, szArrStackPassed);
 }
 
+void _showSzFun() {
+    printComment("This is for shits and gigg's :)");
+
+    printf("\n");
+
+    printf("\
+    Sizeof the pointer to a function:································································ %lu bytes\n",
+    sizeof(&fun));
+    printf("\
+    Sizeof the function:············································································· %lu bytes\n",
+    sizeof(fun));
+
+    printf("\n");
+
+    printf("\
+    Sizeof the pointer to `main()`:·································································· %lu bytes\n",
+    sizeof(&main));
+    printf("\
+    Sizeof `main()`:················································································· %lu bytes\n",
+    sizeof(main));
+}
+
 void showSz() {
     printSubHeader("Let's examine object sizing");
     _showSzArr();
+    printf("\n");
+    _showSzFun();
 }
 
 
