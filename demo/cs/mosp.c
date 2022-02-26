@@ -84,17 +84,17 @@ int main();
 
 
 char fun(char c) {
-    printf("calleD: Hello :) The character I got was '%c'.\n", c);
     char c_ = c+1;
-    printf("calleD: The character I'm handing back is '%c'.\n", c_);
+    printf("    > calleD: Hello :) The character I got was '%c'. The character I'm handing back is '%c'.\n",
+    c, c_);
     return c_;
 }
 
 void runFuncThatTakesASingleCharAndReturnsASingleChar( char(*f)(char) ) {
     char c = 'X';
-    printf("calleR: Hi! The character I'm handing you is '%c'.\n", c);
+    printf("    > calleR: Hi! The character I'm handing you is '%c'.\n", c);
     char c_ = (*f)(c);
-    printf("calleR: Roger. The character I got back was '%c'.\n", c_);
+    printf("    > calleR: Roger. The character I got back was '%c'.\n", c_);
 }
 
 
@@ -173,6 +173,16 @@ void printSubHeader(const cstring subheader) {
 
 void printComment(const cstring comment) {
     printf("%s%s\n", COMMENT_HEAD, comment);
+}
+
+
+/***********************************************************************************************************************
+********* POINTER, VALUE, AND REFERENCE ********************************************************************************
+***********************************************************************************************************************/
+
+void showFunPass() {
+    printSubHeader("Let's bust a myth! In truth, functions CAN be passed in C");
+    runFuncThatTakesASingleCharAndReturnsASingleChar( &fun );
 }
 
 
@@ -757,6 +767,7 @@ int main() {
     printDiv(true, false);
     printHeader("MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE FIELD GUIDE");
     //
+    showFunPass();
     showPassing();
     showMemLayout();
     showSmartPtr();
