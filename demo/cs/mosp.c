@@ -157,6 +157,20 @@ void printComment(const cstring comment) {
     printf("%s%s\n", COMMENT_HEAD, comment);
 }
 
+char _anonDummy(char c) {
+    printf("calleD: Hello :) The character I got was '%c'.\n", c);
+    char c_ = c+1;
+    printf("calleD: The character I'm handing back is '%c'.\n", c_);
+    return c_;
+}
+
+void runFuncThatTakesASingleCharAndReturnsASingleChar( char(*f)(char) ) {
+    char c = 'X';
+    printf("calleR: Hi! The character I'm handing you is '%c'.\n", c);
+    char c_ = (*f)(c);
+    printf("calleR: Roger. The character I got back was '%c'.\n", c_);
+}
+
 
 /***********************************************************************************************************************
 ********* POINTER, VALUE, AND REFERENCE ********************************************************************************
@@ -337,7 +351,6 @@ void showPassing() {
 ***********************************************************************************************************************/
 
 /* For an x86 *NIX machine:
-
 [------------------------------------------------------------\
 0xFFFFFFFF: "High addresses"                                 |
 ·                                                            |
@@ -370,7 +383,6 @@ void showPassing() {
                                -------------------------------
 0x00000000: "Low addresses" :  NULL                          |
 [------------------------------------------------------------/
-
 */
 
 void showMemLayout() {
@@ -624,50 +636,65 @@ size_t _getSzArrPassedAsArr(int arr[]) {
     */
     return sizeof(arr);
 }
-/*
+
 void _showSzArr() {
-    print(">>> For an array, sizeof needs to be handled very mindfully!");
+    printComment("For an array, sizeof needs to be handled very mindfully!");
+    printComment("An array IS a pointer to its head element... So in most contexts,");
+    printComment("its \"size\" will be simply the size of a pointer (8 bytes on a 64 bit machine)!");
+    printComment("Hence a function that accepts an array will usually also demand its LENGTH.");
+    printf("\n");
 
-    int headElt = 314;
-    size_t szElt = sizeof(headElt);
-    print("Head element: " + std::to_string(headElt));
-    print("Size of each element: " + std::to_string(szElt));
-
-    // could also let compiler infer sizeof(arr) with `int arr[] = ...`
     const size_t n = 3;
-    int_arr arrHeap = (int_arr)calloc(n, sizeof(int));
-    int arrStack[n] = {headElt, 272, 162};
-    print(">>> Array as array, here: ");
-    print(arrAsArr);
+    size_t szElt = sizeof(int);
+    // point is to show the nitty-gritty, so not gonna use my `int_arr` typedef
+    int* arrHeap = (int*)calloc(n, sizeof(int));
+    size_t szArrHeapHere = sizeof(arrHeap);
+    size_t szArrHeapPassed = _getSzArrPassedAsPtr(arrHeap);
+    int arrStack[n];
+    int* arrStackAsPtr;
+    size_t szArrStackHere = sizeof(arrStack);
+    size_t szArrStackAsPtrHere = sizeof(arrStackAsPtr);
+    size_t szArrStackPassed = _getSzArrPassedAsArr(arrStack);
 
-    size_t szArrAsArrHere = sizeof(arrAsArr);
-    float lenArr = szArrAsArrHere *1./ szElt;
-    print("Size of array as array, here: " + std::to_string(szArrAsArrHere));
-    print("Hence, length of array (as a float so you know we're not rounding): " + std::to_string(lenArr));
+    printf("\
+    Sizeof a calloc'ed %lu-element int array, in declaring scope:······································ %lu bytes\n",
+    n, szArrHeapHere);
+    printf("\
+    Sizeof a calloc'ed %lu-element int array, passed into a called function:··························· %lu bytes\n",
+    n, szArrHeapPassed);
 
-    print(">>> BUT... this stops working as soon as you either");
-    print(">>> (a) Cast the array to what it truly is, i.e. a pointer to the head element;");
-    print(">>> or, equivalently,");
-    print(">>> (b) pass the array into a function.");
-    print(">>> We simply get the length of the pointer itself!");
-    print(">>> (On a 64bit machine: 64 bits / (8 bits per byte) = 8 bytes.)");
-    print(">>> To wit:");
-    //
-    size_t szArrAsPtrHere = sizeof(arrAsPtr);
-    print("Size of array as pointer, here: " + std::to_string(szArrAsPtrHere));
-    //
-    size_t szArrPassedAsArr = _getSzArrPassedAsArr(arrAsArr);
-    print("Size of array PASSED as array: " + std::to_string(szArrPassedAsArr));
-    //
-    size_t szArrPassedAsPtr = _getSzArrPassedAsPtr(arrAsPtr);
-    print("Size of array PASSED as pointer: " + std::to_string(szArrPassedAsPtr));
-    //
-    print(">>> Hence, functions that accept arrays usually also demand to know the LENGTH of the array.");
+    printf("\n");
+
+    printComment("Now, when called within the same scope as the declaration of an automatic array,");
+    printComment("`sizeof()` will return the full number of bytes allocated to it.");
+    printComment("This is an interesting touch, but ultimately (in my opinion) more confusing than helpful:");
+    printComment("It makes the behavior of `sizeof()` inconsistent when applied to the same data type,");
+    printComment("and if you're IN the declaring scope, you already KNOW the length of the array");
+    printComment("(you just declared it!).");
+    printf("\
+    Sizeof an automatic %lu-element int array, in declaring scope:····································· %lu bytes\n",
+    n, szArrStackHere);
+    printf("\
+    Sizeof each element:············································································· %lu bytes\n",
+    szElt);
+    printf("\
+    Hence, length of array:·········································································· %lu elements\n",
+    szArrStackHere / szElt);
+
+    printf("\n");
+
+    printComment("To my earlier point, even for an automatic array");
+    printf("\
+    Sizeof an automatic %lu-element int array, CASTED TO A POINTER, in declaring scope:················ %lu bytes\n",
+    n, szArrStackAsPtrHere);
+    printf("\
+    Sizeof an automatic %lu-element int array, passed into a called function:·························· %lu bytes\n",
+    n, szArrStackPassed);
 }
-*/
 
 void showSz() {
     printSubHeader("Let's examine object sizing");
+    _showSzArr();
 }
 
 
