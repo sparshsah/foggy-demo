@@ -24,6 +24,8 @@ then run it with `./mosp.exe`.
 #include <string.h>
 #include <stdio.h>
 
+// in C++, you'd want to wrap all the below (except `main`) in a namespace
+
 // in C++, you could use `template<typename T>` to represent a generic type
 typedef void T;
 typedef T* ptr_t;
@@ -489,7 +491,10 @@ void showMemLayout() {
 ********* SMART POINTERS ***********************************************************************************************
 ***********************************************************************************************************************/
 
-// TODO(sparshsah)
+void showSmartPtr() {
+    printSubHeader("Let's examine smart pointers");
+    printComment("TODO(sparshsah): C++");
+}
 
 
 /***********************************************************************************************************************
@@ -640,6 +645,7 @@ void _showSzArr() {
     print(arrAsArr);
 
     size_t szArrAsArrHere = sizeof(arrAsArr);
+    // also do its as a TODO ptr on heap
     float lenArr = szArrAsArrHere *1./ szElt;
     print("Size of array as array, here: " + std::to_string(szArrAsArrHere));
     print("Hence, length of array (as a float so you know we're not rounding): " + std::to_string(lenArr));
@@ -674,7 +680,10 @@ void showSz() {
 ********* CONCURRENCY, THREADS, AND SYNCHRONIZATION ********************************************************************
 ***********************************************************************************************************************/
 
-// TODO(sparshsah)
+void showCcy() {
+    printSubHeader("Let's examine concurrency, threads, and synchronization");
+    printComment("TODO(sparshsah): C++");
+}
 
 
 /***********************************************************************************************************************
@@ -687,9 +696,11 @@ int main() {
     //
     showPassing();
     showMemLayout();
+    showSmartPtr();
     showPtrAlign();
     showPtrArith();
     showSz();
+    showCcy();
     //
     printSubDiv();
     printf("\n----------------------------\n//# Good luck out there now!\n");
