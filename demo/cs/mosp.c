@@ -361,6 +361,110 @@ void showFunPass() {
 
 
 /***********************************************************************************************************************
+********* SIZING *******************************************************************************************************
+***********************************************************************************************************************/
+
+size_t _getSzArrPassedAsPtr(int* arr) {
+    return sizeof(arr);
+}
+
+size_t _getSzArrPassedAsArr(int arr[]) {
+    /*
+    Declaring the param as type int[] makes it more obvious than above that the param is an int array.
+    But of course, it doesn't change the fact that what you pass is a pointer.
+    So, in this case the compiler will servicefully warn you that despite
+    declaring your intention to treat the inputted pointer as an array,
+    you will in fact be returning the size of it as a pointer (8 bytes on a 64 bit machine).
+    */
+    return sizeof(arr);
+}
+
+void _showSzArr() {
+    printComment("For an array, sizeof needs to be handled very mindfully!");
+    printComment("An array IS a pointer to its head element... So in most contexts,");
+    printComment("its \"size\" will be simply the size of a pointer (8 bytes on a 64 bit machine)!");
+    printComment("Hence a function that accepts an array will usually also demand its LENGTH.");
+    printf("\n");
+
+    const size_t n = 3;
+    size_t szElt = sizeof(int);
+    // point is to show the nitty-gritty, so not gonna use my `int_arr` typedef
+    int* arrHeap = (int*)calloc(n, sizeof(int));
+    size_t szArrHeapHere = sizeof(arrHeap);
+    size_t szArrHeapPassed = _getSzArrPassedAsPtr(arrHeap);
+    int arrStack[n];
+    int* arrStackAsPtr;
+    size_t szArrStackHere = sizeof(arrStack);
+    size_t szArrStackAsPtrHere = sizeof(arrStackAsPtr);
+    size_t szArrStackPassed = _getSzArrPassedAsArr(arrStack);
+
+    printf("\
+    Sizeof a calloc'ed %lu-element int array, in declaring scope:······································ %lu bytes\n",
+    n, szArrHeapHere);
+    printf("\
+    Sizeof a calloc'ed %lu-element int array, passed into a called function:··························· %lu bytes\n",
+    n, szArrHeapPassed);
+
+    printf("\n");
+
+    printComment("Now, when called within the same scope as the declaration of an automatic array,");
+    printComment("`sizeof()` will return the full number of bytes allocated to it.");
+    printComment("This is an interesting touch, but ultimately (in my opinion) more confusing than helpful:");
+    printComment("It makes the behavior of `sizeof()` inconsistent when applied to the same data type,");
+    printComment("and if you're IN the declaring scope, you already KNOW the length of the array");
+    printComment("(you just declared it!).");
+    printf("\
+    Sizeof an automatic %lu-element int array, in declaring scope:····································· %lu bytes\n",
+    n, szArrStackHere);
+    printf("\
+    Sizeof each element:············································································· %lu bytes\n",
+    szElt);
+    printf("\
+    Hence, length of array:·········································································· %lu elements\n",
+    szArrStackHere / szElt);
+
+    printf("\n");
+
+    printComment("To my earlier point, even for an automatic array");
+    printf("\
+    Sizeof an automatic %lu-element int array, CASTED TO A POINTER, in declaring scope:················ %lu bytes\n",
+    n, szArrStackAsPtrHere);
+    printf("\
+    Sizeof an automatic %lu-element int array, passed into a called function:·························· %lu bytes\n",
+    n, szArrStackPassed);
+}
+
+void _showSzFun() {
+    printComment("This is for shits and gigg's :)");
+
+    printf("\n");
+
+    printf("\
+    Sizeof the pointer to a function:································································ %lu bytes\n",
+    sizeof(&fun));
+    printf("\
+    Sizeof the function:············································································· %lu bytes\n",
+    sizeof(fun));
+
+    printf("\n");
+
+    printf("\
+    Sizeof the pointer to `main()`:·································································· %lu bytes\n",
+    sizeof(&main));
+    printf("\
+    Sizeof `main()`:················································································· %lu bytes\n",
+    sizeof(main));
+}
+
+void showSz() {
+    printSubHeader("Let's examine object sizing");
+    _showSzArr();
+    printf("\n");
+    _showSzFun();
+}
+
+
+/***********************************************************************************************************************
 ********* (VIRTUAL) MEMORY LAYOUT AND OBJECT LIFETIME ******************************************************************
 ***********************************************************************************************************************/
 
@@ -636,110 +740,6 @@ void showPtrArith() {
 
 
 /***********************************************************************************************************************
-********* SIZING *******************************************************************************************************
-***********************************************************************************************************************/
-
-size_t _getSzArrPassedAsPtr(int* arr) {
-    return sizeof(arr);
-}
-
-size_t _getSzArrPassedAsArr(int arr[]) {
-    /*
-    Declaring the param as type int[] makes it more obvious than above that the param is an int array.
-    But of course, it doesn't change the fact that what you pass is a pointer.
-    So, in this case the compiler will servicefully warn you that despite
-    declaring your intention to treat the inputted pointer as an array,
-    you will in fact be returning the size of it as a pointer (8 bytes on a 64 bit machine).
-    */
-    return sizeof(arr);
-}
-
-void _showSzArr() {
-    printComment("For an array, sizeof needs to be handled very mindfully!");
-    printComment("An array IS a pointer to its head element... So in most contexts,");
-    printComment("its \"size\" will be simply the size of a pointer (8 bytes on a 64 bit machine)!");
-    printComment("Hence a function that accepts an array will usually also demand its LENGTH.");
-    printf("\n");
-
-    const size_t n = 3;
-    size_t szElt = sizeof(int);
-    // point is to show the nitty-gritty, so not gonna use my `int_arr` typedef
-    int* arrHeap = (int*)calloc(n, sizeof(int));
-    size_t szArrHeapHere = sizeof(arrHeap);
-    size_t szArrHeapPassed = _getSzArrPassedAsPtr(arrHeap);
-    int arrStack[n];
-    int* arrStackAsPtr;
-    size_t szArrStackHere = sizeof(arrStack);
-    size_t szArrStackAsPtrHere = sizeof(arrStackAsPtr);
-    size_t szArrStackPassed = _getSzArrPassedAsArr(arrStack);
-
-    printf("\
-    Sizeof a calloc'ed %lu-element int array, in declaring scope:······································ %lu bytes\n",
-    n, szArrHeapHere);
-    printf("\
-    Sizeof a calloc'ed %lu-element int array, passed into a called function:··························· %lu bytes\n",
-    n, szArrHeapPassed);
-
-    printf("\n");
-
-    printComment("Now, when called within the same scope as the declaration of an automatic array,");
-    printComment("`sizeof()` will return the full number of bytes allocated to it.");
-    printComment("This is an interesting touch, but ultimately (in my opinion) more confusing than helpful:");
-    printComment("It makes the behavior of `sizeof()` inconsistent when applied to the same data type,");
-    printComment("and if you're IN the declaring scope, you already KNOW the length of the array");
-    printComment("(you just declared it!).");
-    printf("\
-    Sizeof an automatic %lu-element int array, in declaring scope:····································· %lu bytes\n",
-    n, szArrStackHere);
-    printf("\
-    Sizeof each element:············································································· %lu bytes\n",
-    szElt);
-    printf("\
-    Hence, length of array:·········································································· %lu elements\n",
-    szArrStackHere / szElt);
-
-    printf("\n");
-
-    printComment("To my earlier point, even for an automatic array");
-    printf("\
-    Sizeof an automatic %lu-element int array, CASTED TO A POINTER, in declaring scope:················ %lu bytes\n",
-    n, szArrStackAsPtrHere);
-    printf("\
-    Sizeof an automatic %lu-element int array, passed into a called function:·························· %lu bytes\n",
-    n, szArrStackPassed);
-}
-
-void _showSzFun() {
-    printComment("This is for shits and gigg's :)");
-
-    printf("\n");
-
-    printf("\
-    Sizeof the pointer to a function:································································ %lu bytes\n",
-    sizeof(&fun));
-    printf("\
-    Sizeof the function:············································································· %lu bytes\n",
-    sizeof(fun));
-
-    printf("\n");
-
-    printf("\
-    Sizeof the pointer to `main()`:·································································· %lu bytes\n",
-    sizeof(&main));
-    printf("\
-    Sizeof `main()`:················································································· %lu bytes\n",
-    sizeof(main));
-}
-
-void showSz() {
-    printSubHeader("Let's examine object sizing");
-    _showSzArr();
-    printf("\n");
-    _showSzFun();
-}
-
-
-/***********************************************************************************************************************
 ********* SMART POINTERS ***********************************************************************************************
 ***********************************************************************************************************************/
 
@@ -769,10 +769,10 @@ int main() {
     //
     showPassing();
     showFunPass();
+    showSz();
     showMemLayout();
     showPtrAlign();
     showPtrArith();
-    showSz();
     showSmartPtr();
     showCcy();
     //
