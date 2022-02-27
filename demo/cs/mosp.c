@@ -686,12 +686,13 @@ void showMemLayout() {
 ***********************************************************************************************************************/
 
 void _showPtrAlign() {
+    printComment("In the following, I am speaking of my x86-64 *NIX machine.");
     printComment("Because it's easier to load a single word at a time,");
     printComment("the OS dislikes an object that spans multiple words.");
     printComment("Therefore, in order to make reading/writing the value easier,");
     printComment("the OS will allocate an address to it that is a neat multiple of its size.");
     printComment("That way, it can minimize instance where it must load multiple words");
-    printComment("simply to read or write a single value");
+    printComment("simply to read or write a single value.");
 }
 
 void _showStructPad() {
