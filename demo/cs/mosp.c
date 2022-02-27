@@ -465,6 +465,57 @@ void showSz() {
 
 
 /***********************************************************************************************************************
+********* POINTER ARITHMETIC *******************************************************************************************
+***********************************************************************************************************************/
+
+void showPtrArith() {
+    printSubHeader("Let's examine pointer arithmetic");
+
+    // just to remind you that an `int[]` IS an `int_arr` IS an `int*`!
+    int arr[2] = {42, 43};
+    int_arr arr_ = arr;
+    int* p0 = arr_;
+    int* p1 = p0 +1;
+    unsigned long p0AsNumIncr = (unsigned long)p0 +1;
+
+    printf("\
+    We have an array at address `p = %p`, which in decimal is····························`%lu`\n",
+    arr, (unsigned long)arr);
+    printf("\
+    Accessed by index, the array is··································································`{%i, %i}`\n",
+    arr[0], arr[1]);
+
+    printf("\n");
+
+    printf("\
+    The ptr to the head elt is of course again `p0 = %p`, which in decimal is again······`%lu`\n",
+    p0, (unsigned long)p0);
+    printf("\
+    And following that pointer yields as expected····················································`%i`\n",
+    *p0);
+
+    printf("\n");
+
+    printf("\
+    The ptr to the succeeding elt can be gotten as `p0 +1`, which in decimal is······················`%lu`\n",
+    (unsigned long)p1);
+    printf("\
+    And following that pointer yields as expected····················································`%i`\n",
+    *p1);
+
+    printf("\n");
+
+    printComment("How slick was that?");
+    printf("\
+    You might expect `p0 +1` to be equivalent to `(lu)p0 +1`, i.e.···································`%lu`\n",
+    p0AsNumIncr);
+    printComment("But the C compiler knows that if you're incrementing a T*,");
+    printComment("then the T* is probably a pointer to a T array, therefore it servicefully");
+    printComment("increments the numerical value of the pointer by `sizeof(T)`.");
+}
+
+
+/***********************************************************************************************************************
 ********* (VIRTUAL) MEMORY LAYOUT AND OBJECT LIFETIME ******************************************************************
 ***********************************************************************************************************************/
 
@@ -689,57 +740,6 @@ void showPtrAlign() {
 
 
 /***********************************************************************************************************************
-********* POINTER ARITHMETIC *******************************************************************************************
-***********************************************************************************************************************/
-
-void showPtrArith() {
-    printSubHeader("Let's examine pointer arithmetic");
-
-    // just to remind you that an `int[]` IS an `int_arr` IS an `int*`!
-    int arr[2] = {42, 43};
-    int_arr arr_ = arr;
-    int* p0 = arr_;
-    int* p1 = p0 +1;
-    unsigned long p0AsNumIncr = (unsigned long)p0 +1;
-
-    printf("\
-    We have an array at address `p = %p`, which in decimal is····························`%lu`\n",
-    arr, (unsigned long)arr);
-    printf("\
-    Accessed by index, the array is··································································`{%i, %i}`\n",
-    arr[0], arr[1]);
-
-    printf("\n");
-
-    printf("\
-    The ptr to the head elt is of course again `p0 = %p`, which in decimal is again······`%lu`\n",
-    p0, (unsigned long)p0);
-    printf("\
-    And following that pointer yields as expected····················································`%i`\n",
-    *p0);
-
-    printf("\n");
-
-    printf("\
-    The ptr to the succeeding elt can be gotten as `p0 +1`, which in decimal is······················`%lu`\n",
-    (unsigned long)p1);
-    printf("\
-    And following that pointer yields as expected····················································`%i`\n",
-    *p1);
-
-    printf("\n");
-
-    printComment("How slick was that?");
-    printf("\
-    You might expect `p0 +1` to be equivalent to `(lu)p0 +1`, i.e.···································`%lu`\n",
-    p0AsNumIncr);
-    printComment("But the C compiler knows that if you're incrementing a T*,");
-    printComment("then the T* is probably a pointer to a T array, therefore it servicefully");
-    printComment("increments the numerical value of the pointer by `sizeof(T)`.");
-}
-
-
-/***********************************************************************************************************************
 ********* SMART POINTERS ***********************************************************************************************
 ***********************************************************************************************************************/
 
@@ -770,9 +770,9 @@ int main() {
     showPassing();
     showFunPass();
     showSz();
+    showPtrArith();
     showMemLayout();
     showPtrAlign();
-    showPtrArith();
     showSmartPtr();
     showCcy();
     //
