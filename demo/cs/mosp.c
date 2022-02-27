@@ -410,9 +410,9 @@ void _showSzArr() {
     printComment("Now, when called within the same scope as the declaration of an automatic array,");
     printComment("`sizeof()` will return the full number of bytes allocated to it.");
     printComment("This is an interesting touch, but ultimately (in my opinion) more confusing than helpful:");
-    printComment("It makes the behavior of `sizeof()` inconsistent when applied to the same data type,");
-    printComment("and if you're IN the declaring scope, you already KNOW the length of the array");
-    printComment("(you just declared it!).");
+    printComment("It makes the behavior of `sizeof()` inconsistent when applied to the same data type;");
+    printComment("On top of that, if you're IN the declaring scope, you already KNOW the length of the array");
+    printComment("(you just declared it!), so how is this useful?");
     printf("\
     Sizeof an automatic %lu-element int array, in declaring scope:····································· %lu bytes\n",
     n, szArrStackHere);
