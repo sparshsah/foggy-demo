@@ -177,16 +177,6 @@ void printComment(const cstring comment) {
 
 
 /***********************************************************************************************************************
-********* FUNCTION POINTERS ********************************************************************************************
-***********************************************************************************************************************/
-
-void showFunPass() {
-    printSubHeader("Let's bust a myth! In truth, functions CAN be passed in C");
-    runFuncThatTakesASingleCharAndReturnsASingleChar( &fun );
-}
-
-
-/***********************************************************************************************************************
 ********* POINTER, VALUE, AND REFERENCE ********************************************************************************
 ***********************************************************************************************************************/
 
@@ -357,6 +347,16 @@ void showPassing() {
     printf("\
     Element from \"output\" object:····································································'%c'\n",
     c_[0]);
+}
+
+
+/***********************************************************************************************************************
+********* FUNCTION POINTERS ********************************************************************************************
+***********************************************************************************************************************/
+
+void showFunPass() {
+    printSubHeader("Let's bust a myth! In truth, functions CAN be passed in C");
+    runFuncThatTakesASingleCharAndReturnsASingleChar( &fun );
 }
 
 
@@ -767,8 +767,8 @@ int main() {
     printDiv(true, false);
     printHeader("MACHINE ORGANIZATION AND SYSTEMS PROGRAMMING: A LITTLE FIELD GUIDE");
     //
-    showFunPass();
     showPassing();
+    showFunPass();
     showMemLayout();
     showSmartPtr();
     showPtrAlign();
