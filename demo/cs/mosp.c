@@ -435,13 +435,16 @@ void _showSzArr() {
 }
 
 void _showSzFun() {
-    printComment("This is for shits and gigg's :)");
+    printComment("I've said what I had to say, but still show the following just for shits and gigg's :)");
 
     printf("\n");
 
     printf("\
     Sizeof the pointer to a function:································································ %lu bytes\n",
     sizeof(&fun));
+    printf("\
+    Sizeof the pointer's target:····································································· %lu bytes\n",
+    sizeof(*&fun));
     printf("\
     Sizeof the function:············································································· %lu bytes\n",
     sizeof(fun));
@@ -451,6 +454,9 @@ void _showSzFun() {
     printf("\
     Sizeof the pointer to `main()`:·································································· %lu bytes\n",
     sizeof(&main));
+    printf("\
+    Sizeof the pointer's target:····································································· %lu bytes\n",
+    sizeof(*&main));
     printf("\
     Sizeof `main()`:················································································· %lu bytes\n",
     sizeof(main));
@@ -715,7 +721,7 @@ void _showStructPad() {
     printComment("Here's an example of a more mindful struct `CompactS`:");
     printComment("{ int (4 bytes), int (4 bytes), size_t (8 bytes) },");
     printComment("which will be laid out in memory as");
-    printComment("········  |  (iiii)(iiii)  |  (uuuuuuuu)  |  ········,");
+    printComment("········  |  (iiii)(iiii)  |  (zzzzzzzz)  |  ········,");
     printComment("requiring no padding,");
     printComment("ending up spanning only 2 fully-used words.");
     printf("\
