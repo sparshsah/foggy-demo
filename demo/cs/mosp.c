@@ -515,9 +515,8 @@ void showPtrArith() {
     printf("\
     You might expect `p0 +1` to be equivalent to `(lu)p0 +1`, i.e.···································`%lu`\n",
     p0AsNumIncr);
-    printComment("But the C compiler knows that if you're incrementing a T*,");
-    printComment("then the T* is probably a pointer to a T array, therefore it servicefully");
-    printComment("increments the numerical value of the pointer by `sizeof(T)`.");
+    printComment("But C knows that if you're incrementing a T*, that's probably pointing to an element of a T[],");
+    printComment("therefore servicefully increments the numerical value of the pointer by `sizeof(T)`.");
 }
 
 
@@ -697,7 +696,7 @@ void _showPtrAlign() {
     printComment("the OS dislikes an object that spans multiple words.");
     printComment("Therefore, in order to make reading/writing the value easier,");
     printComment("the OS will allocate an address to it that is a neat multiple of its size.");
-    printComment("That way, it can minimize instance where it must load multiple words");
+    printComment("That way, it can avoid instances where it must load multiple words");
     printComment("simply to read or write a single value.");
 }
 
@@ -722,8 +721,7 @@ void _showStructPad() {
     printComment("{ int (4 bytes), int (4 bytes), size_t (8 bytes) },");
     printComment("which will be laid out in memory as");
     printComment("········  |  (iiii)(iiii)  |  (zzzzzzzz)  |  ········,");
-    printComment("requiring no padding,");
-    printComment("ending up spanning only 2 fully-used words.");
+    printComment("requiring no padding, thus ending up spanning only 2 fully-used words.");
     printf("\
     To wit, its size:················································································`%lu`\n",
     compactSz);
@@ -736,7 +734,7 @@ void _showStructPad() {
     (void) convenient;
     printComment("And don't worry: For convenience, you can initialize struct members in any order;");
     printComment("So, it's still perfectly fine to initialize a `CompactS` as");
-    printComment("`{ .i1 = 42, .sz = 43, .i2 = 44 }` if that's a logical order for you.");
+    printComment("`{ .i1 = 42, .sz = 43, .i2 = 44 }` if that's still the most logical order for you.");
 }
 
 void showPtrAlign() {
