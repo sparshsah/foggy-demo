@@ -686,7 +686,7 @@ void showMemLayout() {
 ***********************************************************************************************************************/
 
 void _showPtrAlign() {
-    printComment("In the following, I am speaking of my x86-64 *NIX machine.");
+    printComment("In the following, I have in mind a LP64 x86-64 UNIX (e.g. macOS 12) machine.");
     printComment("Because it's easier to load a single word at a time,");
     printComment("the OS dislikes an object that spans multiple words.");
     printComment("Therefore, in order to make reading/writing the value easier,");
@@ -702,8 +702,9 @@ void _showStructPad() {
     printComment("Here's an example of a wasteful struct `S`:");
     printComment("{ int (4 bytes), size_t (8 bytes), int (4 bytes) },");
     printComment("which will be laid out in memory as");
-    printComment("········  |  (iiii)____  |  (uuuuuuuu)  |  (iiii)____  |  ········,");
-    printComment("requiring 4 bytes of padding in the middle and at the end,");
+    printComment("········  |  (iiii)____  |  (zzzzzzzz)  |  (iiii)____  |  ········,");
+    printComment("requiring 4 bytes of padding in the middle (to avoid misaligning the size_t)");
+    printComment("and at the end (to avoid misaligning the 2nd element of a contiguous array of such structs),");
     printComment("ending up spanning 3 full words.");
     printf("\
     To wit, its size:················································································`%lu`\n",
