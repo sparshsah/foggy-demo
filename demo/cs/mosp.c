@@ -591,7 +591,7 @@ void showMemLayout() {
     char_arr c1 = (char_arr)malloc(1 * sizeof(char));
     char_arr c2 = (char_arr)malloc(1 * sizeof(char));
     // remember, the value of an array IS the pointer to its head element!
-    printComment("Each of the below implicitly assumes that `malloc()` succeeded... else it would have just returned `NULL`!");
+    printComment("Note: Won't happen here, but keep in mind `malloc()` CAN fail and return `NULL`!");
     printf("\
     Address of my 3rd malloc'ed char array:··························································`%p`\n",
     c2);
