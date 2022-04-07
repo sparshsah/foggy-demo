@@ -389,7 +389,7 @@ void _showSzArr() {
     const size_t n = 3;
     size_t szElt = sizeof(int);
     // point is to show the nitty-gritty, so not gonna use my `int_arr` typedef
-    int* arrHeap = (int*)calloc(n, sizeof(int));
+    int* arrHeap = (int*)malloc(n * sizeof(int));
     size_t szArrHeapHere = sizeof(arrHeap);
     size_t szArrHeapPassed = _getSzArrPassedAsPtr(arrHeap);
     int arrStack[n];
@@ -399,10 +399,10 @@ void _showSzArr() {
     size_t szArrStackPassed = _getSzArrPassedAsArr(arrStack);
 
     printf("\
-    Sizeof a calloc'ed %lu-element int array, in declaring scope:······································ %lu bytes\n",
+    Sizeof a malloc'ed %lu-element int array, in declaring scope:······································ %lu bytes\n",
     n, szArrHeapHere);
     printf("\
-    Sizeof a calloc'ed %lu-element int array, passed into a called function:··························· %lu bytes\n",
+    Sizeof a malloc'ed %lu-element int array, passed into a called function:··························· %lu bytes\n",
     n, szArrHeapPassed);
 
     printf("\n");
@@ -587,18 +587,19 @@ void showMemLayout() {
     printComment("Heap (Dynamically-allocated, dynamic-lifetime variables): Mid addresses, growing upward");
     printf("\n");
     //
-    char_arr c0 = (char_arr)calloc(1, sizeof(char));
-    char_arr c1 = (char_arr)calloc(1, sizeof(char));
-    char_arr c2 = (char_arr)calloc(1, sizeof(char));
+    char_arr c0 = (char_arr)malloc(1 * sizeof(char));
+    char_arr c1 = (char_arr)malloc(1 * sizeof(char));
+    char_arr c2 = (char_arr)malloc(1 * sizeof(char));
     // remember, the value of an array IS the pointer to its head element!
+    printComment("Each of the below implicitly assumes that `malloc()` succeeded... else it would have just returned `NULL`!");
     printf("\
-    Address of my 3rd calloc'ed char array:··························································`%p`\n",
+    Address of my 3rd malloc'ed char array:··························································`%p`\n",
     c2);
     printf("\
-    Address of my 2nd calloc'ed char array:··························································`%p`\n",
+    Address of my 2nd malloc'ed char array:··························································`%p`\n",
     c1);
     printf("\
-    Address of my 1st calloc'ed char array:··························································`%p`\n",
+    Address of my 1st malloc'ed char array:··························································`%p`\n",
     c0);
     // don't leak memory!
     free(c2);
