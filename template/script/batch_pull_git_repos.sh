@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# author: sparshsah
+
 # system/user-specific global constants, set this block as appropriate
 ORIGIN="origin"
 # market leader GitHub has switched its default branch name, but not all devs have accepted

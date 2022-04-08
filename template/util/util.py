@@ -1,4 +1,7 @@
-"""Catch-all utility module."""
+"""Catch-all utility module.
+
+author: sparshsah
+"""
 
 from typing import Tuple, List, Iterable, Callable, Union, Optional, Any
 # sys
