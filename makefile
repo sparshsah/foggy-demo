@@ -1,3 +1,6 @@
+# author: sparshsah
+
+
 # make, and thus makefiles, are all about MAKING FILES.
 # The general format is to specify a target (file), dependent on some dependencies (files): e.g. "tgt.ext: dep1.ext dep2.ext".
 
