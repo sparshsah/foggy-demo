@@ -702,8 +702,8 @@ def plot_t_stat(t_stat: Data, **kwargs) -> PlotAxes:
     )
 
 
-def plot_correl_heatmap(
-        correl_matrix: pd.DataFrame,
+def plot_corr_heatmap(
+        corr_matrix: pd.DataFrame,
         cmap: str="RdYlGn",
         title: Optional[str]=None,
         figsize: Tuple[float, float]=(8, 8),  # width (x), height (y)
@@ -711,7 +711,7 @@ def plot_correl_heatmap(
     ) -> None:
     plt.figure(figsize=figsize)
     sns.heatmap(
-        correl_matrix,
+        corr_matrix,
         annot=True, fmt=".2f",
         vmin=-1, vmax=1, center=0, cmap=cmap, cbar=False,
         square=True, **kwargs
