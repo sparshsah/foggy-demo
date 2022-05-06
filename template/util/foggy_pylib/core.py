@@ -1,6 +1,6 @@
 """Catch-all utility module.
 
-author: sparshsah
+author: [@sparshsah](https://github.com/sparshsah)
 """
 
 from typing import Tuple, List, Iterable, Callable, Union, Optional, Any
@@ -410,9 +410,8 @@ def plot(
         ## x (major, minor)
         xtick_intervals: Optional[Tuple[float, float]]=None,
         xtick_major_interval: Optional[float]=None,
-        # default `np.inf` just hackily hides minor ticks..
-        # can also set this to `None` to carry over value from `df.plot()`
-        xtick_minor_interval: Optional[float]=np.inf,
+        # can set this to `None` to carry over value from `df.plot()`
+        xtick_minor_interval: Optional[float]=None,
         ## y (major, minor)
         ytick_intervals: Optional[Tuple[float, float]]=None,
         ytick_major_interval: Optional[float]=None,
@@ -642,7 +641,6 @@ def plot(
     del fmt
     if not yticklabels:
         plt.setp(ax.get_xticklabels(), visible=False)
-
     # AXIS TITLES
     ## x
     xlabel = maybe(xlabel, False)
@@ -650,7 +648,7 @@ def plot(
         ax.set_xlabel(xlabel)
         ax.get_xaxis().get_label().set_visible(True)
     else:
-       ax.get_xaxis().get_label().set_visible(False)
+        ax.get_xaxis().get_label().set_visible(False)
     ## y
     ylabel = maybe(ylabel, False)
     if ylabel:
