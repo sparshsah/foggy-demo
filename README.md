@@ -2,7 +2,7 @@
 
 author: [@sparshsah](https://github.com/sparshsah)
 
-misc math/programming demos and templates
+misc math/programming demos
 
 see also some [possibly-wrong math lessons](https://sparshsah.github.io/tablinum/lessons.html)
 
