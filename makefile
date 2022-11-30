@@ -74,4 +74,6 @@ commit:
 	# TODO(sparshsah): why can't i just do `f=${f:="."}` or
 	#     `[[ -z "$f" ]] && f="."` for this line?
 	echo "files = $f" && echo "commit message = $m"
+	# catch merge conflicts
+	git pull
 	git add $f && git commit -m "$m" && git push && git status
