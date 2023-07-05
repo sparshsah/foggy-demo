@@ -13,6 +13,8 @@ and `nav[t]` to be the NAV in dol's at day `t`, so that `w[t,n] := x[t,n] / nav[
 
 P.S. It turns out that, at 10% vol, 10x TO on GLev and 10x GLev are pretty reasonable for either a global-macro or a stock-selection strategy. Nice little back-of-the-envelope round figures.
 
+Note: I had to replace all the "dollar signs" with the word "dol" because GitHub's markdown engine tries to support LaTeX notation.
+
 ## The stats
 
 * I won't even mention alpha or beta. Your strategy's beta (to SPX, US10Y, or crude) should be either point-in-time (for XS strategies) or long-term (for TS strategies) zero ex-ante, and full-sample close to zero realized. Your pnl should be pure alpha.
