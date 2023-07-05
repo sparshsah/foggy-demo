@@ -15,6 +15,8 @@ P.S. It turns out that, at 10% vol, 10x TO on GLev and 10x GLev are pretty reaso
 
 ## The stats
 
+* I won't even mention alpha or beta. Your strategy's beta (to SPX, US10Y, or crude) should be either point-in-time (for XS strategies) or long-term (for TS strategies) zero ex-ante, and full-sample close to zero realized. Your pnl should be pure alpha.
+
 * Net (Annualized) Sharpe Ratio: Net Sharpe, or Net SR.
 * Net (Annualized) Expected Return (on NAV): Net ER.
 * Gross (Annualized) Sharpe Ratio: Gross Sharpe, or Gross SR.
@@ -25,8 +27,8 @@ P.S. It turns out that, at 10% vol, 10x TO on GLev and 10x GLev are pretty reaso
 * (Annualized) Turnover on Gross Leverage: TO on GLev := $'s traded over the course of a year, normalized by long-term average $'s of gross leverage.
     * This gives a better sense of how aggressively the strategy trades than turnover on NAV. A strategy that goes in on AAPL at 10x leverage on day 0 then closes out the position all-at-once on day 261 (pretend NAV is $1 and AAPL is flat over this period) trades at (|+$10| + |-$10|) / $1 = 20x annualized turnover on NAV, which seems aggressive -- But it trades at just (|+$10| + |-$10|) / $10 = 2x annualized turnover on gross leverage, which is quite modest. The tcost on NAV will of course be paid on the entire turnover on NAV, but it can be cleaner to attribute this to two separate components: (1) TO on GLev (how aggressively the strategy trades), and (2) GLev (how aggressively the strategy takes risk).
 * (Annualized) Turnover on NAV: TO on NAV := $'s traded over the course of a year, normalized by $'s of NAV.
-* Net Leverage on NAV: NLev := long-term mean $'s long - long-term mean $'s short, normalized by $'s of NAV.
-* Gross Leverage on NAV: GLev := long-term mean of "absolute $ position sizes summed over assets", normalized by $'s of NAV.
+* Net Leverage on NAV: NLev := long-term mean $'s long - long-term mean $'s short, normalized by $'s of NAV. Also useful to report the long-term 95th percentile magnitude.
+* Gross Leverage on NAV: GLev := long-term mean of "absolute $ position sizes summed over assets", normalized by $'s of NAV. Also useful to report the long-term 95th percentile magnitude.
     * Neither Net nor Gross Leverage tells the full story. They are really only a sanity check or a backstop to risk-taking as measured by ex-ante vol.
         * For example, suppose with $1 NAV you're long $1 of AAPL and long $1 of MSFT. Both NLev and GLev are 2x, representatively indicating that you're taking about twice the risk of the average passive asset.
         * But now suppose you are long $1 of AAPL and short $1 of MSFT. You are so tightly hedged that the net leverage of 0x tells a more useful story than the gross leverage of 2x. This becomes even more obvious if you consider being long $1 of AAPL in account A and short $1 of AAPL in account B. You are perfectly hedged, with no market risk (counterparty risk or enterprise risk notwithstanding), whereas the gross leverage of 2x naively makes it seem like you're taking a lot of risk.
