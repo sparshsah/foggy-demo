@@ -1,6 +1,13 @@
 # Headline PM Stats for a Strategy
 
-I try to be explicit, but if it's not specified you can safely assume that a stat is (a) taken to be normalized by NAV, (b) annualized, and (c) if it's supposed to summarize a timeseries, take the mean. Also, just be aware that once we've nailed down the definitions of these quantities, it's much easier to work with position sizes not in terms of $'s, but rather to normalize them by NAV and turn them into portfolio weights. For example, defining `w[t,n]` to be the signed portfolio weight at day `t` on asset `n`, turnover on NAV is just `w.abs().sum(axis="column")
+I try to be explicit, but if it's not specified you can safely assume that a stat is
+(a) taken to be normalized by NAV, (b) annualized, and (c) if it's supposed to summarize a timeseries, take the mean.
+Also, just be aware that once we've nailed down the definitions of these quantities,
+it's much easier to work with position sizes not in terms of $'s,
+but rather to normalize them by NAV and turn them into portfolio weights.
+For example, defining `w[t,n]` to be the signed portfolio weight at day `t` on asset `n`, with daycount 261:
+Annualized turnover on NAV is just `w.abs().sum(axis="columns").mean() * 261`;
+Similarly, gross (rsp net) leverage on NAV is just `w.sum(axis="columns").mean()` (rsp `w.abs().sum(axis="columns").mean()`).
 
 * Net (Annualized) Sharpe Ratio
 * Net (Annualized) Expected Return on NAV
