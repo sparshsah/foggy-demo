@@ -102,7 +102,7 @@ Scroll down to your relevant level.
   * Doing too little: This is more common among newer VP's.
     You basically end up becoming a simple conduit for agenda items to flow from your Partner or MD to your Analyst,
     and then spend most of your time micromanaging the hell out of the Analyst(s) you assigned to do them.
-    You want to make sure that you're adding value in the chain (i.e.
+    If this happens, take a step back and make sure that you're adding value in the chain (i.e.
     manage timelines so that people get assigned to the right project at the right time, and
     prioritize agenda items so that important stuff gets done first --
     this latter is especially tricky because, unless pushed for an answer, Partners do not distinguish
