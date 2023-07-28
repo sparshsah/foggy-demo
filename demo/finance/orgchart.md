@@ -127,7 +127,10 @@ Scroll down to your relevant level.
     The firm is paying you to make the Analysts productive, not be the ideas-guy.
     (And quite frankly, nobody gives a shit about your ideas, except maybe your MD who will steal any good ones.)
 
-## Level 4: Managing Director
+## Level 4: Senior Vice President / Executive Director
+* This is a ceremonial title. You are still a VP.
+
+## Level 5: Managing Director
 * The role: Be an overall self-aggrandizing egomaniac and spiral deeper into a desperate frenzy
   as you wait for lightning to strike (a new fund, a big client, etc) so you can make Partner.
 * How to get fired:
@@ -140,7 +143,7 @@ Scroll down to your relevant level.
     become intrigued by the activity they see going on in your department,
     and ask to take it over.
 
-## Level 5: Partner
+## Level 6: Partner (followed by Executive Partner, followed by Managing Partner)
 * I have no clue what goes on at this level, other than the fact that
   it seems like at this stage, when you have a lot of research experience,
   and business context, and people respect your ideas,
