@@ -10,7 +10,7 @@ Scroll down to your relevant level.
 * The role: Pretty much, come up with one main finished deliverable by the end of the summer.
 * How to get fired (or, I guess, more like, "not get a return offer"):
   * Doing too little: This one's obvious.
-    Some interns for one reason or another clearly don't need or want the return offer,
+    Some Interns for one reason or another clearly don't need or want the return offer,
     and are basically there as a paid summer camp.
   * Doing too much: This one is a more nuanced pitfall.
     Most intern-project ideas were solicited and chosen months ago,
@@ -18,7 +18,7 @@ Scroll down to your relevant level.
     because senior managers are too busy to deal with an intern.
     These fresh-faced managers are bright and full of energy,
     and have invariably spent the last three weeks fiddling with and adding to your project spec.
-    Now in principle your mentor's role is to guide you through that project spec
+    In principle your mentor's role is to guide you through that project spec
     and also act as an interface between you and your manager,
     but keep in mind that the mentors are going to be junior researchers with no management experience.
     There's nothing wrong with that per se, but it does mean that in practice they
@@ -52,28 +52,36 @@ Scroll down to your relevant level.
     having four +20% years in a row followed by a -20% year.
     Even accounting for geometric compounding, the latter manager is still beating the former --
     But nobody cares, because you've shaken their faith in you and they've taken their assets elsewhere.
-    Now when you're an analyst your VP is going to be happy to help sanity-check your work,
+    This is not to say you're alone in the dark:
+    When you're an Analyst your VP is going to be happy to help sanity-check your work,
     so while mistakes like "I forgot that XYZ country uses different trading hours"
     or even "I used the wrong cash series when compounding my excess returns"
     might seem silly, they happen all the time and it's fine
     (I mean, correct it once it's discovered, but it's fine).
-    Compare that to a mistake like
-    "I blindly copy-pasted a tcost model from the Internet,
+    But compare that to a mistake like
+    "I blindly copy-pasted a tcost model from the Internet then
     ignored the NumPy warnings when I ran the code because the numbers seemed to come out fine,
     and therefore produced results that not only
     use the wrong tcost model, but also don't even use that wrong model
     correctly because the code I copy-pasted wasn't expecting NaN's".
-    The latter error is pure negligence, and even though as an analyst you're not at the level
+    The latter error is pure---almost willful---negligence, and
+    even though as an Analyst you're not at the level
     where mistakes like that can cause a -20% year for the fund,
     from that moment onward everyone is going to think of you as the person who,
-    _if promoted to that level_, would pose a real risk of causing that.
+    _if promoted to that level_, would pose a real risk of causing such a year.
+    (Sidenote here: Errors that cause overleverage of losing positions,
+    as in [AXA Rosenberg's SEC case](https://www.sec.gov/news/press/2011/2011-37.htm),
+    are even worse than errors that cause underleverage of winning positions.
+    It may seem arbitrary, but it's the difference between "more negative" and "less positive".
+    The latter means you just didn't make as much money as you were supposed to,
+    while the former means you lost more money than you were supposed to.)
 
 ## Level 2: Associate
 * The role: Do whatever your MD wants.
 * How to get fired:
-  * Doing too little: Continue to be an analyst.
-    That means waiting passively for questions, then working diligently to answer them.
-    By this level you should be able to understand the overall team agenda.
+  * Doing too little: Continue to be an Analyst.
+    That means simply waiting passively for questions.
+    By this level you should be able to proactively understand the overall team agenda.
     At least once a month, your MD will walk by your desk,
     out-of-left-field make a vague reference to something you might or might not have worked on once,
     ask you to remind them what the results of this amorphous potential project were,
@@ -88,12 +96,14 @@ Scroll down to your relevant level.
     because the VP him/herself is anxious to produce good results,
     and the only way they can produce good results is by taking credit for yours,
     and the only way yours will be worth taking credit for is if they've been thoughtfully-produced.
-    But Associates are in that awkward spot where they're important enough that people will remember them,
-    but haven't yet earned the right to disagree with MD's, whose credentials and title have made them
+    In fact, Analysts can even disagree with MD's, because nobody pays attention to what an Analyst says.
+    Associates on the other hand are in an awkward middle ground where they're
+    important enough that people will remember them if they speak out-of-turn,
+    but not yet important enough to have the right to disagree with MD's,
+    whose credentials and title have made them
     fearless and quite frankly a little too thick for their own good.
-    It is not your job to point this out.
     The right move here is to privately complain to your VP,
-    and then _your VP_ can go argue with the MD.
+    and then let _your VP_ go argue with the MD.
 
 ## Level 3: Vice President
 * The role: Delegate tasks to your Analysts, make sure they have the resources they need to complete them,
@@ -115,7 +125,7 @@ Scroll down to your relevant level.
     "because you took up all the fifth guy's time with your own stuff".
   * Doing too much: Spend all your time chasing your own bright ideas.
     The firm is paying you to make the Analysts productive, not be the ideas-guy.
-    (And quite frankly, nobody gives a shit about your ideas, except maybe your MD who will take over any good ones.)
+    (And quite frankly, nobody gives a shit about your ideas, except maybe your MD who will steal any good ones.)
 
 ## Level 4: Managing Director
 * The role: Be an overall self-aggrandizing egomaniac and spiral deeper into a desperate frenzy
