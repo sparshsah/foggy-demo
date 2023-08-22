@@ -12,6 +12,8 @@
 7. `mkdir` your directory structure, and `git clone` whatever repos you want
 8. [Install Anaconda](https://docs.anaconda.com/free/anaconda/install/mac-os.html)
     * You can keep it up-to-date [as follows](https://www.anaconda.com/blog/keeping-anaconda-date)
-    * [Create a new Python venv](https://docs.conda.io/projects/conda/en/latest/commands/create.html) with `conda create --name=py python=3.xx anaconda && conda activate py`
+    * [Create a new Python venv](https://docs.conda.io/projects/conda/en/latest/commands/create.html) with `conda create --name=py_venv python=3.xx anaconda`
+    * Tell zsh to automatically activate it at startup by adding the following to your `~/.zshrc`: `conda activate py_venv`
+    * You can upgrade Python every once in a while with `conda deactivate && conda remove --name=py_venv --all && conda create --name=py_venv python=3.xx anaconda`
 9. Prepend to your PATH by adding the following to your `~/.zshrc`: `export PATH=/path/to/your/code:/path/to/more/code:$PATH`
 10. [Install VSCode](https://code.visualstudio.com/download), optionally turning on Settings Sync
