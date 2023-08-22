@@ -4,12 +4,14 @@
     * System Settings > Keyboard > Input Sources > Edit > Correct Spelling Automatically
     * System Settings > Keyboard > Input Sources > Text Replacements
 1. Install XCode Command Line Tools with `xcode-select --install`
-2. [Generate a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-3. [Add it to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-4. Add GitHub to known hosts `ssh-keyscan github.com >> ~/.ssh/known_hosts`
-5. `mkdir` your directory structure, and `git clone` whatever repos you want
-6. [Install Anaconda](https://docs.anaconda.com/free/anaconda/install/mac-os.html)
+2. Create a `.zshrc` with `touch ~/.zshrc`
+3. [Generate a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+4. Tell zsh to automatically activate it at startup by adding the following to your `~/.zshrc`: `ssh-add --apple-load-keychain`
+5. [Add it to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+6. Add GitHub to known hosts `ssh-keyscan github.com >> ~/.ssh/known_hosts`
+7. `mkdir` your directory structure, and `git clone` whatever repos you want
+8. [Install Anaconda](https://docs.anaconda.com/free/anaconda/install/mac-os.html)
     * You can keep it up-to-date [as follows](https://www.anaconda.com/blog/keeping-anaconda-date)
     * [Create a new Python venv](https://docs.conda.io/projects/conda/en/latest/commands/create.html) with `conda create --name=py python=3.xx anaconda && conda activate py`
-7. Prepend to your PATH by adding the following at the bottom of your `~/.zshrc`: `export PATH=/path/to/your/code:/path/to/more/code:$PATH`
-8. [Install VSCode](https://code.visualstudio.com/download), optionally turning on Settings Sync
+9. Prepend to your PATH by adding the following to your `~/.zshrc`: `export PATH=/path/to/your/code:/path/to/more/code:$PATH`
+10. [Install VSCode](https://code.visualstudio.com/download), optionally turning on Settings Sync
