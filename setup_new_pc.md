@@ -9,3 +9,4 @@
     * You can keep it up-to-date [as follows](https://www.anaconda.com/blog/keeping-anaconda-date)
     * [Create a new Python venv](https://docs.conda.io/projects/conda/en/latest/commands/create.html) with `conda create --name=py python=3.xx anaconda && conda activate py`
 7. Prepend to your PATH by adding the following at the bottom of your `~/.zshrc`: `export PATH=/path/to/your/code:/path/to/more/code:$PATH`
+8. [Install VSCode](https://code.visualstudio.com/download)
