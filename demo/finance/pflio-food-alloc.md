@@ -6,7 +6,7 @@ we can construct a "model portfolio":
     - It targets 10% annualized volatility, which implies 0.80 * 10% = 8% annualized ER gross of fees.
     - It charges 1.06% annualized adjusted expense ratio, which implies 8% - 1.06% = 6.94% annualized ER net of fees.
     - That implies 6.94% / 10% which is about 0.70 Sharpe net of fees.
-    - In light of our other (uncorrelated) choices, we'd want to allocate 0.70 / (0.70 + 0.35 + 0.15 + 0.15) = 52% mean-variance-optimal risk, which normalizing by 10% vol let's call it 5.2 units. So, in an unlevered portfolio we'd allocate 5.2 / (5.2 + 2.6 + 1.6 + 1.8) = 46% notional.
+    - In light of our other (uncorrelated) choices, we'd want to allocate 0.70 / (0.70 + 0.35 + 0.15 + 0.15) = 52% mean-variance-optimal risk, which normalizing by 10% vol let's call it 5.2 units. So, in an unlevered portfolio we'd allocate 5.2 / (5.2 + 2.6 + 1.6 + 1.8) = 47% notional.
 
 2. Macro (say 0.50 Sharpe gross of fees)
     - We could use the [AQR Managed Futures Mutual Fund (AQMNX)](https://funds.aqr.com/funds/alternatives/aqr-managed-futures-strategy-fund/aqmnx).
