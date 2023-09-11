@@ -1,14 +1,14 @@
 Using the ideas [here](https://github.com/sparshsah/foggy-demo/blob/main/demo/finance/pflio-food.pdf),
 we can construct a "model portfolio":
 
-Beta (say 0.70 Sharpe gross of fees) at 50% risk allocation
+1. Beta (say 0.70 Sharpe gross of fees) at 50% risk allocation
   - We could use the
     [AQR Multi-Asset Risk-Parity Mutual Fund (AQRNX)](https://funds.aqr.com/funds/multi-asset/aqr-multi-asset-fund/aqrnx),
     which charges 1.06% adjusted expense ratio.
   - It targets 10% annualized volatility,
     so in light of our other choices,
     we'd allocate about 48% notional in an unlevered portfolio.
-Macro (say 0.40 Sharpe gross of fees) at 20% risk allocation
+2. Macro (say 0.40 Sharpe gross of fees) at 20% risk allocation
   - We could use the
     [AQR Managed Futures Mutual Fund (AQMNX)](https://funds.aqr.com/funds/alternatives/aqr-managed-futures-strategy-fund/aqmnx),
     which charges 1.51% adjusted expense ratio.
