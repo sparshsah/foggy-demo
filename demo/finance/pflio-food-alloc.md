@@ -29,3 +29,5 @@ we can construct a "model portfolio":
     - It charges 1.50% annualized adjusted expense ratio, which implies 2.4% - 1.50% = 0.90% annualized ER net of fees.
     - That implies 0.90% / 6% which is about 0.15 Sharpe net of fees.
     - In light of our other (uncorrelated) choices, we'd want to allocate 0.15 / (0.70 + 0.35 + 0.15 + 0.15) = 11% mean-variance-optimal risk, which normalizing by 6% vol let's call it 1.8 units. So, in an unlevered portfolio we'd allocate 1.8 / (5.2 + 2.6 + 1.6 + 1.8) = 16% notional.
+
+All together, the unlevered portfolio yields 0.47\*0.0694 + 0.23\*0.0349 + 0.14\*0.0097 + 0.16\*0.0090 = 4.2% annualized ER net of fees, on (0.47^2)\*0.0694 + (0.23^2)\*0.0349 + (0.14^2)\*0.0097 + (0.16^2)\*0.0090 = 1.8% annualized volatility, for a 4.2% / 1.8% = 2.3 Sharpe, exante. Time will tell if I'm right, expost.
