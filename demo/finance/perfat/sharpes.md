@@ -20,7 +20,7 @@ The 2018-2020 period (the so-called "Quant Winter") was infamously tough for ARP
 and so its tepid Sharpe of 0.14 is in some sense unfair.
 They just happened to launch at an unlucky time, but I have extreme conviction
 (in a non-financial-advice way)
-that the strategy over the long term will achieve a Sharpe closer to 0.60,
+that the strategy over the long term will achieve a Sharpe closer to 0.40,
 and based on this conviction I remain invested in a similar fund elsewhere.
 
 To that point, the ostensible winner based on the numbers below, DE Shaw's Composite fund,
@@ -29,6 +29,18 @@ People wondered aloud whether the firm was long for this Earth, and then Composi
 a decade of great performance, and everyone immediately forgot about the first thing,
 and now they're all clamoring to pay 4-and-40 to get into a fund that in 2009
 they were battering down the gates to get out of ([ref](https://www.institutionalinvestor.com/article/2btgdofw34j872f1b8fls/premium/d-e-shaw-opens-gates-expects-3-3-billion-to-flee-magazine-version)).
+
+Finally, one last note: Sharpe by construction is a standalone risk-adjusted return measure,
+and tells me nothing about (a) absolute risk loadings or (b) risk contributions in a portfolio context.
+Say you offer me a zero-Sharpe fund for a flat 2% management fee.
+Doesn't seem that attractive... Until you follow up that it's Universa's tail-risk fund,
+and the slow bleed 9-years-out-of-10 will be rewarded by a meltup whenever the stock market melts down.
+This could actually be _very_ attractive: It lets me more comfortably load up on cheap equity beta,
+harvesting the long-term ER thereof,
+by promising to try to protect me in the odd unlucky year where there's a panic.
+Now, whether you believe that Universa can continue to make good on that promise, is up to you.
+I'm just saying that if you do believe it, then as Aaron Brown [explains](https://www.bloomberg.com/view/articles/2020-05-26/twitter-spat-over-market-risks-is-a-teaching-moment):
+> Your hedge does not have to actually make money by itself: The key is [geometric] asymmetry, in that a 50% loss (in a crash) followed by a 100% gain (in a recovery) produces a final return of zero. If your hedge can reduce both by 25%, so you have a 25% loss followed by a 75% gain, you end up instead with a final return of more than 30%.
 
 Sources for each of these figures are stored in `./files`.
 
