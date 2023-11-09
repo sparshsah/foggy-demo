@@ -38,4 +38,9 @@ which will probably---but not necessarily---accompany a crash in your personal p
       And in fact, it gets worse as you go further out-of-the-money: This is the well-documented Volatility Smirk.
       Roni Israelov argues that the slow bleed of a naive put-protection strategy decreases your long-term ER without a commensurate decrease to things like max drawdown.
       On the other hand, Vineer Bhansali shows that this tradeoff can be much improved---maybe even become ER-_enhancing_---with some reasonably-simple systematic trading rules.
-* Long volatility-index futures.
+* Long volatility-index futures. Again, these tend to be expensive, because of the futures rolldown.
+  The VRP is stronger for further-in-the-future expirations (another Volatility Smirk, in a different direction).
+  Spot VIX is not tradable, so the spot-futures no-arbitrage relationship is not guaranteed.
+  In fact, in reality you might see the VIX at 20pts while a 3-month VIX futures contract carries a futures price of $25 (neglect financing rates for simplicity).
+  Now suppose the VIX stays flat, at expiry you are on the hook to pay the short counterparty $5, despite nothing happening.
+  And even suppose that spot VIX actually jumps to $25 by expiration: You will get nothing despite being "right" about the direction of the VIX.
