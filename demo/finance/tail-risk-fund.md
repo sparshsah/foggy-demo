@@ -70,6 +70,7 @@ increase the potential payoff from the hedge commensurately with the increase in
       So people will demand higher-than-govie rates on the fixed leg from the company to compensate for the uncertainty.
       I am not overly familiar with this engineered instrument (not transparent), and I have to think hard about the dynamics (not intuitive).
       So I don't personally favor the Swap Spread, as it goes against my last two Principles from above.
+      Stick to the CDX.
 
 * Long safe-haven currencies (e.g. USD, JPY, CHF) vs a basket of emerging-market currencies.
   Because FX carry is generally the exact opposite portfolio, this strategy is sometimes called "short FX carry".
