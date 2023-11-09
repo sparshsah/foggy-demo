@@ -32,6 +32,13 @@ But notice that the very dirtiest hedges near the bottom are actually long-term 
 To any of these, you could add a tactical timing component that takes the exposure off when your full alpha model thinks it's too expensive
 (e.g. if put premia are too high relative to recent realized volatility).
 
+It can also makes sense to scale leverage with e.g. the VIX -- When volatility is elevated, loss magnitudes tend to be larger.
+For example, if ex-ante vol is 10%, then quarterly vol is 10%/sqrt(4)=5%, so a -3STD quarterly loss is -15%.
+But if ex-ante vol is 20%, then quarterly vol is 20%/sqrt(4)=10%, so a -3STD quarterly loss is -30%.
+If you have a vanilla put, you're still protected, because the payoff is benchmarked to some fixed strike.
+But if you have e.g. a trend-following strategy as a tail hedge, you might want to take up exposure to
+increase the potential payoff from the hedge commensurately with the increase in potential losses in your personal portfolio.
+
 * Long puts (or calls). There are two considerations here:
     * Despite appearances, these are not "perfect". For example, say you buy a Dec 15 put on a stock.
       On Dec 10, the company announces that it will be releasing big news after Christmas.
