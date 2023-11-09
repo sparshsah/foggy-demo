@@ -32,7 +32,7 @@ But notice that the very dirtiest hedges near the bottom are actually long-term 
 To any of these, you could add a tactical timing component that takes the exposure off when your full alpha model thinks it's too expensive
 (e.g. if put premia are too high relative to recent realized volatility).
 
-It can also makes sense to scale leverage with e.g. the VIX -- When volatility is elevated, loss magnitudes tend to be larger.
+It can also make sense to scale leverage with e.g. the VIX -- When volatility is elevated, loss magnitudes tend to be larger.
 For example, if ex-ante vol is 10%, then quarterly vol is 10%/sqrt(4)=5%, so a -3STD quarterly loss is -15%.
 But if ex-ante vol is 20%, then quarterly vol is 20%/sqrt(4)=10%, so a -3STD quarterly loss is -30%.
 If you have a vanilla put, you're still protected, because the payoff is benchmarked to some fixed strike.
@@ -60,7 +60,7 @@ increase the potential payoff from the hedge commensurately with the increase in
       Spot VIX is not tradable, so the spot-futures no-arbitrage relationship is not guaranteed.
       In fact, in reality you might see the VIX at 20pts while a 3-month VIX futures contract carries a futures price of $25 (neglect financing rates for simplicity).
       Now suppose the VIX stays flat, at expiry you are on the hook to pay the short counterparty $5, despite nothing happening.
-      And even suppose that spot VIX actually jumps to $25 by expiration: You will get nothing despite being "right" about the direction of the VIX.
+      And even suppose that spot VIX actually jumps to 25pts by expiration: You will get nothing despite being "right" about the direction of the VIX.
 
 * Long credit-default-swap index (CDX) which tracks default risk of corporate debt,
   or short ABX/CMBX which track _inverse_ default risk of residential/commercial mortgage-backed securities.
