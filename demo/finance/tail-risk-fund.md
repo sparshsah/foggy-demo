@@ -29,7 +29,7 @@ to dirtiest hedge (things that try to indirectly pick up on a potential "flight 
 which will probably---but not necessarily---accompany a crash in your personal portfolio).
 But notice that the very dirtiest hedges near the bottom are actually long-term _positive ER_ strategies!
 
-To any of these, you could add a tactical timing component that takes the exposure off when the alpha model thinks it's too expensive
+To any of these, you could add a tactical timing component that takes the exposure off when your full alpha model thinks it's too expensive
 (e.g. if put premia are too high relative to recent realized volatility).
 
 * Long puts (or calls). There are two considerations here:
