@@ -62,7 +62,7 @@ increase the potential payoff from the hedge commensurately with the increase in
       Now suppose the VIX stays flat, at expiry you are on the hook to pay the short counterparty $5, despite nothing happening.
       And even suppose that spot VIX actually jumps to 25pts by expiration: You will get nothing despite being "right" about the direction of the VIX.
 
-* Long credit-default-swap index (CDX) which tracks default risk of corporate debt,
+* Long credit-default-swap index (CDX, e.g. CDX.NA.IG.05) which tracks default risk of corporate debt,
   or short ABX/CMBX which track _inverse_ default risk of residential/commercial mortgage-backed securities.
     * Related: Interest-Rate-Swap Spreads. These became popular "tail hedges" after they blew out in the 2008 GFC. They have since fallen out of favor a bit.
       The idea is that in an interest-rate swap, a company will agree to pay the fixed leg, which is essentially just the govie rate.
