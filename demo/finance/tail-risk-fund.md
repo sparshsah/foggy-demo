@@ -63,10 +63,15 @@ To any of these, you could add a tactical timing component that takes the exposu
 
 * Long safe-haven commodities like gold.
 
+* Long Treasuries. Not only are Treasuries considered safe-haven assets, but also the Fed tends to drop rates during recessions to stimulate the economy.
+  So you benefit from that. However, during times of stagflation, the Fed can obstinately fuck with your strategy by refusing to drop rates.
+  So be careful here!
+
 * Trend-following or macro-fundamental momentum.
   Weirdly, trend strategies have historically exhibited convexity relative to major risk asset classes _even when applied to completely-unrelated asset classes_.
   For example, a trend-following strategy on market-neutral stock-selection factors has exhibited convexity relative to SPX,
   despite the fact that each underlying factor portfolio is point-in-time hedged to have zero beta to SPX.
+  But be careful, because obviously any Trend strategy runs the risk of being caught wrong-footed during abrupt reversals.
 
 * Long "defensive quality" i.e. long quality stocks and short junk stocks (QMJ).
   Note: Something that _doesn't_ work well here is BAB, despite the fact that BAB is long low-volatility stocks and short high-volatility stocks.
