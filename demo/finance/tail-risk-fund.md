@@ -16,7 +16,7 @@ When building a "tail risk" or "convexity" fund, I would start with three things
 2. Focus on intuition. It's 2023Q4 and I have a lot of smart friends putting on a US yield-curve steepener as an alpha bet.
    That makes sense to me, but this is _not_ a very obvious convexity bet to me, even conditional on our high-and-inverted yield curve.
    It's hard enough to decide the optimal points to use (10Y-1Y? 5Y-2Y?) and leverage to apply,
-   without having to benchmark it to your personal portfolio's exposure to recession risk.
+   without also having to benchmark it to your personal portfolio's exposure to recession risk.
 
 3. Prefer transparent instruments. Prefer a strategy that doesn't expect to require a lot of tactical trading churn, and, if possible,
    that uses liquid instruments that are easy to monitor.
