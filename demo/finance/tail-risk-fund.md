@@ -28,6 +28,9 @@ from cleanest hedge (and, therefore, also usually most expensive, since there's 
 to dirtiest hedge (things that try to indirectly pick up on a potential "flight to quality/stability" by the animal spirits,
 which will probably---but not necessarily---accompany a crash in your personal portfolio).
 
+To any of these, you could add a tactical timing component that takes the exposure off when the alpha model thinks it's too expensive
+(e.g. if put premia are too high relative to recent realized volatility).
+
 * Long puts (or calls). There are two considerations here:
     * Despite appearances, these are not "perfect". For example, say you buy a Dec 15 put on a stock.
       On Dec 10, the company announces that it will be releasing big news after Christmas.
@@ -38,6 +41,7 @@ which will probably---but not necessarily---accompany a crash in your personal p
       And in fact, it gets worse as you go further out-of-the-money: This is the well-documented Volatility Smirk.
       Roni Israelov argues that the slow bleed of a naive put-protection strategy decreases your long-term ER without a commensurate decrease to things like max drawdown.
       On the other hand, Vineer Bhansali shows that this tradeoff can be much improved---maybe even become ER-_enhancing_---with some reasonably-simple systematic trading rules.
+
 * Long volatility-index futures.
     * The main idea here is to take advantage of the reliable spot-vol correlation: When prices fall, people tend to get more anxious and uncertain, so volatility spikes.
       And conversely, when big jumps happen, they tend to be toward the downside. This gives the VIX its reputation on CNBC as a "fear gauge".
@@ -49,3 +53,22 @@ which will probably---but not necessarily---accompany a crash in your personal p
       In fact, in reality you might see the VIX at 20pts while a 3-month VIX futures contract carries a futures price of $25 (neglect financing rates for simplicity).
       Now suppose the VIX stays flat, at expiry you are on the hook to pay the short counterparty $5, despite nothing happening.
       And even suppose that spot VIX actually jumps to $25 by expiration: You will get nothing despite being "right" about the direction of the VIX.
+
+* Trend-following or macro-fundamental momentum.
+  Weirdly, trend strategies have historically exhibited convexity relative to major risk asset classes _even when applied to completely-unrelated asset classes_.
+  For example, a trend-following strategy on market-neutral stock-selection factors has exhibited convexity relative to SPX,
+  despite the fact that each underlying factor portfolio is point-in-time hedged to have zero beta to SPX.
+
+* Long "defensive quality" i.e. long quality stocks and short junk stocks (QMJ).
+  Note: Something that _doesn't_ work well here is BAB, despite the fact that BAB is long low-volatility stocks and short high-volatility stocks.
+  The problem is that BAB has to lever the low-vol stocks to pick up on the Sharpe ratio differential.
+  In crises, we tend to see "beta compression", where betas compress toward unity across the board.
+  In that scenario, you are 2x long A and 1x short B, where both have fallen -5% at the same time. Not a good outcome for you.
+
+* Long credit-default-swap index (CDX) which tracks default risk of corporate debt,
+  or short ABX/CMBX which track _inverse_ default risk of residential/commercial mortgage-backed securities.
+
+* Long safe-haven currencies (e.g. USD, JPY, CHF) vs a basket of emerging-market currencies.
+  Because FX carry is generally the exact opposite portfolio, this strategy is sometimes called "short FX carry".
+
+* Long safe-haven commodities like gold.
