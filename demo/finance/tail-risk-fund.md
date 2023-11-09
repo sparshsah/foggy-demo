@@ -57,6 +57,12 @@ To any of these, you could add a tactical timing component that takes the exposu
 
 * Long credit-default-swap index (CDX) which tracks default risk of corporate debt,
   or short ABX/CMBX which track _inverse_ default risk of residential/commercial mortgage-backed securities.
+    * Related: Interest-Rate-Swap Spreads. These became popular "tail hedges" after they blew out in the 2008 GFC. They have since fallen out of favor a bit.
+      The idea is that in an interest-rate swap, a company will agree to pay the fixed leg, which is essentially just the govie rate.
+      But during bad times, people are afraid that the company will go bankrupt and be unable to fulfill its obligation.
+      So people will demand higher-than-govie rates on the fixed leg from the company to compensate for the uncertainty.
+      I am not overly familiar with this engineered instrument (not transparent), and I have to think hard about the dynamics (not intuitive).
+      So I don't personally favor the Swap Spread, as it goes against my last two Principles from above.
 
 * Long safe-haven currencies (e.g. USD, JPY, CHF) vs a basket of emerging-market currencies.
   Because FX carry is generally the exact opposite portfolio, this strategy is sometimes called "short FX carry".
