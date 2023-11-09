@@ -22,3 +22,9 @@ When building a "tail risk" or "convexity" fund, I would start with three things
    that uses liquid instruments that are easy to monitor.
 
 ## Strategies
+
+Assuming that the benchmark is some risk-on portfolio, we'll suggest some strategies, in order
+from cleanest hedge (and, therefore, also usually most expensive, since there's a lot of demand for this sort of mechanical insurance policy)
+to dirtiest hedge (things that try to indirectly pick up on a potential "flight to quality/stability" by the animal spirits,
+which will probably---but not necessarily---accompany a crash in your personal portfolio).
+
