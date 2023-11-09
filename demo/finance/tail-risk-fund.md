@@ -73,3 +73,14 @@ To any of these, you could add a tactical timing component that takes the exposu
   The problem is that BAB has to lever the low-vol stocks to pick up on the Sharpe ratio differential.
   In crises, we tend to see "beta compression", where betas compress toward unity across the board.
   In that scenario, you are 2x long A and 1x short B, where both have fallen -5% at the same time. Not a good outcome for you.
+
+* Long risk-targeted whatever and short leverage-targeted whatever.
+  Time after time, authors have shown that risk-targeting---whether for individual assets like SPX or entire strategies like FX carry---improves Sharpes.
+  Not only that, the spread tends to be convex as well.
+  For example, consider (A) a point-in-time 16%-vol targeted SPX allocation, and (B) a unit-levered SPX allocation.
+  The former tends to have higher ER despite both realizing about 16% vol over the long term.
+  Not only that, but it tends to outperform _more_ when the overall thing is falling. This one is closely related to the "trend following observation".
+  Consider that (A) will take up exposures during low-vol times and take down exposures during high-vol times.
+  But we've observed (spot-vol correlation) that low-vol times tend to be rising-price times and high-vol times tend to be falling-price times.
+  So (A) will tend to take up exposures during rising-price times and take down exposures during falling-price times.
+  Sounds like trend-following to me!
