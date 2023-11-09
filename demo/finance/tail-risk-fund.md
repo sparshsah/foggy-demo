@@ -27,6 +27,7 @@ Assuming that the benchmark is some risk-on portfolio, we'll suggest some strate
 from cleanest hedge (and, therefore, also usually most expensive, since there's a lot of demand for this sort of mechanical insurance policy)
 to dirtiest hedge (things that try to indirectly pick up on a potential "flight to quality/stability" by the animal spirits,
 which will probably---but not necessarily---accompany a crash in your personal portfolio).
+But notice that the very dirtiest hedges near the bottom are actually long-term _positive ER_ strategies!
 
 To any of these, you could add a tactical timing component that takes the exposure off when the alpha model thinks it's too expensive
 (e.g. if put premia are too high relative to recent realized volatility).
@@ -54,6 +55,14 @@ To any of these, you could add a tactical timing component that takes the exposu
       Now suppose the VIX stays flat, at expiry you are on the hook to pay the short counterparty $5, despite nothing happening.
       And even suppose that spot VIX actually jumps to $25 by expiration: You will get nothing despite being "right" about the direction of the VIX.
 
+* Long credit-default-swap index (CDX) which tracks default risk of corporate debt,
+  or short ABX/CMBX which track _inverse_ default risk of residential/commercial mortgage-backed securities.
+
+* Long safe-haven currencies (e.g. USD, JPY, CHF) vs a basket of emerging-market currencies.
+  Because FX carry is generally the exact opposite portfolio, this strategy is sometimes called "short FX carry".
+
+* Long safe-haven commodities like gold.
+
 * Trend-following or macro-fundamental momentum.
   Weirdly, trend strategies have historically exhibited convexity relative to major risk asset classes _even when applied to completely-unrelated asset classes_.
   For example, a trend-following strategy on market-neutral stock-selection factors has exhibited convexity relative to SPX,
@@ -64,11 +73,3 @@ To any of these, you could add a tactical timing component that takes the exposu
   The problem is that BAB has to lever the low-vol stocks to pick up on the Sharpe ratio differential.
   In crises, we tend to see "beta compression", where betas compress toward unity across the board.
   In that scenario, you are 2x long A and 1x short B, where both have fallen -5% at the same time. Not a good outcome for you.
-
-* Long credit-default-swap index (CDX) which tracks default risk of corporate debt,
-  or short ABX/CMBX which track _inverse_ default risk of residential/commercial mortgage-backed securities.
-
-* Long safe-haven currencies (e.g. USD, JPY, CHF) vs a basket of emerging-market currencies.
-  Because FX carry is generally the exact opposite portfolio, this strategy is sometimes called "short FX carry".
-
-* Long safe-haven commodities like gold.
