@@ -1,4 +1,18 @@
-"""might be cool to try sth like this -- brush up on classical mechanics"""
+"""
+might be cool to try sth like this -- brush up on classical mechanics
+
+Our most popular missiles today,
+all of which are obscenely expensive
+(apparently mainly due to their hyper-precise guidance systems)
+are:
+  * Ones we hope to use never
+    * Minuteman (ICBM)
+    * Trident (SLBM)
+  * Ones we do use all the time
+    * Tomahawk (SSM/Cruise)
+    * Patriot (SAM)
+    * Hellfire (ASM)
+"""
 
 from collections.abc import Sequence
 import dataclasses
@@ -68,8 +82,8 @@ class Threat:
 
     Potential extensions:
         - Assume you can't fully triangulate an exact single location
-        - Allow non-freefall (so, factor in acceleration + higher moments)
-        - Factor in air resistance given surface shape
+        - Allow non-freefall (so, factor in non-gravitational acceleration + higher moments)
+        - Factor in air resistance given warhead shape
     """
     timestamp: datetime.datetime
     coordinate: Coordinate
