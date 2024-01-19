@@ -91,7 +91,9 @@ class Threat:
     freefall: bool = True
 
     def locate_at(timestamp: datetime.datetime | None = None) -> Coordinate:
-        """Tell where this threat has moved to by the given timestamp, according to inertia + gravity."""
+        """Tell where this threat has moved to by the given timestamp, according to inertia + gravity.
+        This is apparently called ["dead reckoning"](https://en.wikipedia.org/wiki/Dead_reckoning).
+        """
         if timestamp is None:
             # really should add like the 5ms or whatever it will take for this to run...
             timestamp = datetime.datetime.now()
