@@ -59,7 +59,7 @@ Sources for each of these figures are stored in `./files`.
 ## Two Sigma Absolute Return Enhanced Strategy
 
 * Quant Multi-Asset, probably the best brand name in all of quant asset management (real stuff, not RenTec -- cf above).
-* 2011 Nov (fund inception) - 2022 Dec (review date): 9.45% net ann ER / 12% ann vol = 0.79
+* 2011 Nov (fund inception) - 2022 Dec (review date): 1.1
 
 ## Two Sigma Alternative Risk Premia
 
