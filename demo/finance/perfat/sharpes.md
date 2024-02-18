@@ -42,6 +42,7 @@ Now, whether you believe that Universa can continue to make good on that promise
 I'm just saying that if you do believe it, then as Aaron Brown [explains](https://www.bloomberg.com/view/articles/2020-05-26/twitter-spat-over-market-risks-is-a-teaching-moment):
 > Your hedge does not have to actually make money by itself: The key is [geometric] asymmetry, in that a 50% loss (in a crash) followed by a 100% gain (in a recovery) produces a final return of zero. If your hedge can reduce both by 25%, so you have a 25% loss followed by a 75% gain, you end up instead with a final return of more than 30%.
 
+These are all net-of-fees, net-of-tcost, excess-of-cash, unless otherwise noted.
 Sources for each of these figures are stored in `./files`.
 
 ## Renaissance Medallion
@@ -53,36 +54,36 @@ Sources for each of these figures are stored in `./files`.
 ## DE Shaw Composite Fund
 
 * Quant + Disco Multi-Asset
-* 2001 Mar (fund inception) - 2011 Jun (review date): 1.33 (net-of-fee/net-of-tcost/excess-of-cash, from an investment consultancy report prepared by Cliffwater)
+* 2001 Mar (fund inception) - 2011 Jun (review date): 1.33 (from an investment consultancy report prepared by Cliffwater)
 * This is so good that in 2018 DE Shaw started charging 3-and-40 for it!
 
 ## Two Sigma Absolute Return Enhanced Strategy
 
 * Quant Multi-Asset, probably the best brand name in all of quant asset management (real stuff, not RenTec -- cf above).
-* 2011 Nov (fund inception) - 2022 Dec (review date): 1.1 (net-of-fee/net-of-tcost/excess-of-cash, from an investment consultancy report prepared by RVK for the ND Board of Lands)
+* 2011 Nov (fund inception) - 2022 Dec (review date): 1.1 (from an investment consultancy report prepared by RVK for the ND Board of Lands)
 
 ## Two Sigma Alternative Risk Premia
 
 * Quant Multi-Asset
-* 2015 (fund inception) - 2021 (review date): 0.14 (net-of-fee/net-of-tcost/excess-of-cash, from a pitch deck provided by Two Sigma to Meketa for the Oakland PFRS)
+* 2015 (fund inception) - 2021 (review date): 0.14 (from a pitch deck provided by Two Sigma to Meketa for the Oakland PFRS)
 * Note: Their timing here was terrible, they launched into an infamously tough period for ARP (the so-called "Quant Winter").
 
 ## AQR Absolute Return Fund
 
 * Quant + Disco Multi-Asset
-* 1998 (fund inception) - 2023 (review date): 0.9 (net-of-fee/net-of-tcost/excess-of-cash, calculated by me)
+* 1998 (fund inception) - 2023 (review date): 0.9 (calculated by me)
 
 ## Bridgewater Pure Alpha 18% vol
 
 * The most storied global-macro fund on record.
-* 1991 (fund inception) - 2015 (review date): 0.67 (net-of-fee/net-of-tcost/excess-of-cash, from an article in P&I)
+* 1991 (fund inception) - 2015 (review date): 0.67 (from an article in P&I)
 
 ## Two Sigma Compass sleeve
 
 * Quant Macro
-* 2005 (strategy inception) - 2023 (review date): 0.8 (net-of-fee/net-of-tcost/excess-of-cash, reported to me)
+* 2005 (strategy inception) - 2023 (review date): 0.7 (reported to me)
 
 ## Warren Buffett
 
 * Stock Selection + Private Equity -- A legend!
-* 1976 (30Y lookback) - 2017 (review date): 0.76 (gross-of-fee/net-of-tcost/excess-of-cash, from a paper by AQR)
+* 1976 (30Y lookback) - 2017 (review date): 0.76 (GROSS of fees, from a paper by AQR)
