@@ -47,7 +47,7 @@ Sources for each of these figures are stored in `./files`.
 
 ## Renaissance Medallion
 
-* Strategy: God only knows.
+* Strategy: God only knows. Probably some midpoint of Sharpe/capacity between stat arb and algo market-making.
 * 1978 (inception) - present: forty-two gazillion.
 * Caveat: They keep this for themselves and give crap to clients. Ref 2020 performance divergence between their stuff and clients' stuff.
 
@@ -59,7 +59,7 @@ Sources for each of these figures are stored in `./files`.
 
 ## Two Sigma Absolute Return Enhanced Strategy
 
-* Quant Multi-Asset, probably the best brand name in all of quant asset management (real stuff, not RenTec -- cf above).
+* Quant + Disco Multi-Asset, probably the best brand name in all of quant asset management (real stuff, not RenTec -- cf above).
 * 2011 Nov (fund inception) - 2022 Dec (review date): 1.1 (from an investment consultancy report prepared by RVK for the ND Board of Lands)
 
 ## Two Sigma Alternative Risk Premia
@@ -85,5 +85,5 @@ Sources for each of these figures are stored in `./files`.
 
 ## Warren Buffett
 
-* Stock Selection + Private Equity -- A legend!
+* Long-Only Stock Selection + Private Equity -- A legend!
 * 1976 (30Y lookback) - 2017 (review date): 0.76 (GROSS of fees, from a paper by AQR)
