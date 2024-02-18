@@ -53,7 +53,7 @@ Sources for each of these figures are stored in `./files`.
 ## DE Shaw Composite Fund
 
 * Quant + Disco Multi-Asset
-* 2001 Mar (fund inception) - 2011 Jun (review date): 1.6
+* 2001 Mar (fund inception) - 2011 Jun (review date): 1.33
 * This is so good that in 2018 DE Shaw started charging 3-and-40 for it!
 
 ## Two Sigma Absolute Return Enhanced Strategy
