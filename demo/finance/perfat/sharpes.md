@@ -53,36 +53,36 @@ Sources for each of these figures are stored in `./files`.
 ## DE Shaw Composite Fund
 
 * Quant + Disco Multi-Asset
-* 2001 Mar (fund inception) - 2011 Jun (review date): 1.33
+* 2001 Mar (fund inception) - 2011 Jun (review date): 1.33 (net-of-fee/net-of-tcost/excess-of-cash, from an investment consultancy report prepared by Cliffwater)
 * This is so good that in 2018 DE Shaw started charging 3-and-40 for it!
 
 ## Two Sigma Absolute Return Enhanced Strategy
 
 * Quant Multi-Asset, probably the best brand name in all of quant asset management (real stuff, not RenTec -- cf above).
-* 2011 Nov (fund inception) - 2022 Dec (review date): 1.1
+* 2011 Nov (fund inception) - 2022 Dec (review date): 1.1 (net-of-fee/net-of-tcost/excess-of-cash, from an investment consultancy report prepared by RVK for the ND Board of Lands)
 
 ## Two Sigma Alternative Risk Premia
 
 * Quant Multi-Asset
-* 2015 (fund inception) - 2021 (review date): 0.14
+* 2015 (fund inception) - 2021 (review date): 0.14 (net-of-fee/net-of-tcost/excess-of-cash, from a pitch deck provided by Two Sigma to Meketa for the Oakland PFRS)
 * Note: Their timing here was terrible, they launched into an infamously tough period for ARP (the so-called "Quant Winter").
 
 ## AQR Absolute Return Fund
 
 * Quant + Disco Multi-Asset
-* 1998 (fund inception) - 2023 (review date): 1.3
+* 1998 (fund inception) - 2023 (review date): 0.9 (net-of-fee/net-of-tcost/excess-of-cash, calculated by me)
 
 ## Bridgewater Pure Alpha 18% vol
 
 * The most storied global-macro fund on record.
-* 1991 (fund inception) - 2015 (review date): 0.67
+* 1991 (fund inception) - 2015 (review date): 0.67 (net-of-fee/net-of-tcost/excess-of-cash, from an article in P&I)
 
 ## Two Sigma Compass sleeve
 
 * Quant Macro
-* 2005 (strategy inception) - 2023 (review date): 0.8 - 1.0
+* 2005 (strategy inception) - 2023 (review date): 0.8 (net-of-fee/net-of-tcost/excess-of-cash, reported to me)
 
 ## Warren Buffett
 
 * Stock Selection + Private Equity -- A legend!
-* 1976 (30Y lookback) - 2017 (review date): 0.76
+* 1976 (30Y lookback) - 2017 (review date): 0.76 (gross-of-fee/net-of-tcost/excess-of-cash, from a paper by AQR)
