@@ -15,6 +15,7 @@ https://github.com/github/docs/pull/11652
 merged into main and live in the last paragraph at
 https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase
 :)
+-- Edit: And a pandas dev! https://github.com/pandas-dev/pandas/pull/57991
 
 
 ## RANKED LEGENDS: Where accessible collides with mind-blowing (AKA what my demos dream of being when they grow up)
