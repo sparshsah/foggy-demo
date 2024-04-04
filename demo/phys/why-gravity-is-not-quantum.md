@@ -1,4 +1,4 @@
-It's just too different from the other three interactions (EM, Strong, and Weak).
+Sorry, but it's just too different from the other three interactions (EM, Strong, and Weak).
 
 0. The Higgs field endows fundamental particles with rest mass.
    And rest mass contributes to gravitational charge.
@@ -16,7 +16,7 @@ It's just too different from the other three interactions (EM, Strong, and Weak)
    And, uhh, the Weak bosons straight-up _have_ rest mass? WTFFF?
 3. (Relativistic) inertial mass is the same as gravitational charge.
    So inertia, the thing that resists forces... causes force.
-   Hence we end up with the strange coincidence of Galileo's falling balls.
+   Hence we end up with the all-too-convenient coincidence of Galileo's falling balls.
    (One was heavy and one was light, which is perfectly normal.)
 4. Lensing and LIGO's detection of gravitationally-induced spacetime distortions
    prove once-and-for-all that gravity is a geometric, not a particulate, phenomenon.
