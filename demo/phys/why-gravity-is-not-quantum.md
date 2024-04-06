@@ -67,5 +67,5 @@ Therefore:
 
 ### 2. Gravity and the Geometry of Spacetime
 
-Lensing and LIGO's detection of gravitationally-induced spacetime distortions
+LIGO's detection of gravitationally-induced length distortions and our observations of lensing
 prove once-and-for-all that gravity is a geometric, not a particulate, phenomenon.
