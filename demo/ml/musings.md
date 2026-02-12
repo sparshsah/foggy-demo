@@ -77,3 +77,20 @@ Second is things like SHAP explanations, which help you as the human try to unde
 ## Caveat
 
 Five years ago, I would have reckoned that humans are better than machines at reasoning their way out of rare, severe situations. Especially if you can get a human who is well-rested (not tired), calm (not emotionally agitated), and trusted to act in good faith (not disgruntled/saboteur). After all, machines are just doing "pattern recognition", and if they encounter a situation that wasn't in their training sample, they'll go haywire or, worse, "hallucinate" (a term-of-art that we didn't have five years ago!). But as time has gone on, I'm not so sure... I've found that OpenAI's ChatGPT or Anthropic's Claude is faster and better at debugging and recovering from system incidents than human engineers. After all, the human brain is just a highly-advanced computer, equally prone to panicking or overconfidence as the machine is prone to going haywire or hallucinating. That's to say nothing of bonafide mistakes, which it goes without saying that both can make, too.
+
+# Real-World Usage Patterns
+
+## Industrial Automation
+
+You could perform RL on digital twins to impose MPC (model-predictive control) on PID (proportional-integral-derivative) controllers.
+
+For example, pretend you're trying to run a nuclear power plant. The tradeoff boils down to balancing safety, product yield/quality, and cost.
+
+* You have a safe operating temperature range: Going outside that range risks equipment longevity or people.
+* Within that range, there's an optimal temperature at which product yield or quality is highest.
+* But maintaining that optimal point costs energy and water.
+
+So you balance it: While always respecting the hard safety constraints, you aim for the temperature that maximizes profit, considering increased yield/quality minus the extra cost.
+
+* To learn the safe temperature range you could use a first-principles physics-based model (with the solution either in closed form or numerically);
+* To learn the optimal temperature within that range (based on yield/quality minus costs at each temperature) you could use RL.
