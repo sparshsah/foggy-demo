@@ -40,10 +40,6 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 # Simple Buzzwords
 
-## RL
-
-RL often boils down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by letting an agent explore in a self-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
-
 ## The Evolution of NLP toward LLMs
 
 Model Architectures:
@@ -55,6 +51,10 @@ Training Algorithms:
 * Pretraining (optimizing hyperparameters and settling pretrained weights based on large, generic datasets) ->
 * Foundation models (massive-scale pretrained models) ->
 * Fine-tuning (e.g. freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers) based on smaller domain-specific labeled datasets)
+
+## RL
+
+RL often boils down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by letting an agent explore in a self-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
 
 ## Industrial Automation
 
