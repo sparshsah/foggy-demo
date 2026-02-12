@@ -8,7 +8,7 @@ I think of ML (machine learning) as being broken down into three stages:
 
 ## Data
 
-First, you synthesize (from a theoretical ground-truth DGP (data-generating process)) or collect (from the real world) and organize data.
+To start, you synthesize (from a theoretical ground-truth DGP (data-generating process)) or collect (from the real world) and organize data.
 
 This might be:
 
@@ -18,7 +18,7 @@ This might be:
 
 ## Model
 
-Second, you define or construct or learn a model of the world.
+Then, you define or construct or learn a model of the world.
 
 This could be a:
 
@@ -30,3 +30,8 @@ This could be a:
     - E.g. A mapping from macro and idiosyncratic signals to an asset-level vector of ERs (expected returns) and matrix of covariances, based on which the machine each day spits out new ER and risk/volatility forecasts
 
 ## Optimization/Action
+
+Finally, you optimize actions---with e.g. traditional constrained optimization or RL (reinforcement learning)---deciding what to do to achieve the best outcome.
+
+* In investing, this could be Markowitz (AKA mean-variance) optimization with risk-management constraints and tcosts.
+* In lending, this could be framed as a RL problem wherein you explore new market geos and segments subject to regulations.
