@@ -71,6 +71,8 @@ So you balance it: While always respecting the hard safety constraints, you aim 
 * To learn the safe temperature range you could use a first-principles physics-based model (with the solution either in closed form or numerically);
 * To learn the optimal temperature within that range (based on yield/quality minus costs at each temperature) you could use RL.
 
+The ultimate expression of this paradigm is the closed-loop system, wherein the agent acts online based on live sensor data with live (human-overridable) control of the plant.
+
 # Infusing the Machine with Human Intuition
 
 I see two big ways to infuse machines with human intuition:
