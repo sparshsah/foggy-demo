@@ -42,7 +42,7 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 ## RL
 
-RL often boils down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by exploring in a self-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
+RL often boils down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by letting an agent explore in a self-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
 
 ## The Evolution of NLP toward LLMs
 
