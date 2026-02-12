@@ -42,6 +42,8 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 ## The Evolution of NLP toward LLMs
 
+NLP is "natural-language processing". LLMs are "large language models".
+
 Model Architectures:
 * RNN (recurrent NN (neural network)) ->
 * Gated RNN (e.g. GRU or LSTM) ->
