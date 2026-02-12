@@ -36,7 +36,7 @@ This could be a:
 Finally, you optimize actions---with e.g. traditional constrained optimization or RL (reinforcement learning)---deciding what to do to achieve the best outcome.
 
 * In investing, this could be Markowitz (AKA mean-variance) optimization with risk-management constraints and tcosts.
-* In lending, this could be framed as a RL problem wherein you explore new market geos and segments subject to regulations.
+* In lending, this could be framed as a multi-armed bandit problem wherein you explore new market geos and segments subject to regulations.
 
 # Simple Buzzwords
 
