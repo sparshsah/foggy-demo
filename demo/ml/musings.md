@@ -42,7 +42,7 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 ## Bias-Variance Tradeoff
 
-Regularization can help here.
+Regularization or early stopping can help here.
 
 ## Ensemble Methods
 
