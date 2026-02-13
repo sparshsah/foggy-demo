@@ -56,7 +56,9 @@ Training Algorithms:
 
 ## RL
 
-RL often boils down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by letting an agent explore in a self-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
+RL classically often boiled down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by letting an agent explore in a self-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
+
+TODO(sparshsah): There's been a lot of progress here, e.g. policy-gradient, actor-critic...
 
 ## Industrial Automation
 
