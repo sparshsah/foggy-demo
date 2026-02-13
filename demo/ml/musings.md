@@ -46,7 +46,7 @@ NLP is "natural-language processing". LLMs are "large language models".
 
 Model Architectures:
 * RNN (recurrent NN (neural network)) ->
-* Gated RNN (e.g. GRU or LSTM) ->
+* Gated RNN (e.g. GRU (gated recurrent unit) or LSTM (long short-term memory)) ->
 * Attention-enabled NN (e.g. transformer)
 
 Training Algorithms:
@@ -95,4 +95,4 @@ Second is things like SHAP explanations, which help you as the human try to unde
 
 ## Caveat
 
-Five years ago, I would have reckoned that humans are better than machines at reasoning their way out of rare, severe situations. Especially if you can get a human who is well-rested (not tired), calm (not emotionally agitated), and trusted to act in good faith (not disgruntled/saboteur). After all, machines are just doing "pattern recognition", and if they encounter a situation that wasn't in their training sample, they'll go haywire or, worse, "hallucinate" (a term-of-art that we didn't have five years ago!). But as time has gone on, I'm not so sure... I've found that OpenAI's ChatGPT or Anthropic's Claude is faster and better at debugging and recovering from system incidents than human engineers. After all, the human brain is just a highly-advanced computer, equally prone to panicking or overconfidence as the machine is prone to going haywire or hallucinating. That's to say nothing of bonafide mistakes, which it goes without saying that both can make, too.
+Ten years ago, I would have reckoned that humans are better than machines at reasoning their way out of rare, severe situations. Especially if you can get a human who is well-rested (not tired), calm (not emotionally agitated), and trusted to act in good faith (not disgruntled/saboteur). After all, machines are just doing "pattern recognition", and if they encounter a situation that wasn't in their training sample, they'll go haywire or, worse, "hallucinate" (a term-of-art that hadn't really entered the popular consciousness ten years ago!). But as time has gone on, I'm not so sure... I've found that OpenAI's ChatGPT or Anthropic's Claude is faster and better at debugging and recovering from system incidents than human engineers. After all, the human brain is just a highly-advanced computer, equally prone to panicking or overconfidence as the machine is prone to going haywire or hallucinating. That's to say nothing of bonafide mistakes, which it goes without saying that both can make, too.
