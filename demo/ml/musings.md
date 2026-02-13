@@ -40,6 +40,16 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 # Simple Buzzwords
 
+## Bias-Variance Tradeoff
+
+Regularization can help here.
+
+## Ensemble Methods
+
+* Bagging (boostrap-aggregating)
+* Boosting
+* Stacking
+
 ## The Evolution of NLP toward LLMs
 
 NLP is "natural-language processing". LLMs are "large language models".
