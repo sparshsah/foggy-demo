@@ -42,7 +42,7 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 ## Bias-Variance Tradeoff
 
-Regularization or early stopping can help here.
+Regularization or early stopping can help with permitting a complex (low-bias, high-variance) model architecture without leading to overfitting.
 
 ## Ensemble Methods
 
