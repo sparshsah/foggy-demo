@@ -51,7 +51,7 @@ Model Architectures:
 
 Training Algorithms:
 * Pretraining (optimizing hyperparameters and settling pretrained weights based on large, generic datasets) ->
-* Foundation models (massive-scale pretrained models) ->
+* Foundation models (massive-scale pretrained models intended to be broadly useful) ->
 * Fine-tuning (e.g. freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers) based on smaller domain-specific labeled datasets)
 
 ## RL
