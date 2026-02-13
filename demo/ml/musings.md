@@ -1,4 +1,4 @@
-Some miscellaneous musings on ML (machine learning).
+Some miscellaneous stream-of-consciousness musings on ML (machine learning).
 
 # The Process
 
