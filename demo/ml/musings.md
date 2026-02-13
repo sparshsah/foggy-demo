@@ -75,6 +75,10 @@ So you balance it: While always respecting the hard safety constraints, you aim 
 
 The ultimate expression of this paradigm is the closed-loop system, wherein the agent acts online based on live sensor data with live (human-overridable) control of the plant.
 
+## Bayesian HPT vs MBRL (work in progress)
+
+
+
 # Infusing the Machine with Human Intuition
 
 I see two big ways to infuse machines with human intuition:
