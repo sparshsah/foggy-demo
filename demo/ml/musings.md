@@ -79,7 +79,7 @@ The ultimate expression of this paradigm is the closed-loop system, wherein the 
 
 HPT is "hyperparameter tuning". MBRL is "model-based reinforcement learning".
 
-There are Bayesian-inspired HPT methods like TPE (tree-structured Parzen estimator) or GP-EI (Guassian process with expected improvement) or HEBOSearch (heteroscedastic evolutionary Bayesian optimization). These methods try to (oversimplifying here) build a surrogate representation of the behavior of a blackbox function given hyperparameters, and iteratively improve hyperparameters by aiming for something like `argmax_{hyperparameters}(goodness_of_blackbox | hyperparameters)`.
+There are Bayesian-inspired HPT methods like TPE (tree-structured Parzen estimator) or GP-EI (Gaussian process with expected improvement) or HEBOSearch (heteroscedastic evolutionary Bayesian optimization). These methods try to (oversimplifying here) build a surrogate representation of the behavior of a blackbox function given hyperparameters, and iteratively improve hyperparameters by aiming for something like `argmax_{hyperparameters}(goodness_of_blackbox | hyperparameters)`.
 
 Separately, there is MBRL, which also builds surrogate representations and can apply Bayesian-style optimization to converage toward an optimal action policy.
 
