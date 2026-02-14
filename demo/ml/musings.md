@@ -65,7 +65,7 @@ Model Architectures:
 * Gated RNN (e.g. GRU (gated recurrent unit) or LSTM (long short-term memory)) ->
 * Attention-enabled NN (e.g. transformer)
 
-Training Algorithms:
+Training Algorithms and Adaptation Techniques:
 * Pretraining (optimizing hyperparameters and settling pretrained weights based on large, generic datasets) ->
 * Foundation models (massive-scale pretrained models intended to be broadly useful) ->
 * Fine-tuning (e.g. freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers) based on smaller domain-specific labeled datasets) ->
