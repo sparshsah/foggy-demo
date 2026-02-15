@@ -184,4 +184,4 @@ I would rather start out with a process that's robust to these shifts from the g
          - SHAP beeswarms (check that feature contributions---direction and magnitude---make intuitive sense, and haven't jumped abruptly)
          - Default-rate calibration
          - Ranking power (AuC (Area under the Curve))
-    - You can check them over time and on different segments, but if they look OK, go for the deploy
+    - You can check them on different time periods and on different market segments, but if they look OK, go for the deploy
