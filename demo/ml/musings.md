@@ -186,7 +186,7 @@ I would rather start out with a process that's robust to these shifts from the g
             - Input schema is stable from offline (training / validation / testing) to live setting
             - SHAP beeswarms (feature contributions---direction and magnitude---make intuitive sense, and haven't jumped abruptly)
             - Default-rate calibration
-            - Ranking power (AuC (Area under the Curve))
+            - Ranking ability (AuC (Area under the Curve))
             - Performance on key critical / edge / anomalous (detected with anomaly detection e.g. isolation forests) cases
             - Sensitivity to adversarial perturbation / noise
         - You should check behavior for consistency and stability on different time periods (e.g. monthly vintages) and on different market segments (e.g. high- / low-FICO) (in both the training and holdout/validation samples), but if they look OK, go for the deploy
