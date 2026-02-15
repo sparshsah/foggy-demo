@@ -185,7 +185,8 @@ I would rather start out with a process that's robust to these shifts from the g
     - This raises the question: How do you get confident that your model is safe to deploy?
         - Well, take an XGBoost model in consumer lending. Check a few things:
             - Input schema is stable from offline (training / validation / testing) to live setting
-            - SHAP beeswarms (feature contributions---direction and magnitude---make intuitive sense, and haven't jumped abruptly)
+            - SHAP beeswarms (feature contributions---direction and magnitude---make intuitive sense, and haven't jumped abruptly) (relatively efficient to compute for tree-based models)
+                 - LIME plots are an alternative that are more efficient to compute for e.g. NNs
             - Default-rate calibration
             - Ranking ability (AuC (Area under the Curve))
             - Performance on key critical / edge / anomalous (detected with anomaly detection e.g. isolation forests) cases
