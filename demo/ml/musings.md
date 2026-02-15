@@ -77,7 +77,7 @@ Training Algorithms and Adaptation Techniques:
     - Still based on the self-supervised next-token-prediction task on large, unlabeled datasets e.g. a medical journal's archives
     - Note that everyone I've seen introduce this technique brings up the risk of "catastrophic forgetting" in the next breath like it's a knee-jerk reaction, so I'll do the same...
 * Fine-tuning ->
-    - E.g. (I think this is essentially LoRA?) Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
+    - E.g. (I think this is essentially LoRA (Low-Rank Adaptation)?) Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
     - E.g. You could fine-tune on a corpus of clear, polite, helpful responses to customer-service complaints
 * RAG (retrieval-augmented generation) ->
     - Fetching and providing domain-specific authoritative content as context to a trained LLM, at prompt time, _by injecting that content into the prompt_
