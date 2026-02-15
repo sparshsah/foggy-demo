@@ -179,3 +179,9 @@ I think the obsession with monitoring and testing for these is overrated, for tw
 I would rather start out with a process that's robust to these shifts from the get-go, in two ways:
 * Upweight recent data in your training sample
 * Frequently retrain and deploy your model
+    - This raises the question: How do you get confident that your model is safe to deploy?
+    - Well, take an XGBoost model in consumer lending. Look at three things:
+         - SHAP beeswarms (check that feature contributions---direction and magnitude---make intuitive sense, and haven't jumped abruptly)
+         - Default-rate calibration
+         - Ranking power (AuC (Area under the Curve))
+    - You can check them over time and on different segments, but if they look OK, go for the deploy
