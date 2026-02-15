@@ -42,13 +42,15 @@ Finally, you optimize actions---with e.g. traditional constrained optimization o
 
 ## Point: Bias-Variance Tradeoff
 
-Regularization or early stopping can help with permitting a complex (low-bias, high-variance) model architecture without leading to overfitting.
+Regularization or early stopping can help
+* With permitting a complex (low-bias, high-variance) model architecture
+* Without leading to overfitting.
 
 ## Counterpoint: Double-Descent Curve
 
 We can have "salutary overparameterization" or "benign overfitting" / "benign interpolation".
-Even in plain-vanilla linear regression (just using the pseudoinverse to make the solution defined)!
-But especially in deep learning.
+* Even in plain-vanilla linear regression (just using the pseudoinverse to make the solution defined, which corresponds to choosing the minimum-norm interpolating solution)!
+* But especially in deep learning.
 
 ## Ensemble Methods
 
