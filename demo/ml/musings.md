@@ -92,9 +92,13 @@ I am semi-making up / abusing a term, calling RL as "bootstrap-supervised".
 * We call LLM's next-token prediction task as "self-supervised" because the correct answer---the actual next token---is explicitly found in the dataset even though it doesn't necessarily fit into the traditional schema of tabular rows with a "y" and an "X".
     - Nevertheless, if you had an infinite-sized table, you could build these rows where "y" is the actual next token and "X" is the sequence that preceded it.
 * So I call RL's "choose the best action" task as "bootstrap-supervised" because the latent correct answer---the actual optimal action given the scientist's economic utility function---can be unambiguously calculated by simulating every possible path for an infinite number of steps.
-    - In Q-Learning, if we had infinite memory and infinite compute and a well-behaved process, our bootstrap-updating of the value function would converge to the true function. And that bootstrap-updated value function in a very meaningful way identifies---"labels"---the actual best action from a given state.
+    - In Q-Learning, if we had infinite memory and infinite compute and a well-behaved process, our bootstrap-updating of the value function would converge to the true function.
+    - And that bootstrap-updated value function in a very meaningful way identifies---"labels"---the actual best action from a given state.
 
-RL classically often boiled down to applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy by letting an agent explore in a bootstrap-supervised manner the state space of an MDP (Markov Decision Process), wherein the value function can be written as a Bellman equation.
+RL classically often boiled down to
+* Applying Q-Learning (off-policy) or SARSA (on-policy) to optimize or evaluate an action policy
+* By letting an agent explore in a bootstrap-supervised manner the state space of an MDP (Markov Decision Process)
+* Wherein the value function can be written as a Bellman equation.
 
 TODO(sparshsah): There's been a lot of progress here, e.g. policy-gradient, actor-critic...
 
@@ -119,9 +123,11 @@ The ultimate expression of this paradigm is the closed-loop system, wherein the 
 
 HPT is "hyperparameter tuning". MBRL is "model-based reinforcement learning".
 
-There are Bayesian-inspired HPT methods like TPE (tree-structured Parzen estimator) or GP-EI (Gaussian process with expected improvement) or HEBOSearch (heteroscedastic evolutionary Bayesian optimization). These methods try to (oversimplifying here) build a surrogate representation of the behavior of a blackbox function given hyperparameters, and iteratively improve hyperparameters by aiming for something like `argmax_{hyperparameters}(goodness_of_blackbox | hyperparameters)`.
+There are Bayesian-inspired HPT methods like TPE (tree-structured Parzen estimator) or GP-EI (Gaussian process with expected improvement) or HEBOSearch (heteroscedastic evolutionary Bayesian optimization).
+* These methods try to (oversimplifying here) build a surrogate representation of the behavior of a blackbox function given hyperparameters, and iteratively improve hyperparameters by aiming for something like `argmax_{hyperparameters}(goodness_of_blackbox | hyperparameters)`.
 
-Separately, there is MBRL, which also builds surrogate representations and can apply Bayesian-style optimization to converge toward an optimal action policy.
+Separately, there is MBRL
+* Which also builds surrogate representations and can apply Bayesian-style optimization to converge toward an optimal action policy.
 
 I have to formalize this a bit more (chatbots push back on me here, which is why above I said "Bayesian-inspired" or "Bayesian-style" instead of "Bayesian"), but I feel there's a distinct kernel of Bayesian strategy that unifies both.
 
@@ -136,7 +142,10 @@ I see two big ways to infuse machines with human intuition:
 
 First is to assert that humans make ex-ante "correct" or "optimal" decisions, and just learn to imitate/replicate/mimic that.
 
-* For example, in investing, you might assert that human-decided positions are "right", and if they end up losing money ex-post in the real world, then that's just an unlucky noisy draw. This takes all the noise out of the target (remember, we asserted this). So, rather than training on noisy returns data, you train on noiseless positions data. That is, rather than trying to predict returns directly, you try to predict what portfolio a human would build, and assert that that portfolio reflects the ex-ante best expectation of asset returns.
+* For example, in investing, you might assert that human-decided positions are "right", and if they end up losing money ex-post in the real world, then that's just an unlucky noisy draw.
+    - This takes all the noise out of the target (remember, we asserted this).
+    - So, rather than training on noisy returns data, you train on noiseless positions data.
+    - That is, rather than trying to predict returns directly, you try to predict what portfolio a human would build, and assert that that portfolio reflects the ex-ante best expectation of asset returns.
 * Or, rather than building a "digital twin" and simulating what would happen under different scenarios then using RL to learn a value function and action policy, you just try to systematize---infer and write down---the expert human operator's observed action policy.
 
 ## Explainability
