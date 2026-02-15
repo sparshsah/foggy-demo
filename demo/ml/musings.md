@@ -54,7 +54,7 @@ We can have "salutary overparameterization" or "benign overfitting" / "benign in
 
 ## Ensemble Methods
 
-* Bagging (boostrap-aggregating)
+* Bagging (bootstrap-aggregating)
 * Boosting (e.g. AdaBoost or Gradient Boosting)
 * Stacking
 
