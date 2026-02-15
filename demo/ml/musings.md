@@ -79,7 +79,7 @@ Training Algorithms and Adaptation Techniques:
     - E.g. Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
     - E.g. You could fine-tune on a corpus of clear, polite, helpful responses to customer-service complaints
 * RAG (retrieval-augmented generation) ->
-    - Providing domain-specific authoritative text as context to a trained LLM, at prompt time, _by injecting that text into the prompt_
+    - Fetching and providing domain-specific authoritative content as context to a trained LLM, at prompt time, _by injecting that content into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
 * Context compaction/compression ->
     - E.g. When a chat becomes so long that it quadratically slows down the bot's responses, or literally becomes too big to fit into the bot's context window, you can keep just a summary of the conversation so far as context for the conversation going forward
