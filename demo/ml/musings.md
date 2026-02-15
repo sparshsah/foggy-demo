@@ -57,6 +57,7 @@ We can have "salutary overparameterization" or "benign overfitting" / "benign in
 * Bagging (bootstrap-aggregating)
 * Boosting (e.g. AdaBoost or Gradient Boosting)
 * Stacking
+* MoE (mixture of experts)
 
 ## The Evolution of NLP toward LLMs (as of 2026Q1)
 
