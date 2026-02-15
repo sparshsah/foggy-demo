@@ -56,7 +56,7 @@ But especially in deep learning.
 * Boosting
 * Stacking
 
-## The Evolution of NLP toward LLMs
+## The Evolution of NLP toward LLMs (as of 2026Q1)
 
 NLP is "natural-language processing". LLMs are "large language models".
 
@@ -66,12 +66,20 @@ Model Architectures:
 * Attention-enabled NN (e.g. transformer)
 
 Training Algorithms and Adaptation Techniques:
-* Pretraining (optimizing hyperparameters and settling pretrained weights based on the "self-supervised" next-token-prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow) ->
-* Foundation models (massive-scale pretrained models intended to be broadly useful) ->
-* Continued / domain-adaptive pretraining (still based on the self-supervised next-token-prediction task on large, unlabeled datasets e.g. a medical journal's archives -- note that everyone I've seen introduce this technique brings up the risk of "catastrophic forgetting" in the next breath like it's a knee-jerk reaction, so I'll do the same...) ->
-* Fine-tuning (e.g. freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets) ->
-* RAG (retrieval-augmented generation) (providing domain-specific authoritative text as context to a trained LLM, at prompt time, _by injecting that text into the prompt_ - e.g. a Claude Code `SKILL.md` which is automatically retrieved when relevant) ->
-* Context compaction/compression (e.g. when a chat becomes so long that it quadratically slows down the bot's responses, or literally becomes too big to fit into the bot's context window, you can keep just a summary of the conversation so far as context for the conversation going forward)
+* Pretraining ->
+    - Optimizing hyperparameters and settling pretrained weights based on the "self-supervised" next-token-prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
+* Foundation models ->
+    - Massive-scale pretrained models intended to be broadly useful
+* Continued / domain-adaptive pretraining ->
+    - Still based on the self-supervised next-token-prediction task on large, unlabeled datasets e.g. a medical journal's archives
+    - Note that everyone I've seen introduce this technique brings up the risk of "catastrophic forgetting" in the next breath like it's a knee-jerk reaction, so I'll do the same...
+* Fine-tuning ->
+    - E.g. Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
+* RAG (retrieval-augmented generation) ->
+    - Providing domain-specific authoritative text as context to a trained LLM, at prompt time, _by injecting that text into the prompt_
+    - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
+* Context compaction/compression ->
+    - E.g. When a chat becomes so long that it quadratically slows down the bot's responses, or literally becomes too big to fit into the bot's context window, you can keep just a summary of the conversation so far as context for the conversation going forward
 
 ## RL
 
