@@ -174,6 +174,8 @@ I think the obsession with monitoring and testing for these is overrated, for tw
 * It's hard to detect these in realtime
     - Shifts are rarely as explicit as the examples I gave above
     - How sensitive should you be to early warning signs that things might be changing?
-* Say you _have_ detected one for sure, what are you supposed to do about it?
+* Say you _have_ detected one for sure -- What are you supposed to do about it?
 
-I prefer
+I would rather start out with a process that's robust to these shifts from the get-go, in two ways:
+* Upweight recent data in your training sample
+* Frequently retrain and deploy your model
