@@ -107,7 +107,7 @@ TODO(sparshsah): There's been a lot of progress here, e.g. policy-gradient, acto
 
 ## Industrial Automation
 
-You could perform RL on a POMDP (partially-observable MDP, wherein you get to observe only noisy measurements/estimates of the true current state) on a digital twin to impose MPC (model-predictive control) on PID (proportional-integral-derivative) controllers.
+You could perform RL on a POMDP (partially-observable MDP, wherein you get to observe only noisy measurements/estimates of the latent true current state) on a digital twin to impose MPC (model-predictive control) on PID (proportional-integral-derivative) controllers.
 
 For example, pretend you're trying to run a nuclear power plant. The tradeoff boils down to balancing safety, product yield/quality, and cost.
 
