@@ -170,7 +170,7 @@ People are often concerned about "structural breaks" or "regime shifts". Two com
     - The relationship between `y` and `X` changes over time
     - E.g. A dovish Fed chair's term ends and a hawkish one replaces him
 
-I think the obsession with monitoring and hypothesis-testing for these is overrated, for two reasons:
+I think that, under a protocol that doesn't already have robustness to these shifts baked-in, the obsession with monitoring and hypothesis-testing for them is just busywork that lulls you into a false sense of security, for two reasons:
 * It's hard to detect these in realtime
     - Shifts are rarely as explicit as the examples I gave above
     - How sensitive should you be to early warning signs that things might be changing?
