@@ -85,7 +85,7 @@ Training Algorithms and Adaptation Techniques:
 
 ## RL
 
-I am semi-making up / abusing a term, calling RL as "bootstrap-supervised".
+I am semi-making up / abusing a term, calling RL as "bootstrap-supervised" or "asymptotically-supervised".
 * To me, RL has a "supervised" flavor
     - If you stretch, you can think of RL's purpose as spitting out a "classification label" (the optimal action chosen from the set defined and provided by the scientist) given some "features" (a state or information about a state)
     - In principle, there is a true "correct" answer here given the scientist's utility function and the current state
@@ -93,7 +93,7 @@ I am semi-making up / abusing a term, calling RL as "bootstrap-supervised".
     - The scientist doesn't explicitly specify a mapping to action from state in the training data.
 * We call LLM's next-token prediction task as "self-supervised" because the correct answer---the actual next token---is explicitly found in the dataset even though it doesn't necessarily fit into the traditional schema of tabular rows with a "y" and an "X".
     - Nevertheless, if you had an infinite-sized table, you could build these rows where "y" is the actual next token and "X" is the sequence that preceded it.
-* So I call RL's "choose the best action" task as "bootstrap-supervised" because the latent correct answer---the actual optimal action given the scientist's economic utility function---can be unambiguously calculated by simulating every possible path for an infinite number of steps.
+* So I call RL's "choose the best action" task as "bootstrap-supervised" or "asymptotically-supervised" because the latent correct answer---the actual optimal action given the scientist's economic utility function---can be unambiguously calculated by simulating every possible path for an infinite number of steps.
     - In Q-Learning, if we had infinite memory and infinite compute and a well-behaved process, our bootstrap-updating of the value function would converge to the true function.
     - And that bootstrap-updated value function in a very meaningful way identifies---"labels"---the actual best action from a given state.
 
