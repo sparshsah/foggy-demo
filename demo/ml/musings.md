@@ -55,7 +55,7 @@ We can have "salutary overparameterization" or "benign overfitting" / "benign in
 ## Ensemble Methods
 
 * Bagging (boostrap-aggregating)
-* Boosting
+* Boosting (e.g. AdaBoost or Gradient Boosting)
 * Stacking
 
 ## The Evolution of NLP toward LLMs (as of 2026Q1)
