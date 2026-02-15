@@ -170,4 +170,10 @@ People are often concerned about "structural breaks" or "regime shifts". Two com
     - The relationship between `y` and `X` changes over time
     - E.g. A dovish Fed chair's term ends and a hawkish one replaces him
 
-I'm really 
+I think the obsession with monitoring and testing for these is overrated, for two reasons:
+* It's hard to detect these in realtime
+    - Shifts are rarely as explicit as the examples I gave above
+    - How sensitive should you be to early warning signs that things might be changing?
+* Say you _have_ detected one for sure, what are you supposed to do about it?
+
+I prefer
