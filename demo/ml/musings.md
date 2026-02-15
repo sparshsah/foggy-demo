@@ -177,7 +177,7 @@ I think the obsession with monitoring and testing for these is overrated, for tw
 * Say you _have_ detected one for sure -- What are you supposed to do about it?
 
 I would rather start out with a process that's robust to these shifts from the get-go, in two ways:
-* Upweight recent data in your training sample
+* Upweight training data by recency
 * Frequently retrain and deploy your model
     - This raises the question: How do you get confident that your model is safe to deploy?
     - Well, take an XGBoost model in consumer lending. Look at three things:
