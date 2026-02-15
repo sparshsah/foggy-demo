@@ -174,6 +174,8 @@ I think the obsession with monitoring and hypothesis-testing for these is overra
 * It's hard to detect these in realtime
     - Shifts are rarely as explicit as the examples I gave above
     - How sensitive should you be to early warning signs that things might be changing?
+        - If you use a Bayesian approach, you need to construct a prior, which will determine this sensitivity. Even if you cop out and just choose a "non-informative" or "reference" prior, do you choose Jeffreys's or Bernardo's?
+        - Even if you use a frequentist hypothesis test, you need to choose a significance level
 * Say you _have_ detected one for sure -- What are you supposed to do about it?
 
 I would rather start out with a process that's robust to these shifts from the get-go, in two ways:
