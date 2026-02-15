@@ -77,6 +77,7 @@ Training Algorithms and Adaptation Techniques:
     - Note that everyone I've seen introduce this technique brings up the risk of "catastrophic forgetting" in the next breath like it's a knee-jerk reaction, so I'll do the same...
 * Fine-tuning ->
     - E.g. Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
+    - E.g. You could fine-tune on a corpus of clear, polite, helpful responses to customer-service complaints
 * RAG (retrieval-augmented generation) ->
     - Providing domain-specific authoritative text as context to a trained LLM, at prompt time, _by injecting that text into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
