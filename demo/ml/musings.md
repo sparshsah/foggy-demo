@@ -25,7 +25,7 @@ Then, you define or construct or learn a model of the world.
 This could be a:
 
 * Known theoretical structure or representation
-    - E.g. A states-and-flows model of the economy
+    - E.g. A stocks-and-flows model of the economy
 * Digital twin
     - E.g. A simulated nuclear power plant based on continuous measurements of a real plant
 * Machine-learned function mapping input features to output outcomes
