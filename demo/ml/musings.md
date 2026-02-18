@@ -68,7 +68,7 @@ Model Architectures:
 * Gated RNN (e.g. GRU (gated recurrent unit) or LSTM (long short-term memory)) ->
 * Attention-enabled NN (e.g. transformer)
 
-Training Algorithms and Adaptation Techniques:
+Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques:
 * Pretraining ->
     - Settling hyperparameters and pretrained weights based on the "self-supervised" next-token-prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
 * Foundation models ->
@@ -79,6 +79,10 @@ Training Algorithms and Adaptation Techniques:
 * Fine-tuning ->
     - E.g. (I think this is essentially LoRA (Low-Rank Adaptation)?) Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
     - E.g. You could fine-tune on a corpus of clear, polite, helpful responses to customer-service complaints
+* Alignment (for helpfulness/style/tone) ->
+    - E.g. RLHF (reinforcement learning with human feedback) based on PPO (proximal policy optimization) around a core RM (reward model) and a regularization term such as penalizing KL (Kullback–Leibler) divergence
+    - E.g. DPO (direct preference optimization)
+* Alignment (for safety/ethics) ->
 * RAG (retrieval-augmented generation) ->
     - Fetching and providing domain-specific authoritative content as context to a trained LLM, at prompt time, _by injecting that content into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
