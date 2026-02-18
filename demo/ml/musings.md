@@ -81,8 +81,8 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
     - E.g. LoRA (low-rank adaptation) (TODO(sparshsah): What is this?)
     - E.g. You could fine-tune on a corpus of clear, polite, helpful responses to customer-service complaints
 * Alignment (for helpfulness/style/tone) ->
-    - E.g. RLHF (reinforcement learning with human feedback) based on PPO (proximal policy optimization) around a core RM (reward model) (such as from BT (Bradley-Terry) model) and a regularization term (such as penalizing KL (Kullback–Leibler) divergence)
     - E.g. DPO (direct preference optimization)
+    - E.g. RLHF (reinforcement learning with human feedback) based on PPO (proximal policy optimization) around a core RM (reward model) (such as from BT (Bradley-Terry) model) and a regularization term (such as penalizing KL (Kullback–Leibler) divergence)
 * Alignment (for safety/ethics) ->
 * RAG (retrieval-augmented generation) ->
     - Fetching and providing domain-specific authoritative content as context to a trained LLM, at prompt time, _by injecting that content into the prompt_
