@@ -84,8 +84,11 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
     - E.g. DPO (direct preference optimization)
     - E.g. RLHF (reinforcement learning with human feedback) based on PPO (proximal policy optimization) around a core RM (reward model) (such as from BT (Bradley-Terry) model) and a regularization term (such as penalizing KL (Kullback–Leibler) divergence)
 * Alignment (for safety/ethics) ->
+* ICL (in-context learning) ->
+    - Nudging a trained LLM to use inductive reasoning (without touching its weights) by starting the prompt with labeled examples `{X_i, y_i}` then ending it with your desired `X_n`
+    - The LLM "conditions" its next-token prediction on the "analogies" you provided earlier
 * RAG (retrieval-augmented generation) ->
-    - Fetching and providing domain-specific authoritative content as context to a trained LLM, at prompt time, _by injecting that content into the prompt_
+    - Enhancing the knowledge of a trained LLM (without touching its weights) by fetching (e.g. via semantic search on a vectorDB) and providing relevant domain-specific authoritative content as context to it, at prompt time, _by injecting that content into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
 * Context compaction/compression ->
     - E.g. When a chat becomes so long that it quadratically slows down the bot's responses, or literally becomes too big to fit into the bot's context window, you can keep just a summary of the conversation so far as context for the conversation going forward
