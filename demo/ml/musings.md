@@ -80,7 +80,7 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
     - E.g. (I think this is essentially LoRA (Low-Rank Adaptation)?) Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
     - E.g. You could fine-tune on a corpus of clear, polite, helpful responses to customer-service complaints
 * Alignment (for helpfulness/style/tone) ->
-    - E.g. RLHF (reinforcement learning with human feedback) based on PPO (proximal policy optimization) around a core RM (reward model) and a regularization term such as penalizing KL (Kullback–Leibler) divergence
+    - E.g. RLHF (reinforcement learning with human feedback) based on PPO (proximal policy optimization) around a core RM (reward model) (such as from BT (Bradley-Terry) model) and a regularization term (such as penalizing KL (Kullback–Leibler) divergence)
     - E.g. DPO (direct preference optimization)
 * Alignment (for safety/ethics) ->
 * RAG (retrieval-augmented generation) ->
