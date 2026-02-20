@@ -194,7 +194,7 @@ I would rather start out with a process that's robust to these shifts from the g
     - This raises the question: How do you get confident that your model is safe to deploy?
         - Well, take an XGBoost model in consumer lending. Check a few things:
             - Input schema is stable from offline (training / validation / testing) to live setting
-            - Feature contributions (direction and magnitude) make intuitive sense, and haven't jumped abruptly
+            - Feature contributions (direction and magnitude) aren't horribly unintuitive, and haven't jumped abruptly
                 - SHAP (Shapley additive explanation) beeswarms are a popular tool that are relatively efficient to compute for tree-based models
                 - LIME (local interpretable model-agnostic explanation) plots are an alternative that can be more efficient to compute than SHAP for non-tree-based models e.g. NNs
                 - TODO(sparshsah): Is KernelSHAP a LIME method?
