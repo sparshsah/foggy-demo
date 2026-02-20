@@ -149,6 +149,8 @@ A canonical approach when infrastructure limitations or privacy concerns prohibi
 
 Sidenote: I hate the usage of the term "inference" here to mean "getting an output from the model by running it on an unlabeled input datapoint in live setting". I'd prefer something like "evaluation" or "forward pass". But in ML, "model evaluation" is more commonly used to refer to the process of stress-testing and validating a model, and "forward pass" is a very NN-specific term. So I go along with it and use "inference", even though statisticians were here first and already established the term "inference" to mean "reasoning about the ground-truth value of a parameter in the presence of uncertainty".
 
+Followup sidenote: For the curious, on another front, I'm indifferent between "parameter estimation", "model-fitting", "training", and "learning".
+
 # Infusing the Machine with Human Intuition
 
 I see two big ways to infuse machines with human intuition:
