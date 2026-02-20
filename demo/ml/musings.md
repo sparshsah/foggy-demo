@@ -143,6 +143,12 @@ Separately, there is MBRL
 
 I have to formalize this a bit more (chatbots push back on me here, which is why above I said "Bayesian-inspired" or "Bayesian-style" instead of "Bayesian"), but I feel there's a distinct kernel of Bayesian strategy that unifies both.
 
+## Federated Learning / Edge Inference
+
+A canonical approach when infrastructure limitations or privacy concerns prohibit you from sending full raw data to the driver node.
+
+Sidenote: I hate the usage of the term "inference" here to mean "getting an output from the model by running it on an unlabeled input datapoint in live setting". I'd prefer something like "evaluation" or "forward pass". But in ML, "model evaluation" is more commonly used to refer to the process of stress-testing and validating a model, and "forward pass" is a very NN-specific term. So I go along with it and use "inference", even though statisticians were here first and already established the term "inference" to mean "reasoning about the ground-truth value of a parameter in the presence of uncertainty".
+
 # Infusing the Machine with Human Intuition
 
 I see two big ways to infuse machines with human intuition:
