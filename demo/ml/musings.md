@@ -194,10 +194,12 @@ I would rather start out with a process that's robust to these shifts from the g
     - This raises the question: How do you get confident that your model is safe to deploy?
         - Well, take an XGBoost model in consumer lending. Check a few things:
             - Input schema is stable from offline (training / validation / testing) to live setting
-            - SHAP beeswarms (feature contributions---direction and magnitude---make intuitive sense, and haven't jumped abruptly) (relatively efficient to compute for tree-based models)
-                 - LIME plots are an alternative that can be more efficient to compute than SHAP for non-tree-based models e.g. NNs (TODO(sparshsah): Is KernelSHAP a LIME method?)
-            - Default-rate calibration
-            - Ranking ability (AUC (area under the curve))
-            - Performance on key critical / edge / anomalous (detected with anomaly detection e.g. isolation forests) cases
-            - Sensitivity to adversarial perturbation / noise
+            - Feature contributions (direction and magnitude) make intuitive sense, and haven't jumped abruptly
+                - SHAP beeswarms are a popular tool that are relatively efficient to compute for tree-based models
+                - LIME plots are an alternative that can be more efficient to compute than SHAP for non-tree-based models e.g. NNs
+                - TODO(sparshsah): Is KernelSHAP a LIME method?
+            - Default-rate calibration is acceptable
+            - Ranking ability (AUC (area under the curve)) is acceptable
+            - Performance on key critical / edge / anomalous (detected with anomaly detection e.g. isolation forests) cases is acceptable
+            - Sensitivity to adversarial perturbation / noise is acceptable
         - You should check behavior for consistency and stability on different time periods (e.g. monthly vintages) and on different market segments (e.g. high- / low-FICO) (in both the training and holdout/validation samples), but if they look OK, go for the deploy
