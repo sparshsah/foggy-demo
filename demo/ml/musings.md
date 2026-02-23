@@ -100,7 +100,7 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
 * Alignment (for safety/ethics) ->
 * CoT (chain-of-thought) prompting ->
     - Zero-shot CoT prompting = Just append "think step-by-step" to your prompt
-    - Few-shot CoT prompting = Append sample problems with step-by-step solutions in the format/style you want to show the LLM how to think through the problem
+    - Few-shot CoT prompting = Append sample problems with step-by-step solutions in the format/style you want, to show the LLM how to think through the problem
     - Structured CoT prompting = Enumerate general steps you'd like the LLM to follow in arriving at its solution (e.g. "first list the unknowns, then construct equations, and finally solve")
 * ICL (in-context learning) ->
     - Nudging a trained LLM to use inductive reasoning (without touching its weights) by starting the prompt with labeled examples `{X_i, y_i}` then ending it with your desired `X_n`
