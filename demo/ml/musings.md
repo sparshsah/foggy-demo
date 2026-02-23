@@ -101,6 +101,7 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
     - The LLM "conditions" its next-token prediction on the "analogies" you provided earlier
 * Prompt repetition ->
     - TODO(sparshsah): Does this enable a model with causal (one-directional) attention to approximate bidirectional attention?
+* Prompt caching ->
 * RAG (retrieval-augmented generation) ->
     - Enhancing the knowledge of a trained LLM (without touching its weights) by fetching (e.g. via semantic search on a vectorDB) and providing relevant domain-specific authoritative content as context to it, at prompt time, _by injecting that content into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
