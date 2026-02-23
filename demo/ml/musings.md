@@ -73,6 +73,13 @@ Transformer Architectures:
 * Encoder-only e.g. Google's BERT (bidirectional encoder representations from transformers)
 * Decoder-only e.g. OpenAI's GPT (generative pretrained transformer)
 
+Attention:
+* Self-attention ->
+* Masked attention ->
+* One-directional attention ->
+* Causal attention ->
+* Autoregressive training + inference
+
 Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques / Modes:
 * Pretraining ->
     - Settling hyperparameters and pretrained weights based on the "self-supervised" next-token-prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
