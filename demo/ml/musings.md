@@ -149,6 +149,10 @@ A canonical approach when infrastructure limitations or privacy concerns prohibi
 
 Sidenote: I'm indifferent between the terms "parameter estimation", "model-fitting", "training", and "learning". But when it comes to the term "inference"... Statisticians were here first and already established it to mean "reasoning about the ground-truth value of a parameter in the presence of uncertainty"; So I hate the usage in ML to mean "running an unlabeled input datapoint through the finalized model to get an output in live setting". I'd prefer something like "evaluation" or "forward pass". But in both statistics and ML, "model evaluation" is more commonly used to refer to the process of stress-testing and validating a model; And on the other hand, "forward pass" is a very NN-specific term. Two good alternatives are "scoring" or "prediction", and these are actually fairly common in ML APIs, but I don't love them either... "Scoring" makes it sound like you're running a contest (which, to be fair, sometimes you are, e.g. in recommendation systems); and "Prediction" doesn't seem quite right for settings where you're, say, nowcasting a latent variable that you'll never get to actually observe (e.g. in robotics planning or macroeconomics). So even though it's a pet peeve of mine, I go along with this by-now entrenched second meaning of "inference".
 
+## Model Distillation (Teacher-Student)
+
+One approach to build a smaller, faster model to enable edge inference.
+
 # Infusing the Machine with Human Intuition
 
 I see two big ways to infuse machines with human intuition:
