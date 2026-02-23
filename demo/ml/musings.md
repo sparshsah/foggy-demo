@@ -92,6 +92,8 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
 * RAG (retrieval-augmented generation) ->
     - Enhancing the knowledge of a trained LLM (without touching its weights) by fetching (e.g. via semantic search on a vectorDB) and providing relevant domain-specific authoritative content as context to it, at prompt time, _by injecting that content into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
+* Deep research ->
+* Reasoning ->
 * Context compaction/compression ->
     - E.g. When a chat becomes so long that it quadratically slows down the bot's responses, or literally becomes too big to fit into the bot's context window, you can keep just a summary of the conversation so far as context for the conversation going forward
 
