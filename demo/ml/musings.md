@@ -68,7 +68,7 @@ Model Architectures:
 * Gated RNN (e.g. GRU (gated recurrent unit) or LSTM (long short-term memory)) ->
 * Attention-enabled NN (e.g. transformer)
 
-Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques:
+Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques / Modes:
 * Pretraining ->
     - Settling hyperparameters and pretrained weights based on the "self-supervised" next-token-prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
 * Foundation models ->
@@ -87,6 +87,8 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
 * ICL (in-context learning) ->
     - Nudging a trained LLM to use inductive reasoning (without touching its weights) by starting the prompt with labeled examples `{X_i, y_i}` then ending it with your desired `X_n`
     - The LLM "conditions" its next-token prediction on the "analogies" you provided earlier
+* Prompt repetition ->
+    - TODO(sparshsah): Does this enable a model with causal (one-directional) attention to simulate bidirectional attention?
 * RAG (retrieval-augmented generation) ->
     - Enhancing the knowledge of a trained LLM (without touching its weights) by fetching (e.g. via semantic search on a vectorDB) and providing relevant domain-specific authoritative content as context to it, at prompt time, _by injecting that content into the prompt_
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
