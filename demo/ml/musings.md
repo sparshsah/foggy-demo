@@ -101,7 +101,7 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
     - Nudging a trained LLM to use inductive reasoning (without touching its weights) by starting the prompt with labeled examples `{X_i, y_i}` then ending it with your desired `X_n`
     - The LLM "conditions" its next-token prediction on the "analogies" you provided earlier
 * Prompt repetition ->
-    - TODO(sparshsah): Does this enable a model with causal (one-directional) attention to approximate bidirectional attention?
+    - TODO(sparshsah): Does this enable a model with causal attention to imitate/approximate bidirectional attention?
 * Prompt caching ->
 * RAG (retrieval-augmented generation) ->
     - Enhancing the knowledge of a trained LLM (without touching its weights) by fetching (e.g. via semantic search on a vectorDB) and providing relevant domain-specific authoritative content as context to it, at prompt time, _by injecting that content into the prompt_
