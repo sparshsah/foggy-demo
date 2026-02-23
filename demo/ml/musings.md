@@ -78,7 +78,7 @@ Attention:
 * Masked attention ->
 * One-directional attention ->
 * Causal attention ->
-* Autoregressive training + inference
+* Autoregressive training + generation
 
 Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques / Modes:
 * Pretraining ->
