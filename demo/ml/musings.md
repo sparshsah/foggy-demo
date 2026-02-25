@@ -76,7 +76,7 @@ Transformer Architectures:
     - Frequently associated with language translation or document summarization tasks
 * Encoder-only e.g. Google's BERT (bidirectional encoder representations from transformers)
     - Frequently associated with "understanding" e.g. NER (named-entity recognition) or sentiment analysis
-* Decoder-only e.g. OpenAI's GPT (generative pretrained transformer)
+* Decoder-only e.g. modern releases of Google's Gemini/Gemma or OpenAI's GPT (generative pretrained transformer) or Anthropic's Claude
     - Frequently associated with chatbots
 
 Attention Mechanisms:
