@@ -87,12 +87,12 @@ Attention Mechanisms:
 
 Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques / Modes:
 * Pretraining ->
-    - Settling hyperparameters and pretrained weights based on the "self-supervised" next-token-prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
+    - Settling hyperparameters and pretrained weights based on the "self-supervised" missing-token or next-token prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
 * Foundation models ->
     - Massive-scale pretrained models intended to be broadly useful
     - Can serve as the base model in few-shot, one-shot, or zero-shot learning tasks
 * Continued / domain-adaptive pretraining ->
-    - Still based on the self-supervised next-token-prediction task on large, unlabeled datasets e.g. a medical journal's archives
+    - Still based on the self-supervised missing-token or next-token prediction task on large, unlabeled datasets e.g. a medical journal's archives
     - Note that everyone I've seen introduce this technique brings up the risk of "catastrophic forgetting" in the next breath like it's a knee-jerk reaction, so I'll do the same...
 * Fine-tuning ->
     - E.g. Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
