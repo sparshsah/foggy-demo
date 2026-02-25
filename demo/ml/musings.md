@@ -73,6 +73,7 @@ Model Architectures:
 
 Transformer Architectures:
 * Encoder-Decoder e.g. Google's T5 (text-to-text transfer transformer)
+    - Frequently associated with language translation or document summarization tasks
 * Encoder-only e.g. Google's BERT (bidirectional encoder representations from transformers)
     - Frequently associated with "understanding" e.g. NER (named-entity recognition) or sentiment analysis
 * Decoder-only e.g. OpenAI's GPT (generative pretrained transformer)
