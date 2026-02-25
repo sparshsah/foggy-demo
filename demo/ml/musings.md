@@ -76,8 +76,9 @@ Transformer Architectures:
     - Frequently associated with "understanding" e.g. NER (named-entity recognition) or sentiment analysis
 * Decoder-only e.g. OpenAI's GPT (generative pretrained transformer)
 
-Attention:
+Attention Mechanisms:
 * Self-attention ->
+* Parallel multi-headed attention ->
 * Masked attention ->
 * One-directional attention ->
 * Causal attention ->
