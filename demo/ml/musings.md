@@ -87,12 +87,12 @@ Attention Mechanisms:
 
 Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniques / Modes:
 * Pretraining ->
-    - Settling hyperparameters and pretrained weights based on the "self-supervised" missing-token or next-token prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
+    - Settling hyperparameters and pretrained weights based on the "self-supervised" masked-token or next-token prediction task on large, generic datasets e.g. Wikipedia or Reddit or StackOverflow
 * Foundation models ->
     - Massive-scale pretrained models intended to be broadly useful
     - Can serve as the base model in few-shot, one-shot, or zero-shot learning tasks
 * Continued / domain-adaptive pretraining ->
-    - Still based on the self-supervised missing-token or next-token prediction task on large, unlabeled datasets e.g. a medical journal's archives
+    - Still based on the self-supervised masked-token or next-token prediction task on large, unlabeled datasets e.g. a medical journal's archives
     - Note that everyone I've seen introduce this technique brings up the risk of "catastrophic forgetting" in the next breath like it's a knee-jerk reaction, so I'll do the same...
 * Fine-tuning ->
     - E.g. Freezing the hyperparameters and "backbone" (earlier layers) and just doing low-learning-rate backpropagation on the "head" (later, closer-to-output layers), but now doing supervised learning on smaller domain-specific labeled datasets
@@ -128,8 +128,8 @@ I am semi-making up / abusing a term, calling RL as "bootstrap-supervised" or "a
     - In principle, there is a true "correct" answer here given the scientist's utility function and the current state
 * But also an "unsupervised" flavor
     - The scientist doesn't explicitly specify a mapping to action from state in the training data.
-* We call LLM's next-token prediction task as "self-supervised" because the correct answer---the actual next token---is explicitly found in the dataset even though it doesn't necessarily fit into the traditional schema of tabular rows with a "y" and an "X".
-    - Nevertheless, if you had an infinite-sized table, you could build these rows where "y" is the actual next token and "X" is the sequence that preceded it.
+* We call LLM's masked-token or next-token prediction task as "self-supervised" because the correct answer---the actual masked or next token---is explicitly found in the dataset even though it doesn't necessarily fit into the traditional schema of tabular rows with a "y" and an "X".
+    - Nevertheless, if you had an infinite-sized table, you could build these rows where "y" is the actual masked or next token and "X" is the sequence that contained or preceded it.
 * So I call RL's "choose the best action" task as "bootstrap-supervised" or "asymptotically-supervised" because the latent correct answer---the actual optimal action given the scientist's economic utility function---can be unambiguously calculated by simulating every possible path for an infinite number of steps.
     - In Q-Learning, if we had infinite memory and infinite compute and a well-behaved process, our bootstrap-updating of the value function would converge to the true function.
     - And that bootstrap-updated value function in a very meaningful way identifies---"labels"---the actual best action from a given state.
