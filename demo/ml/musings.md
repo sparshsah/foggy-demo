@@ -70,7 +70,7 @@ Model Architectures:
     - A big motivation for the development of these (LSTM came first, and GRU followed as a simpler alternative) was the vanishing gradient issue. On the other hand, clipping could help mitigate the exploding gradient issue.
 * AE (autoencoder) ->
     - Do compression via dimensionality reduction, aiming to be able to reconstruct the original input. Like PCA (principal component analysis), but designed to allow for nonlinear relationships. Have an encoder-decoder framework.
-* VAE (variational autoencoder) and GAN (generative adversarial network) ->
+* VAE (variational AE) and GAN (generative adversarial network) ->
     - Two separate architectures, but I mention them together as they were introduced around the same time and stand out to me as part of the "middle period" of generative AI.
 * word2vec (word-to-vector) ->
     - Not really a full model architecture by itself, but important for popularizing the concept of efficiently learning encodings of words as vectors in an embedding space, wherein geometric closeness corresponds to semantic similarity (canonical example: `king - man + woman ~ queen`).
