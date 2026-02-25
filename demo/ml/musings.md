@@ -79,7 +79,7 @@ Transformer Architectures:
 
 Attention Mechanisms:
 * Self-attention ->
-* Parallel multi-headed attention ->
+* Parallel multi-head attention ->
 * Masked attention ->
 * One-directional attention ->
 * Causal attention ->
