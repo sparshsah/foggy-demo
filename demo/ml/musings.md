@@ -61,7 +61,7 @@ We can have "salutary overparameterization" or "benign overfitting" / "benign in
 
 ## The Evolution of NLP toward LLMs (as of 2026Q1)
 
-NLP is "natural-language processing". LLMs are "large language models". LVMs are "large vision models". LMMs are "large multimodal models" (e.g. text + images + videos).
+NLP is "natural-language processing". LLMs are "large language models", including MLMs (masked-language models) and NTPs (next-token predictors). LVMs are "large vision models". LMMs are "large multimodal models" (e.g. text + images + videos).
 
 Model Architectures:
 * RNN (recurrent NN (neural network)) ->
