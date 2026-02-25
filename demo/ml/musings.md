@@ -1,4 +1,4 @@
-Some miscellaneous stream-of-consciousness musings on ML (machine learning).
+Some miscellaneous stream-of-consciousness musings on ML (machine learning) and AI (artificial intelligence).
 
 # The Process
 
@@ -68,12 +68,17 @@ Model Architectures:
     - Note that these were susceptible to the vanishing (rsp exploding) gradient issue, where very small (rsp very large) factors in sequence caused the product to vanish (rsp explode). This hurt long-range learning (rsp stability).
 * Gated RNN (e.g. GRU (gated recurrent unit) or LSTM (long short-term memory)) ->
     - A big motivation for the development of these (LSTM came first, and GRU followed as a simpler alternative) was the vanishing gradient issue. On the other hand, clipping could help mitigate the exploding gradient issue.
+* AE (autoencoder) ->
+    - Do compression via dimensionality reduction, aiming to be able to reconstruct the original input. Like PCA (principal component analysis), but designed to allow for nonlinear relationships. Have an encoder-decoder framework.
+* VAE (variational autoencoder) and GAN (generative adversarial network) ->
+    - Two separate architectures, but I mention them together as they were introduced around the same time and stand out to me as part of the "middle period" of generative AI.
 * word2vec (word-to-vector) ->
     - Not really a full model architecture by itself, but important for popularizing the concept of efficiently learning encodings of words as vectors in an embedding space, wherein geometric closeness corresponds to semantic similarity (canonical example: `king - man + woman ~ queen`).
 * seq2seq (sequence-to-sequence) ->
-    - An encoder-decoder framework based on LSTMs.
+    - An LSTM-based encoder-decoder NN.
 * "Attending" (attention-enabled) NN (e.g. transformer with QKV (query-key-value) tensors)
     - Each position directly "attends" / "pays attention" to other positions.
+* TODO(sparshsah): Where do AEs (autoencoders, including VAEs (variational autoencoders)
 
 Transformer Architectures:
 * Encoder-Decoder e.g. Google's T5 (text-to-text transfer transformer)
