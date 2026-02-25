@@ -65,7 +65,9 @@ NLP is "natural-language processing". LLMs are "large language models".
 
 Model Architectures:
 * RNN (recurrent NN (neural network)) ->
+    - Note that these were susceptible to the vanishing (rsp exploding) gradient issue, where very small (rsp very large) factors caused the product to vanish (rsp explode). This hurt long-range learning (rsp stability).
 * Gated RNN (e.g. GRU (gated recurrent unit) or LSTM (long short-term memory)) ->
+    - A big motivation for the development of these (LSTM came first, and GRU followed as a simpler alternative) was the vanishing gradient issue. On the other hand, clipping could help mitigate the exploding gradient issue.
 * Attention-enabled NN (e.g. transformer)
 
 Transformer Architectures:
