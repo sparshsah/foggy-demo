@@ -78,7 +78,6 @@ Model Architectures:
     - An LSTM-based encoder-decoder NN.
 * "Attending" (attention-enabled) NN (e.g. transformer with QKV (query-key-value) tensors)
     - Each position directly "attends" / "pays attention" to other positions.
-* TODO(sparshsah): Where do AEs (autoencoders, including VAEs (variational autoencoders)
 
 Transformer Architectures:
 * Encoder-Decoder e.g. Google's T5 (text-to-text transfer transformer)
