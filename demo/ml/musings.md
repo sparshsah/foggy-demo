@@ -217,7 +217,7 @@ Ten years ago, I would have reckoned that, although humans aren't as strong as m
 
 But as time has gone on, I'm not so sure... I've found that OpenAI's ChatGPT or Anthropic's Claude is faster and better at debugging and recovering from system incidents than human engineers. After all, the human brain is just a highly-advanced computer, equally prone to panicking or overconfidence as the machine is prone to going haywire or hallucinating. That's to say nothing of bonafide mistakes, which---goes without saying---both can make, too.
 
-I think we are reaching a moment where this tension becomes stark. Consider a human-overridable machine. If a human wants to override the machine, two things are probably true: (1) The situation is critical; and (2) There is a big disagreement between the human and the machine. As of this writing (2026Q1), it's probably safer for the plant manager's reputation to allow his human to override the machine; But, on average, is it better for the outcome?
+I think we are reaching a moment where this tension becomes stark. Consider a human-overridable machine. I think we're past the days where we could just say "let the human step in when the machine isn't confident". If a human wants to override the machine, two things are probably true: (1) The situation is critical (and probably time-sensitive); and (2) There is a big disagreement between the human and the machine. As of this writing (2026Q1), it's probably safer for the plant manager's reputation to allow his human to override the machine; But, on average, is it better for the outcome?
 
 # Lifecycle Management
 
