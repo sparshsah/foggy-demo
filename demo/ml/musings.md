@@ -75,7 +75,7 @@ Model Architectures:
 * word2vec (word-to-vector) ->
     - Not really a full model architecture by itself, but important for popularizing the concept of efficiently learning encodings of words as vectors in an embedding space, wherein geometric closeness corresponds to semantic similarity (canonical example: `king - man + woman ~ queen`).
 * seq2seq (sequence-to-sequence) ->
-    - An LSTM-based encoder-decoder NN.
+    - In its original form, an LSTM-based encoder-decoder NN. Followup extensions used CNN (convolutional NN) and even attention layers.
 * "Attending" (attention-enabled) NN (e.g. transformer with QKV (query-key-value) tensors)
     - Each position directly "attends" / "pays attention" to other positions.
 
