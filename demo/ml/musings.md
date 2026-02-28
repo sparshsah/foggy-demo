@@ -73,7 +73,7 @@ Model Architectures:
 * VAE (variational AE) and GAN (generative adversarial network) ->
     - Two separate architectures, but I mention them together as they were introduced around the same time and stand out to me as part of the "middle period" of generative AI.
 * word2vec (word-to-vector) ->
-    - Not really a full model architecture by itself, but important for popularizing the concept of efficiently learning encodings of words as vectors in an embedding space, wherein geometric closeness corresponds to semantic similarity (canonical example: `king - man + woman ~ queen`).
+    - Not really a single full NLP model architecture by itself, but important for popularizing the concept of efficiently learning encodings of words as vectors in an embedding space, wherein geometric closeness corresponds to semantic similarity (canonical example: `king - man + woman ~ queen`).
 * seq2seq (sequence-to-sequence) ->
     - In its original form, an LSTM-based encoder-decoder NN. Followup extensions used CNN (convolutional NN) and even attention layers.
 * "Attending" (attention-enabled) NN (e.g. transformer with QKV (query-key-value) tensors)
@@ -81,7 +81,7 @@ Model Architectures:
 
 Transformer Architectures:
 * Encoder-Decoder e.g. Google's T5 (text-to-text transfer transformer)
-    - Frequently associated with language translation (the latest step in the evolution from RBMT (rule-based machine translation) to EBMT (example-based machine translation) to SMT (statistical machine translation) to NMT (neural machine translation)) or document summarization tasks
+    - Frequently associated with language translation (the latest step in the evolution from RBMT (rule-based machine translation) to EBMT (example-based machine translation) to SMT (statistical machine translation) to NMT (neural machine translation)) or document summarization
 * Encoder-only e.g. Google's BERT (bidirectional encoder representations from transformers)
     - Frequently associated with "understanding" e.g. NER (named-entity recognition) or sentiment analysis
 * Decoder-only e.g. modern releases of Google's Gemini/Gemma or OpenAI's GPT (generative pretrained transformer) or Anthropic's Claude or Meta's Llama or xAI's Grok
