@@ -127,6 +127,8 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
     - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
 * Deep research ->
 * Reasoning ->
+* Generation temperature ->
+    - Like simulated annealing temperature -- Higher temperature makes the LLM more inclined to pass over the highest-scoring next token and choose a lower-scoring next token. Colloquially likened to "creativity".
 * Context compaction/compression ->
     - E.g. When a chat becomes so long that it quadratically slows down the bot's responses, or literally becomes too big to fit into the bot's context window, you can keep just a summary of the conversation so far as context for the conversation going forward
 
