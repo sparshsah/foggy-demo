@@ -124,7 +124,7 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
 * Prompt caching ->
 * RAG (retrieval-augmented generation) ->
     - Enhancing the knowledge of a trained LLM (without touching its weights) by fetching (e.g. via semantic search on a vectorDB) and providing relevant domain-specific authoritative content as context to it, at prompt time, _by injecting that content into the prompt_
-    - E.g. A Claude Code `SKILL.md` which is automatically retrieved when relevant
+    - E.g. An agentic coder's SKILL which is automatically retrieved when relevant (Note: I think in real-world Claude Code's current release, `SKILL.md`s are actually indexed differently -- Essentially by appending a table of `(skill_id, short_blurb)` rows into the system prompt, which Claude can browse to decide which skill(s) might be relevant to the user's query)
 * Deep research ->
 * Reasoning ->
 * Generation temperature ->
