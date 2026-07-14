@@ -284,6 +284,17 @@ then handle your business desire in the optimization step.
 This forces you to be thoughtful and precise about
 formalizing and implementing your goals.
 
+Two sample instances of this I've encountered, what was done, and what I think would be better:
+- A large global-macro investment manager used an intentionally "too-slow" risk model (that's a volatility predictor)
+  in their portfolio optimizer to avoid excessive churn.
+  They rebalanced (submitted trades to help close the gap between their held portfolio and their latest view) 3x per day.
+  They had a risk model (some blend of a long-term model plus a short-term model plus some regime-detection rules)
+  that predicted volatility well over the next ~8 hours.
+  However, they intentionally used a "slower" risk model,
+  one that _didn't_ predict volatility as well over the next ~8 hours,
+  diff for risk cap
+  
+
 eg dont use a slow rm to avoid wasting tcost on vol tgt, tell ur model that your clients care more about absolute returns than on-tgt rlzd vol, so sharpe optimal wts is more impr than give it a budget to spend chasing vol (or establish tolerance around tgt). The most elegant and robust design is probably something like a quartic penalty on exante vol.
 
 same with lying about clip pdef to avoid churning approval rates. use the right estimate, and drop irr tgt to keep partners happy.
