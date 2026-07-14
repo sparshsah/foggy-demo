@@ -276,7 +276,13 @@ updating your views (predictions)---by feeding latest contemporaneous signal val
 
 ### An invalid consideration: How best to lie to yourself
 
-more honest and then explicitly control for your desire. forces you to be thoughtful about formalizing and implementing your system.
+I _don't_ think it makes sense, though, to
+purposely "slow down" your model architecture or retraining strategy
+in service of a downstream business desire.
+I think you should default to being truth-seeking and honest in the model,
+and handle your business desire downstream in the optimization step.
+This forces you to be thoughtful and precise about
+formalizing and implementing your goals.
 
 eg dont use a slow rm to avoid wasting tcost on vol tgt, tell ur model that your clients care more about absolute returns than on-tgt rlzd vol, so sharpe optimal wts is more impr than give it a budget to spend chasing vol (or establish tolerance around tgt). The most elegant and robust design is probably something like a quartic penalty on exante vol.
 
