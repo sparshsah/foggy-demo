@@ -290,9 +290,13 @@ Two sample instances of this I've encountered, what was done, and what I think w
   They rebalanced (submitted trades to help close the gap between their held portfolio and their latest view) 3x per day.
   They had a risk model (some blend of a long-term model plus a short-term model plus some regime-detection rules)
   that predicted volatility well over the next ~8 hours.
-  However, they intentionally used a "slower" risk model,
+  The model was honest:
+  Its prediction might fluctuate within a few percentage points across sessions within the same day,
+  depending on what it truly believed was most representative for each upcoming session.
+  when they plugged this risk model
+  they intentionally used a "slower" risk model,
   one that _didn't_ predict volatility as well over the next ~8 hours,
-  diff for risk cap
+  
   
 
 eg dont use a slow rm to avoid wasting tcost on vol tgt, tell ur model that your clients care more about absolute returns than on-tgt rlzd vol, so sharpe optimal wts is more impr than give it a budget to spend chasing vol (or establish tolerance around tgt). The most elegant and robust design is probably something like a quartic penalty on exante vol.
