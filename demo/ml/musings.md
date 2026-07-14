@@ -280,7 +280,7 @@ I _don't_ think it makes sense, though, to
 purposely "slow down" your model architecture or retraining strategy
 in service of a downstream business desire.
 I think you should default to being truth-seeking and honest in the model,
-and handle your business desire downstream in the optimization step.
+then handle your business desire in the optimization step.
 This forces you to be thoughtful and precise about
 formalizing and implementing your goals.
 
