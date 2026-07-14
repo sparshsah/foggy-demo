@@ -319,8 +319,15 @@ Two sample instances of this I've encountered, what was done, and what I think w
   They could have explicitly decomposed the portfolio-distortion penalty term in their optimizer into two components:
   (1) How far off Sharpe-optimal allocation am I? Distortions here are painful.
   (2) How far off target volatility am I? Distortions here are much less painful.
-
-same with lying about clip pdef to avoid churning approval rates. use the right estimate, and drop irr tgt to keep partners happy.
+- A small retail-credit lender did not incorporate the latest macroeconomic alarm signals into its approval model,
+  to avoid a sharp drop in approval rates which would irk its marketing, originating, and servicing partners,
+  to say nothing of its customers.
+  The answer here was simple: Let your model be honest about elevated loss expectations,
+  and just program a time-varying IRR hurdle, which you can drop as necessary to maintain approval rates.
+  You shouldn't have to fly blind through a storm just to keep your business network happy.
+  Let the machine formalize and systematize what you're implicitly doing:
+  Honestly recognizing economic reality, and then
+  trying to make the smartest balanced business decision based on that.
 
 ## "Structural Breaks" or "Regime Shifts"
 
