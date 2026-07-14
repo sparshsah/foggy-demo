@@ -259,8 +259,8 @@ Of course, if you know you're going to
 retrain your model about quarterly and
 submit portfolio-rebalance orders to your algo wheel about weekly,
 that matters.
-(Note the distinction we're drawing between updating your artifact itself on one hand, and
-updating your views---by feeding up-to-date signal values through the trained artifact---on the other.)
+(Note the distinction we're drawing between updating your artifact itself---by feeding latest historical training data through your training algorithm---on one hand, and
+updating your views---by feeding latest contemporaneous signal values through the frozen trained artifact---on the other.)
 - You're going to want your model artifact to be valid for a full quarter,
   and its views (predictions) to be a good guide through the full week.
 - It wouldn't make sense to deploy an artifact that you KNOW is highly specialized
