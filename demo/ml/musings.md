@@ -293,7 +293,16 @@ Two sample instances of this I've encountered, what was done, and what I think w
   The model was honest:
   Its prediction might fluctuate within a few percentage points across sessions within the same day,
   depending on what it truly believed was most representative for each upcoming session.
-  when they plugged this risk model
+  However, the manager found that this led to undesirable behavior when
+  plugged into their portfolio optimizer:
+  They targeted 15% ex-ante volatility (because they told their clients to expect roughly 15% realized volatility),
+  which meant that,
+  even if their underlying asset-attractiveness view
+  (the Sharpe-optimal allocation of weights to each asset in the investable universe) hadn't changed,
+  the final optimized portfolio might fluctuate (generating trades, leading to tcosts)
+  to reflect the higher/lower leverage (overall scaling of the portfolio-weights vector) needed to
+  hit 10% ex-ante volatility based on the risk model's latest view.
+  lev/scale
   they intentionally used a "slower" risk model,
   one that _didn't_ predict volatility as well over the next ~8 hours,
   
