@@ -310,11 +310,12 @@ Two sample instances of this I've encountered, what was done, and what I think w
   But this indicates to me not that their _risk model_ is wrong, but that their _optimization target_ is wrong.
   They were using a canonical distortion-minimizing Markowitz/Black-Litterman optimizer (modified to account for tcost aversion),
   but, crucially, did _not_ distinguish between portfolio distortion resulting from non-Sharpe-optimal allocations,
-  versus those resulting from off-target leverage.
+  versus that resulting from off-target leverage.
   In reality, their business clients cared much more about absolute returns
   than on-target realized volatility.
   If the fund lost 1pp against Bridgewater's competitor fund, that was very painful;
   If it came in 1pp too high or low against stated target vol, that was fine.
+  Thus, "don't waste tcost chasing vol".
   But the manager was not telling this to their optimizer!
   They could have explicitly decomposed the portfolio-distortion penalty term in their optimizer into two components:
   (1) How far off Sharpe-optimal allocation am I? Distortions here are painful.
