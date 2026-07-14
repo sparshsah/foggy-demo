@@ -223,6 +223,20 @@ I think we are reaching a moment where this tension becomes stark. Consider a hu
 
 # Lifecycle Management
 
+## Stability-Sensitivity Tradeoff
+
+i don't call this bv tradeoff bc i think that term has some unrelated baggage attached to it
+
+ofc if ur gonna retrain annual and submit rebalance orders to your algo wheel once a week, it matters. u want your model artifact to be valid for a year and its view to be a good guide through the week.
+
+more honest and then explicitly control for your desire. forces you to be thoughtful about formalizing and implementing your system.
+
+eg dont use a slow rm to avoid wasting tcost on vol tgt, tell ur model that your clients care more about absolute returns than on-tgt rlzd vol, so sharpe optimal wts is more impr than give it a budget to spend chasing vol (or establish tolerance around tgt). The most elegant and robust design is probably something like a quartic penalty on exante vol.
+
+same with lying about clip pdef to avoid churning approval rates. use the right estimate, and drop irr tgt to keep partners happy.
+
+## "Structural Breaks" or "Regime Shifts"
+
 People are often concerned about "structural breaks" or "regime shifts". Two common kinds that people talk about in ML are:
 * "Domain drift" (`Pr[X]` drifts)
     - The distribution of input data changes over time
