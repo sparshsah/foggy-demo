@@ -227,21 +227,22 @@ I think we are reaching a moment where this tension becomes stark. Consider a hu
 
 I deliberately won't refer to this as a "bias-variance tradeoff" because
 I think that term has some unrelated baggage attached to it.
-But there is a legitimate tradeoff here --
+But there is a legitimate tradeoff here
+between "stability" and "sensitivity" --
 When choosing a model architecture and retraining strategy,
 Should you prefer:
 - One that's "simpler" and more likely to "underfit",
   but is therefore
   easier to understand (e.g. via SHAP) and
   less likely to
-  coverge to an isolated local optimum or
+  converge to an isolated local optimum or
   overfit to noise realized since the last retrain; or,
 - One that's "more complex" and more likely to "overfit",
   but is therefore
   more expressive (at least in theory) and
   more likely to pick up on
   weakening/reversing megatrends or cycles or breaks
-  since the last retrain
+  developing since the last retrain
 ?
 
 ofc if ur gonna retrain annual and submit rebalance orders to your algo wheel once a week, it matters. u want your model artifact to be valid for a year and its view to be a good guide through the week.
