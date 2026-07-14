@@ -225,7 +225,7 @@ I think we are reaching a moment where this tension becomes stark. Consider a hu
 
 ## Stability-Sensitivity Tradeoff
 
-i don't call this bv tradeoff bc i think that term has some unrelated baggage attached to it
+I deliberately won't refer to this as a "bias-variance tradeoff" because I think that term has some unrelated baggage attached to it.
 
 ofc if ur gonna retrain annual and submit rebalance orders to your algo wheel once a week, it matters. u want your model artifact to be valid for a year and its view to be a good guide through the week.
 
