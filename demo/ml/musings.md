@@ -267,11 +267,10 @@ updating your views (predictions)---by feeding latest contemporaneous signal val
   and its views to be a good guide through the full week.
   - It wouldn't make sense to deploy an artifact that you KNOW is
     highly conditioned to handle a month-specific micro-cycle.
-    A knob you might turn to control this is how you weight training data
-    based on recency --
+    A knob you might turn to control this is how you weight training data based on recency --
     Probably makes sense to include data over many years or even decades.
-  - It wouldn't make sense to deploy an artifact that you KNOW
-    outputs views that decay intraday.
+  - It wouldn't make sense to deploy an artifact that you KNOW outputs
+    views that decay intraday.
     A knob you might turn to control this is the training target itself --
     Probably makes sense to make it something like next-7-day asset returns.
 
