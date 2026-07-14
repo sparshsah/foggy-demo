@@ -301,7 +301,7 @@ Two sample instances of this I've encountered, what was done, and what I think w
   (the Sharpe-optimal allocation of weights to each asset in the investable universe) hadn't changed,
   the final optimized portfolio might fluctuate (generating trades, leading to tcosts)
   to reflect the higher/lower leverage (overall scaling of the portfolio-weights vector) needed to
-  hit 10% ex-ante volatility based on the risk model's latest view.
+  hit 15% ex-ante volatility based on the risk model's latest view.
   Hence, they intentionally swapped in a "slower" risk model,
   one that _didn't_ predict volatility as well over the next ~8 hours,
   but that _did_ output more stable estimates from session to session,
