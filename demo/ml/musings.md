@@ -324,7 +324,8 @@ Two sample instances of this I've encountered, what was done, and what I think w
   to avoid a sharp drop in approval rates which would irk its marketing, originating, and servicing partners,
   to say nothing of its customers.
   The answer here was simple: Let your model be honest about elevated loss expectations,
-  and just program a time-varying IRR hurdle, which you can drop as necessary to maintain approval rates.
+  and just program the optimizer with a time-varying IRR hurdle,
+  which you can drop as necessary to maintain approval rates.
   You shouldn't have to fly blind through a storm just to keep your business network happy.
   Let the machine formalize and systematize what you're implicitly doing:
   Honestly recognizing economic reality, and then
