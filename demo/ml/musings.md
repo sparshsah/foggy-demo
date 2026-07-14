@@ -302,13 +302,23 @@ Two sample instances of this I've encountered, what was done, and what I think w
   the final optimized portfolio might fluctuate (generating trades, leading to tcosts)
   to reflect the higher/lower leverage (overall scaling of the portfolio-weights vector) needed to
   hit 10% ex-ante volatility based on the risk model's latest view.
-  lev/scale
-  they intentionally used a "slower" risk model,
+  Hence, they intentionally swapped in a "slower" risk model,
   one that _didn't_ predict volatility as well over the next ~8 hours,
-  
-  
-
-eg dont use a slow rm to avoid wasting tcost on vol tgt, tell ur model that your clients care more about absolute returns than on-tgt rlzd vol, so sharpe optimal wts is more impr than give it a budget to spend chasing vol (or establish tolerance around tgt). The most elegant and robust design is probably something like a quartic penalty on exante vol.
+  but that _did_ output more stable estimates from session to session,
+  so that they wouldn't generate excessive mean-reverting trading churn from session to session.
+  They said they didn't want to "waste tcost chasing vol".
+  But this indicates to me not that their _risk model_ is wrong, but that their _optimization target_ is wrong.
+  They were using a canonical distortion-minimizing Markowitz/Black-Litterman optimizer (modified to account for tcost aversion),
+  but, crucially, did _not_ distinguish between portfolio distortion resulting from non-Sharpe-optimal allocations,
+  versus those resulting from off-target leverage.
+  In reality, their business clients cared much more about absolute returns
+  than on-target realized volatility.
+  If the fund lost 1pp against Bridgewater's competitor fund, that was very painful;
+  If it came in 1pp too high or low against stated target vol, that was fine.
+  But the manager was not telling this to their optimizer!
+  They could have explicitly decomposed the portfolio-distortion penalty term in their optimizer into two components:
+  (1) How far off Sharpe-optimal allocation am I? Distortions here are painful.
+  (2) How far off target volatility am I? Distortions here are much less painful.
 
 same with lying about clip pdef to avoid churning approval rates. use the right estimate, and drop irr tgt to keep partners happy.
 
