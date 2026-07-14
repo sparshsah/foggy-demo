@@ -245,11 +245,18 @@ Should you prefer:
   developing since the last retrain
 ?
 
+I pick option 3:
+One that's exactly perfect!
+Just kidding :)
+But I do have thoughts on
+one "valid" consideration and
+one "invalid" consideration here.
+
 ### A valid consideration: Process cadence
 
 ofc if ur gonna retrain annual and submit rebalance orders to your algo wheel once a week, it matters. u want your model artifact to be valid for a year and its view to be a good guide through the week.
 
-### An invalid consideration: How to best lie to yourself
+### An invalid consideration: How best to lie to yourself
 
 more honest and then explicitly control for your desire. forces you to be thoughtful about formalizing and implementing your system.
 
