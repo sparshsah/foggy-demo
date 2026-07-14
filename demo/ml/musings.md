@@ -254,6 +254,18 @@ one "invalid" consideration here.
 
 ### A valid consideration: Process cadence
 
+Say you're a quant stock-selection investment manager.
+Of course, if you know you're going to
+retrain your model about quarterly and
+submit portfolio-rebalance orders to your algo wheel about weekly,
+that matters.
+(Note the distinction we're drawing between updating your artifact itself on one hand, and
+updating your views---by feeding up-to-date signal values through the trained artifact---on the other.)
+- You're going to want your model artifact to be valid for a full quarter,
+  and its views (predictions) to be a good guide through the full week.
+- It wouldn't make sense to deploy an artifact that you KNOW is highly specialized
+  to a 
+
 ofc if ur gonna retrain annual and submit rebalance orders to your algo wheel once a week, it matters. u want your model artifact to be valid for a year and its view to be a good guide through the week.
 
 ### An invalid consideration: How best to lie to yourself
