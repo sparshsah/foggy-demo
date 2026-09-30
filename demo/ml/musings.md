@@ -128,6 +128,13 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
           (a sluggish and bulky but thorough apparatus to tease out useful feature nonlinearities/interactions from the data)
           is clearly related to the downstream business task
           (a rapidly-retrainable model that predicts ad clicks without having to rederive those identified signals from scratch).
+      - But the idea is broader than just this.
+        For instance, you might use JSON-formatted canonical-log-line trajectories for user mobile app journeys from your data lake
+        to train a sequence model around the task "predict what button the user will click next".
+        Then, you port that basic learned structure as the basis for a model explicitly designed to predict
+        "which online shopping deal should I offer the customer to increase take rates"
+        or
+        "how likely is the customer to default on a checkout loan"?
 * Foundation models ->
     - Massive-scale pretrained models intended to be broadly useful
     - Can serve as the base model in few-shot, one-shot, or zero-shot learning tasks
