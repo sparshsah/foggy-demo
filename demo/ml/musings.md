@@ -111,7 +111,7 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
         you can pretrain a big deep attentive NN on a general next-token prediction task,
         then port a bunch of the resulting learned base layers downstream
         (possibly with further refinement or nudging, or possibly almost directly as-is)
-        to make a conversational chatbot or automated customer-service rep or agentic coder.
+        to make a conversational chatbot or automated customer-service rep or language translator or agentic coder.
         - Here the pretraining task
           (essentially a fancy version of repeatedly smashing the middle suggestion on your iPhone keyboard or IDE autocomplete)
           is clearly related to but not quite the same as the downstream business applications
