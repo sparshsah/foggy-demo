@@ -106,16 +106,28 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
       we can immediately deploy to be good at `A` live";
       The goal is more
       "generally useful/informative structure/pathways or feature representations/transformations/combinations
-      that we can apply/transfer to a bunch of downstream tasks like `B` and `C`".
+      that we can apply/transfer to a bunch of downstream tasks like `B` and `C` and `D`".
       - The rise of LLM-based chatbots has made people familiar with the basic idea that
         you can pretrain a big deep attentive NN on a general next-token prediction task,
         then port a bunch of the resulting learned base layers downstream
         (possibly with further refinement or nudging, or possibly almost directly as-is)
-        to make a conversational chatbot or automated customer-service rep.
+        to make a conversational chatbot or automated customer-service rep or agentic coder.
+        - Here the pretraining task
+          (essentially a fancy version of repeatedly smashing the middle suggestion on your iPhone keyboard or IDE autocomplete)
+          is clearly related to but not quite the same as the downstream business applications
+          (construct a coherent and polite and factual and helpful dialog between two people,
+          letting the user supply intermediate turns,
+          or
+          continue the user's software spec into a completed implementation,
+          asking clarifying questions and/or calling tools to read/write/analyze code/outputs as appropriate).
       - We might even retcon the first stage (the boosted forest)
         of Facebook's 2014 "Predicting Clicks on Ads" architecture
         as "pretraining" feature representations
         to be used in the second stage (the logistic regression).
+        - Again here the pretraining task
+          (a sluggish and bulky but thorough apparatus to tease out useful feature nonlinearities/interactions from the data)
+          is clearly related to the downstream business task
+          (a rapidly-retrainable model that predicts ad clicks without having to rederive those identified signals from scratch).
 * Foundation models ->
     - Massive-scale pretrained models intended to be broadly useful
     - Can serve as the base model in few-shot, one-shot, or zero-shot learning tasks
