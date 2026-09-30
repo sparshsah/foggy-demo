@@ -102,18 +102,20 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
       You do essentially need to choose some specific training target or task `A`
       (backprop needs an objective or loss function to guide it where to go),
       but the goal isn't necessarily
-      "a model we can immediately deploy to be good at `A` live";
+      "a model
+      we can immediately deploy to be good at `A` live";
       The goal is more
-      "generally useful/informative structure/pathways or feature representations/transformations/combinations that we can apply/transfer to a bunch of downstream tasks".
-      The rise of LLM-based chatbots has made people familiar with the basic idea that
-      you can pretrain a big deep attentive NN on a general next-token prediction task,
-      then port a bunch of the resulting learned base layers downstream
-      (possibly with further refinement or nudging, or possibly almost directly as-is)
-      to make a conversational chatbot or automated customer-service rep.
-      We might even retcon the first stage (the boosted forest)
-      of Facebook's 2014 "Predicting Clicks on Ads" architecture
-      as "pretraining" feature representations
-      to be used in the second stage (the logistic regression).
+      "generally useful/informative structure/pathways or feature representations/transformations/combinations
+      that we can apply/transfer to a bunch of downstream tasks like `B` and `C`".
+      - The rise of LLM-based chatbots has made people familiar with the basic idea that
+        you can pretrain a big deep attentive NN on a general next-token prediction task,
+        then port a bunch of the resulting learned base layers downstream
+        (possibly with further refinement or nudging, or possibly almost directly as-is)
+        to make a conversational chatbot or automated customer-service rep.
+      - We might even retcon the first stage (the boosted forest)
+        of Facebook's 2014 "Predicting Clicks on Ads" architecture
+        as "pretraining" feature representations
+        to be used in the second stage (the logistic regression).
 * Foundation models ->
     - Massive-scale pretrained models intended to be broadly useful
     - Can serve as the base model in few-shot, one-shot, or zero-shot learning tasks
