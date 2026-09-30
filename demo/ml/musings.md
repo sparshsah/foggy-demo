@@ -128,13 +128,19 @@ Training Algorithms and Transfer Learning / Adaptation / Alignment Steps/Techniq
           (a sluggish and bulky but thorough apparatus to tease out useful feature nonlinearities/interactions from the data)
           is clearly related to the downstream business task
           (a rapidly-retrainable model that predicts ad clicks without having to rederive those identified signals from scratch).
-      - But the idea is broader than just this.
+      - But the idea is broader than just "pretraining task `A` is an obvious superset of downstream tasks `B` and `C`".
         For instance, you might use JSON-formatted canonical-log-line trajectories for user mobile app journeys from your data lake
-        to train a sequence model around the task "predict what button the user will click next".
+        to train a sequence model around the task "predict what button the user will click next and how long they will wait before clicking it".
         Then, you port that basic learned structure as the basis for a model explicitly designed to predict
-        "which online shopping deal should I offer the customer to increase take rates"
+        "which online shopping deal should I offer the customer to increase take rates?"
         or
-        "how likely is the customer to default on a checkout loan"?
+        "how likely is the customer to default on a checkout loan?".
+        - In this case, it's not necessarily obvious why a credit risk model should take a detour through "predict shopping clicks" land.
+          But the point is that "predict shopping clicks" could be a relatively straightforward and well-defined problem
+          with lots of fairly reliable and up-to-date labeled training data.
+          So you use that to explore the base question "what sorts of patterns tend to be predictive of future behavior?".
+          Once you have the answer, you can apply it to business questions that may be more nuanced
+          or where data labels might be expensive to collect or take a long time to crystallize.
 * Foundation models ->
     - Massive-scale pretrained models intended to be broadly useful
     - Can serve as the base model in few-shot, one-shot, or zero-shot learning tasks
